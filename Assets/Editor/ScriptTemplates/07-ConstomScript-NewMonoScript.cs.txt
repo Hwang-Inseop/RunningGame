@@ -1,0 +1,9 @@
+using UnityEngine;
+
+namespace RunningGame
+{
+    public class #SCRIPTNAME# : MonoBehaviour
+    {
+        #NOTRIM#
+    }
+}
