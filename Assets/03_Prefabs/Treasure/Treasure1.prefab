@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237515836865449382}
-  - component: {fileID: 3470597962084042121}
+  - component: {fileID: 2479381940352032065}
   m_Layer: 0
   m_Name: Treasure1
   m_TagString: Untagged
@@ -118,7 +118,7 @@ Transform:
   - {fileID: 5443649001392401813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3470597962084042121
+--- !u!114 &2479381940352032065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,11 +127,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7516959404284405116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53dc0990b00d57f49a2d07e514fac71d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d2937d2d8ecd1242a3b2de00eafba6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: 1
-  description: "\uC77C\uC815 \uC2DC\uAC04 \uB9C8\uB2E4 \uCD94\uAC00 \uCF54\uC778
+  description: "\uC77C\uC815 \uC2DC\uAC04 \uB9C8\uB2E4 \uCD94\uCE74 \uCF54\uC778
     \uC0DD\uC131"
   intervalTime: 30
   duration: 0

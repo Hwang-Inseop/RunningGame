@@ -13,9 +13,7 @@ public class Treasure : MonoBehaviour
     [SerializeField] private float speed; // 속도 증가량
     [SerializeField] private float healthDrain; // 체력 감소량
     [SerializeField] private bool canRevive; // 부활 가능 여부
-#nullable enable
-    [SerializeField] private GameObject extraCoin; // 추가 코인 생성
-    [SerializeField] private Transform coinPosition; // 추가 코인 생성 위치
+
 
     public void Equip()
     {
@@ -26,10 +24,6 @@ public class Treasure : MonoBehaviour
             if (canRevive)
             {
                 // 낙사 했을 때 체력 받아와서 부활
-            }
-            if (extraCoin != null)
-            {
-                Instantiate(extraCoin, coinPosition.position, Quaternion.identity); //추후 위치 지정
             }
         }
     }
@@ -42,5 +36,9 @@ public class Treasure : MonoBehaviour
             // Equip() 로직 반대로
         }
     }
+}
+public interface ICoinGenerator
+{
+    void GenerateCoin();
 }
 
