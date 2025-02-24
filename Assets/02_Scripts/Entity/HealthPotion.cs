@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class HealthPotion : Item
 {
+    public override int Score => 0;
+    public int healingAmount = 0;
     public override void ApplyEffect()
     {
-        // 플레이어 체력 ++
+        base.ApplyEffect();
+        // 플레이어 체력 += healingAmount;
     }
 }

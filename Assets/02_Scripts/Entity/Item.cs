@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+public class Item : MonoBehaviour
 {
     private Animator animator;
+    public virtual int Score { get; }
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
     }
-    public abstract void ApplyEffect(); // 아이템 효과
-
+    public virtual void ApplyEffect() // 아이템 효과
+    {  
+        // 플레이어 점수 += Score;
+    }
     public void DestroyItem() // 사라지는 애니메이션 후 Destroy
     {
         animator.SetTrigger("Contact");

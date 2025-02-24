@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Gem : Item
 {
+    public override int Score => 0;
+
     public override void ApplyEffect()
     {
-        // 플레이어 점수 ++
+        base.ApplyEffect();
     }
 }
