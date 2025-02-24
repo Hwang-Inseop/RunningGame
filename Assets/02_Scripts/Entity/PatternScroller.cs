@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RunningGame.Entity
 {
-    public class BackgroundScroller : MonoBehaviour
+    public class PatternScroller : MonoBehaviour
     {
         [SerializeField] private Transform tr;
         public float scrollSpeed { get; private set; } = 5f;
