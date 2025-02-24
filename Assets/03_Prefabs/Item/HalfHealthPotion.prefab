@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5138928463180888991}
   - component: {fileID: 1038453934948359323}
   - component: {fileID: 6488247410660850937}
+  - component: {fileID: -5954564397623193349}
   m_Layer: 0
   m_Name: HalfHealthPotion
   m_TagString: Item
@@ -187,3 +188,24 @@ PolygonCollider2D:
       - {x: 0.4061985, y: -0.003867805}
       - {x: 0.40972215, y: 0.16854429}
   m_UseDelaunayMesh: 0
+--- !u!95 &-5954564397623193349
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642648484789292690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56464be459f634d4a8bb733b79c70b24, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
