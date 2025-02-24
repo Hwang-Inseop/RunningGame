@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gem : Item
 {
-    [SerializeField] private int gemAmount; // ÀçÈ­ Áõ°¡
+    [SerializeField] private int gemAmount; // ì¬í™” ì¦ê°€
 
     public override void ApplyEffect()
     {
         base.ApplyEffect();
-        //ÀçÈ­ Áõ°¡ += gemAmount
+        //ì¬í™” ì¦ê°€ += gemAmount
     }
 }
