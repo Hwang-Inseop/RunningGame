@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,26 +8,26 @@ using UnityEngine.UI;
 
 public class CharacterUIManager : MonoBehaviour
 {
-    [Header("Ä³¸¯ÅÍ ¼±ÅÃ ÆĞ³Î")]
+    [Header("ìºë¦­í„° ì„ íƒ íŒ¨ë„")]
     public CanvasGroup characterSelectPanel;
 
-    [Header("Å©±â º¯È­ ÀÌÆåÆ® Àû¿ëµÇ´Â ¹öÆ° ¸®½ºÆ®")]
+    [Header("í¬ê¸° ë³€í™” ì´í™íŠ¸ ì ìš©ë˜ëŠ” ë²„íŠ¼ ë¦¬ìŠ¤íŠ¸")]
     public List<Button> makeScaleBtn = new List<Button>();
 
-    [Header("³ª°¡±â ¹öÆ°")]
+    [Header("ë‚˜ê°€ê¸° ë²„íŠ¼")]
     public GameObject exitBtn;
 
-    [Header("Fade È¿°ú ½Ã°£")]
+    [Header("Fade íš¨ê³¼ ì‹œê°„")]
     [SerializeField]
     private float fadeTime = 0.5f;
 
-    //[Header("Ä³¸¯ÅÍ ÀÌ¸§ÀÌ ÀûÈú Ä­")]
+    //[Header("ìºë¦­í„° ì´ë¦„ì´ ì í ì¹¸")]
     //[SerializeField]
     //private float fadeTime = 0.5f;
 
 
 
-    //ÃÊ±â ¼³Á¤
+    //ì´ˆê¸° ì„¤ì •
     void Start()
     {
         foreach (Button button in makeScaleBtn)
@@ -52,25 +52,25 @@ public class CharacterUIManager : MonoBehaviour
         
     }
 
-    //Å©±â Áõ°¡
+    //í¬ê¸° ì¦ê°€
     public void IncreaseScale()
     {
         exitBtn.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
     }
 
-    //Å©±â °¨¼Ò (¿ø»óº¹±¸)
+    //í¬ê¸° ê°ì†Œ (ì›ìƒë³µêµ¬)
     public void DecreaseScale()
     {
         exitBtn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
     }
 
-    //¾À ·Îµå
+    //ì”¬ ë¡œë“œ
     public void LoadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
-    //Ä³¸¯ÅÍ¿¡ ¸Â´Â Á¤º¸ ¶ç¿ì±â
+    //ìºë¦­í„°ì— ë§ëŠ” ì •ë³´ ë„ìš°ê¸°
     public void DisplayCharPanel(CharacterInfo charInfo)
     {
 

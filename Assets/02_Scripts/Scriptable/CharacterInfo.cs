@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,37 +6,37 @@ using UnityEngine;
 
 public class CharacterInfo : ScriptableObject
 {
-    //Ä³¸¯ÅÍ ¹øÈ£
+    //ìºë¦­í„° ë²ˆí˜¸
     [SerializeField]
     private int characterNum;
 
     public int CharacterNum { get { return characterNum; } }
 
-    //Ä³¸¯ÅÍ ÀÌ¸§
+    //ìºë¦­í„° ì´ë¦„
     [SerializeField]
     private string charName;
 
     public string CharName { get { return charName; } }
 
-    //ÇØ±İ Á¶°Ç
+    //í•´ê¸ˆ ì¡°ê±´
     [SerializeField]
     private string howToGet;
 
     public string HowToGet { get { return howToGet; } }
 
-    //´É·Â ¼³¸í
+    //ëŠ¥ë ¥ ì„¤ëª…
     [SerializeField]
     private string ability;
 
     public string Ability { get { return ability; } }
 
-    //Ä³¸¯ÅÍ ÇÑ¸¶µğ
+    //ìºë¦­í„° í•œë§ˆë””
     [SerializeField]
     private string talk;
 
     public string Talk { get { return talk; } }
 
-    //Ä³¸¯ÅÍ »çÁø
+    //ìºë¦­í„° ì‚¬ì§„
     [SerializeField]
     private Sprite photo;
 

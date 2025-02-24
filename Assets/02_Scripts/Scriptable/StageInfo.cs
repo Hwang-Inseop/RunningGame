@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,19 +6,19 @@ using UnityEngine;
 
 public class StageInfo : ScriptableObject
 {
-    //½ºÅ×ÀÌÁö
+    //ìŠ¤í…Œì´ì§€
     [SerializeField]
     private int stageNum;
 
     public int StageNum { get { return stageNum; } }
 
-    //½ºÅ×ÀÌÁö ¼³¸í
+    //ìŠ¤í…Œì´ì§€ ì„¤ëª…
     [SerializeField]
     private string stageDescription;
 
     public string StageDescription { get { return stageDescription; } }
 
-    //½ºÅ×ÀÌÁö ¹è°æ
+    //ìŠ¤í…Œì´ì§€ ë°°ê²½
     [SerializeField]
     private Sprite background;
 
