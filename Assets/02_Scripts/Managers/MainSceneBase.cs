@@ -10,6 +10,8 @@ namespace RunningGame.Managers
     {
         [SerializeField] private PatternDatas patternDatas;
         [SerializeField] private PatternLooper patternLooper;
+        [SerializeField] private Transform playerSpawnPoint;
+        private int selectedStage;
         
         private void Start()
         {
@@ -24,20 +26,24 @@ namespace RunningGame.Managers
             
             // 메인 게임 초기화
             CreatPatternPool();
+            patternLooper.Init(selectedStage);
         }
 
         private void CreatPatternPool()
         {
             // TODO: GameManager에서 선택한 스테이지 정보 가져오기
-            var selectedStage = 1;
-            var patternKey = $"{Define.PatternKey}{selectedStage}_0"; // Stage_01_0
-            patternLooper.SetPatternKey(patternKey);
+            selectedStage = 1;
             var patternList = patternDatas.GetPatternList(selectedStage);
             for (int i = 0; i < patternList.Count; i++)
             {
                 var prefab = patternList[i];
                 MainPoolManager.Instance.CreatePool(prefab);
             }
+        }
+
+        private void SpawnPlayer()
+        {
+            // TODO: 플레이어 스폰 구현
         }
     }
 }
