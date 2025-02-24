@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,27 +11,27 @@ using UnityEngine.UI;
 
 public class LobbyUIManager : MonoBehaviour
 {
-    [Header("Å©±â º¯È­ ÀÌÆåÆ® Àû¿ëµÇ´Â ¹öÆ° ¸®½ºÆ®")]
+    [Header("í¬ê¸° ë³€í™” ì´í™íŠ¸ ì ìš©ë˜ëŠ” ë²„íŠ¼ ë¦¬ìŠ¤íŠ¸")]
     public List<Button> makeScaleBtn = new List<Button>();
 
-    [Header("Fade È¿°ú Àû¿ë½ÃÅ³ Panel")]
+    [Header("Fade íš¨ê³¼ ì ìš©ì‹œí‚¬ Panel")]
     public CanvasGroup fadePanel = new CanvasGroup();
     public GameObject fadePanelGo;
 
-    [Header("Fade È¿°ú ½Ã°£")]
+    [Header("Fade íš¨ê³¼ ì‹œê°„")]
     [SerializeField]            
     private float fadeTime = 0.5f;
 
-    [Header("½ºÅ×ÀÌÁö ¼³¸í ÅØ½ºÆ®")]
+    [Header("ìŠ¤í…Œì´ì§€ ì„¤ëª… í…ìŠ¤íŠ¸")]
     public TextMeshProUGUI stageDescriptionTxt;
 
-    [Header("½ºÅ×ÀÌÁö ¼³¸í ÀÌ¹ÌÁö")]
+    [Header("ìŠ¤í…Œì´ì§€ ì„¤ëª… ì´ë¯¸ì§€")]
     public Image stageDescriptionImg;
 
-    [Header("Ã¼Å© ÀÌ¹ÌÁö ¸®½ºÆ®")]
+    [Header("ì²´í¬ ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸")]
     public List<GameObject> checkImg = new List<GameObject>();
 
-    //ÃÊ±â ¼³Á¤
+    //ì´ˆê¸° ì„¤ì •
     void Start()
     {
         fadePanelGo.SetActive(true);
@@ -54,7 +54,7 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
-    //Fade In È¿°ú
+    //Fade In íš¨ê³¼
     public void PanelFadeIn()
     {
         ControlPanel(0f, true);
@@ -64,7 +64,7 @@ public class LobbyUIManager : MonoBehaviour
         fadePanel.DOFade(1, fadeTime);
     }
 
-    //Fade Out È¿°ú
+    //Fade Out íš¨ê³¼
     public void PanelFadeOut()
     {
         ControlPanel(1f, false);
@@ -74,14 +74,14 @@ public class LobbyUIManager : MonoBehaviour
         fadePanel.DOFade(0, fadeTime);
     }
 
-    //ÆĞ³ÎÀÇ »óÈ£ÀÛ¿ë ¹× Åõ¸íµµ Á¶Àı
+    //íŒ¨ë„ì˜ ìƒí˜¸ì‘ìš© ë° íˆ¬ëª…ë„ ì¡°ì ˆ
     void ControlPanel(float alpha, bool isInteractable)
     {
         fadePanel.alpha = alpha;
         fadePanel.interactable = isInteractable;
     }
 
-    //½ºÅ×ÀÌÁö ¼³¸í º¸¿©ÁÖ±â
+    //ìŠ¤í…Œì´ì§€ ì„¤ëª… ë³´ì—¬ì£¼ê¸°
     public void ShowStageDescription(StageInfo stageInfo)
     {
         PlayerPrefs.SetInt("choosedStage", stageInfo.StageNum);
@@ -89,7 +89,7 @@ public class LobbyUIManager : MonoBehaviour
         stageDescriptionImg.sprite = stageInfo.Background;
     }
 
-    //Àû¿ëµÈ ½ºÅ×ÀÌÁö Ã¼Å©Ç¥½ÃÇØÁÖ±â
+    //ì ìš©ëœ ìŠ¤í…Œì´ì§€ ì²´í¬í‘œì‹œí•´ì£¼ê¸°
     public void CheckSelectedStage()
     {
         for(int i = 1; i <= checkImg.Count; i++)

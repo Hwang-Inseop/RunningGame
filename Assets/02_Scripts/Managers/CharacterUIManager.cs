@@ -21,6 +21,12 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField]
     private float fadeTime = 0.5f;
 
+    //[Header("캐릭터 이름이 적힐 칸")]
+    //[SerializeField]
+    //private float fadeTime = 0.5f;
+
+
+
     //초기 설정
     void Start()
     {
@@ -64,6 +70,10 @@ public class CharacterUIManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    //
+    //캐릭터에 맞는 정보 띄우기
+    public void DisplayCharPanel(CharacterInfo charInfo)
+    {
+
+    }
 
 }
