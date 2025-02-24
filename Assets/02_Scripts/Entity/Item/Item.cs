@@ -6,7 +6,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private Animator animator;
-    public virtual int Score { get; }
+    [SerializeField] protected int score;
+    public virtual int Score => score;
 
     private void Awake()
     {

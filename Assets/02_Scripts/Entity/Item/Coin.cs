@@ -5,8 +5,6 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Coin : Item
 {
-    [SerializeField] private int coinAmount; // 재화 증가
-    public override int Score => 0; // 점수
 
     public override void ApplyEffect()
     {
