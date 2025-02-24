@@ -22,7 +22,7 @@ public class LobbyBGLooper : MonoBehaviour
 
     void Start()
     {
-        MovePos = bgs[bgs.Count - 1].transform.position;
+        MovePos = bgs[bgs.Count - 1].transform.position - new Vector3(0.1f,0,0);
     }
 
     void Update()

@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class LobbyUIManager : MonoBehaviour
     private float fadeTime = 0.5f;
 
     [Header("스테이지 설명 텍스트")]
-    public Text stageDescriptionTxt;
+    public TextMeshProUGUI stageDescriptionTxt;
 
     [Header("스테이지 설명 이미지")]
     public Image stageDescriptionImg;
