@@ -7,8 +7,7 @@ namespace RunningGame.Managers
     {
         public override void Init()
         {
-            // 시작할 때 필요한 초기화
+            
         }
     }
 }
-        
