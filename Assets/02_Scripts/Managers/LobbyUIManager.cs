@@ -2,6 +2,8 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,16 +14,31 @@ public class LobbyUIManager : MonoBehaviour
 
     [Header("Fade 효과 적용시킬 Panel")]
     public CanvasGroup fadePanel = new CanvasGroup();
+    public GameObject fadePanelGo;
 
     [Header("Fade 효과 시간")]
     [SerializeField]            
     private float fadeTime = 0.5f;
 
+    [Header("스테이지 설명 텍스트")]
+    public Text stageDescriptionTxt;
+
+    [Header("스테이지 설명 이미지")]
+    public Image stageDescriptionImg;
+
+    [Header("체크 이미지 리스트")]
+    public List<GameObject> checkImg = new List<GameObject>();
+
+    //초기 설정
     void Start()
     {
+        fadePanelGo.SetActive(true);
         fadePanel.alpha = 0f;
         RectTransform rectTransform = fadePanel.GetComponent<RectTransform>();
         rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
+
+        PlayerPrefs.SetInt("choosedStage", 1);
+
 
         foreach (Button button in makeScaleBtn)
         {
@@ -34,7 +51,6 @@ public class LobbyUIManager : MonoBehaviour
             });
         }
     }
-
 
     public void PanelFadeIn()
     {
@@ -60,4 +76,25 @@ public class LobbyUIManager : MonoBehaviour
         fadePanel.interactable = isInteractable;
     }
 
+    public void ShowStageDescription(StageInfo stageInfo)
+    {
+        PlayerPrefs.SetInt("choosedStage", stageInfo.StageNum);
+        stageDescriptionTxt.text = stageInfo.StageDescription;
+        stageDescriptionImg.sprite = stageInfo.Background;
+    }
+
+    public void CheckSelectedStage()
+    {
+        for(int i = 1; i <= checkImg.Count; i++)
+        {
+            if (PlayerPrefs.GetInt("choosedStage") == i)
+            {
+                checkImg[i - 1].SetActive(true);
+            }
+            else
+            {
+                checkImg[i - 1].SetActive(false);
+            }
+        }
+    }
 }
