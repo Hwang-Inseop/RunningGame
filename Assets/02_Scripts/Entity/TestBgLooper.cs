@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TestBgLooper : MonoBehaviour
 {
-    private const int bgCount = 3;
+    private const int bgCount = 5;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
