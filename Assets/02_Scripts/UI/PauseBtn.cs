@@ -1,7 +1,10 @@
-﻿using JetBrains.Annotations;
+using DG.Tweening;
+using JetBrains.Annotations;
 using RunningGame.Managers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,23 +19,32 @@ public class PauseBtn : MonoBehaviour
     [Header("게임 점수")]
     public int totalScore;
     public int currentScore = 0;
-    public Text totalScoreTxt;
+    public TextMeshProUGUI totalScoreTxt;
 
     [Header("얻은 재화")]
     public int totalGold;
     public int currentgold = 0;
-    public Text totalGoldTxt;
+    public TextMeshProUGUI totalGoldTxt;
 
     private float hp;
+
+    [Header("게임 오버시 선택 패널")]
+    public CanvasGroup gameOverSelectPanel;
+    [Header("크기 변화 이펙트 적용되는 버튼 리스트")]
+    public List<Button> makeScaleBtn = new List<Button>();
+
+    [Header("Fade 효과 시간")]
+    [SerializeField] private float fadeTime = 0.5f;
+
     public void PauseGame() // 게임 일시 정지
     {
         isPause = !isPause;
         if (isPause)
             pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
 
-    // UIManager로 이동해야 할 부분
+    #region UI매니저로 이동할 부분
     public void ResumeGame()
     {
         isPause = false;
@@ -40,41 +52,57 @@ public class PauseBtn : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
-    //UIManager로 이동할 부분
+
     public void SelectStageBtn() // 스테이지 선택창 
     {
         Time.timeScale = 1f;
         //불러올 씬의 정보로 로드 MainSceneBase.LoadScene(" " );
     }
 
-    // UIManager로 이동할 부분
-
     public void QuitGame()   // 게임 종료
     {
         Application.Quit();
     }
+
     public void AddScore() // 점수 추가
     {
         Debug.Log("점수 추가");
         totalScore += currentScore;
         totalScoreTxt.text = totalScore.ToString();
     }
+
     public void AddGold() // 재화 추가
     {
         Debug.Log("골드 추가");
         totalGold += currentgold;
         totalGoldTxt.text = totalGold.ToString();
     }
-    //private int OnDamage(int damage)
-    //{
-    //  hp -= damage
-    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
-           //  onDamage(데미지변수 입력);
+            //  onDamage(데미지변수 입력);
         }
     }
+
+    void Start() //도트윈 사용방법
+    {
+        foreach (Button button in makeScaleBtn)
+        {
+            button.onClick.AddListener(() =>
+            {
+                button.transform.DOKill();
+                button.transform.localScale = Vector3.one;
+
+                button.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
+            });
+        }
+
+        RectTransform rectTransform = gameOverSelectPanel.GetComponent<RectTransform>();
+        rectTransform.transform.localPosition = new Vector3(0f, -500f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce);
+        gameOverSelectPanel.DOFade(1, fadeTime);
+    }
 }
+#endregion
