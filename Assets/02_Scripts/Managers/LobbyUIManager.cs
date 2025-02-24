@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LobbyUIManager : MonoBehaviour
@@ -52,6 +53,7 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
+    //Fade In 효과
     public void PanelFadeIn()
     {
         ControlPanel(0f, true);
@@ -61,6 +63,7 @@ public class LobbyUIManager : MonoBehaviour
         fadePanel.DOFade(1, fadeTime);
     }
 
+    //Fade Out 효과
     public void PanelFadeOut()
     {
         ControlPanel(1f, false);
@@ -70,12 +73,14 @@ public class LobbyUIManager : MonoBehaviour
         fadePanel.DOFade(0, fadeTime);
     }
 
+    //패널의 상호작용 및 투명도 조절
     void ControlPanel(float alpha, bool isInteractable)
     {
         fadePanel.alpha = alpha;
         fadePanel.interactable = isInteractable;
     }
 
+    //스테이지 설명 보여주기
     public void ShowStageDescription(StageInfo stageInfo)
     {
         PlayerPrefs.SetInt("choosedStage", stageInfo.StageNum);
@@ -83,6 +88,7 @@ public class LobbyUIManager : MonoBehaviour
         stageDescriptionImg.sprite = stageInfo.Background;
     }
 
+    //적용된 스테이지 체크표시해주기
     public void CheckSelectedStage()
     {
         for(int i = 1; i <= checkImg.Count; i++)
@@ -97,4 +103,10 @@ public class LobbyUIManager : MonoBehaviour
             }
         }
     }
+
+    public void LoadScene(String sceneName)
+    {
+        SceneManager.LoadScene(sceneName);  
+    }
+
 }
