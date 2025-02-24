@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
@@ -13,18 +13,18 @@ public class Item : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
     }
-    public virtual void ApplyEffect() // ¾ÆÀÌÅÛ È¿°ú
+    public virtual void ApplyEffect() // ì•„ì´í…œ íš¨ê³¼
     {  
-        // ÇÃ·¹ÀÌ¾î Á¡¼ö += Score;
+        // í”Œë ˆì´ì–´ ì ìˆ˜ += Score;
     }
-    public void DestroyItem() // »ç¶óÁö´Â ¾Ö´Ï¸ŞÀÌ¼Ç ÈÄ Destroy
+    public void DestroyItem() // ì‚¬ë¼ì§€ëŠ” ì• ë‹ˆë©”ì´ì…˜ í›„ Destroy
     {
         animator.SetTrigger("Contact");
         Destroy(gameObject, .05f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) // ÇÃ·¹ÀÌ¾î¿Í Ãæµ¹ ½Ã
+        if (collision.CompareTag("Player")) // í”Œë ˆì´ì–´ì™€ ì¶©ëŒ ì‹œ
         {
             ApplyEffect();
             DestroyItem();

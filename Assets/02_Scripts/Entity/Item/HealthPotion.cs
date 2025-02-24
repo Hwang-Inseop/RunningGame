@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,6 @@ public class HealthPotion : Item
     public override void ApplyEffect()
     {
         base.ApplyEffect();
-        // ÇÃ·¹ÀÌ¾î Ã¼·Â += healingAmount;
+        // í”Œë ˆì´ì–´ ì²´ë ¥ += healingAmount;
     }
 }

@@ -1,11 +1,11 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinTreasure : Treasure, ICoinGenerator
 {
-    [SerializeField] private GameObject extraCoin; // 眠啊 内牢 积己
-    [SerializeField] private Transform coinPosition; // 眠啊 内牢 积己 困摹
+    [SerializeField] private GameObject extraCoin; // 於旉皜 旖旍澑 靸濎劚
+    [SerializeField] private Transform coinPosition; // 於旉皜 旖旍澑 靸濎劚 鞙勳箻
 
     public void GenerateCoin()
     {
