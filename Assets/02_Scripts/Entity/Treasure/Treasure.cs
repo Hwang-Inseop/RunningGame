@@ -37,8 +37,5 @@ public class Treasure : MonoBehaviour
         }
     }
 }
-public interface ICoinGenerator
-{
-    void GenerateCoin();
-}
+
 
