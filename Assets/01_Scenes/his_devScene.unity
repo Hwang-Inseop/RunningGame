@@ -827,7 +827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 3
   maxJumpHoldTime: 0.3
-  doubleJumpForce: 1
+  doubleJumpForce: 5
   isSliding: 0
   normalCollider: {fileID: 1320480982}
   slideCollider: {fileID: 2094642831}
