@@ -9,13 +9,14 @@ public class Treasure : MonoBehaviour
     [SerializeField] private string description; // 설명
     [SerializeField] private int reqGem; // 필요한 젬 개수
     [SerializeField] protected float intervalTime; // 쿨타임
-    [SerializeField] private float duration; // 효과 지속 시간
-    [Header("보물 스탯")]
-    [SerializeField] private float speed; // 속도 증가량
-    [SerializeField] private float healthDrain; // 체력 감소량
+    [SerializeField] protected float duration; // 효과 지속 시간
+
     [SerializeField] private int canRevive; // 부활 가능 횟수
 
-
+    private void Start()
+    {
+        StartCoroutine(WaitForStart());
+    }
     public void Equip()
     {
         if (!IsEquipped)
@@ -40,6 +41,15 @@ public class Treasure : MonoBehaviour
                 // Player 부활 가능 횟수 -= canRevive
             }
         }
+    }
+    public virtual void ApplyEffect() { }
+    private IEnumerator WaitForStart() // 게임 시작까지 대기
+    {
+        while (true) // -> !MainSceneBase.Instance.IsStart())
+        {
+            yield return null;
+        }
+        if (IsEquipped) ApplyEffect();
     }
 }
 
