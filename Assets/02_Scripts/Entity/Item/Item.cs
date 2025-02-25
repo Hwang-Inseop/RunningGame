@@ -26,7 +26,7 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player")) // 플레이어와 충돌 시
         {
-            Debug.Log("�浹");
+            Debug.Log("�浹");
             ApplyEffect();
             DestroyItem();
         }
