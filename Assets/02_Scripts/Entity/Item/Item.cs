@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
     }
     public void DestroyItem() // 사라지는 애니메이션 후 Destroy
     {
-        animator.SetTrigger("Contact");
+        // animator.SetTrigger("Contact");
         Destroy(gameObject, .05f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
