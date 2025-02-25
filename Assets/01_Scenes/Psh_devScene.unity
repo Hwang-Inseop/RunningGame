@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 974501759}
   - component: {fileID: 974501757}
   - component: {fileID: 974501756}
+  - component: {fileID: 974501760}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -642,6 +643,23 @@ Transform:
   - {fileID: 640514125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &974501760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974501755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caa9b8c5acd6f7439590c7451c10fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  health: 0
+  maxHealth: 0
+  reviveCount: 0
+  trasureBtn: {fileID: 0}
 --- !u!4 &1306219989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1237515836865449382, guid: 58fe8a4c877bad0488a60b86dd13ece6, type: 3}
@@ -742,7 +760,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 974501760}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: Equip
         m_Mode: 2

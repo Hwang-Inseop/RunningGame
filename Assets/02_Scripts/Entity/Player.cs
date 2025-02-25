@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Vector3 originPosition;
     private Treasure treasure;
     public Button trasureBtn;
+    public bool isStart = false;
     private void Start()
     {
         originPosition = transform.position;
