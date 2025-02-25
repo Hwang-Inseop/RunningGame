@@ -257,6 +257,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4613610}
   m_CullTransparentMesh: 1
+--- !u!1 &89109602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89109604}
+  - component: {fileID: 89109603}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &89109603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89109602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f27a5846b08a4b42b51dcd9965d461c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageinfo: {fileID: 11400000, guid: c3c6f73215c18d14da07df8926c976e3, type: 2}
+  characterInfo: {fileID: 11400000, guid: 476d4e559a05b13459fd2c2fad1221b7, type: 2}
+--- !u!4 &89109604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89109602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 288.1218, y: 247.8564, z: -4.3888874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &276032833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,6 +3163,10 @@ MonoBehaviour:
   - {fileID: 1341578291}
   - {fileID: 1573646101}
   - {fileID: 1989209495}
+  stages:
+  - {fileID: 11400000, guid: c3c6f73215c18d14da07df8926c976e3, type: 2}
+  - {fileID: 11400000, guid: 7f892b934c4c58245bf07774d73cc254, type: 2}
+  - {fileID: 11400000, guid: 76d66a5d0897fb84fb5a6610b77dec94, type: 2}
 --- !u!4 &1563879093
 Transform:
   m_ObjectHideFlags: 0
@@ -3943,6 +3993,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1563879092}
+        m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
+        m_MethodName: ChangeSelectedStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1889528385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4402,3 +4464,4 @@ SceneRoots:
   - {fileID: 2138740669}
   - {fileID: 411819181}
   - {fileID: 276032834}
+  - {fileID: 89109604}
