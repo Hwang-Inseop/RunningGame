@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,15 +22,43 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField]
     private float fadeTime = 0.5f;
 
-    //[Header("캐릭터 이름이 적힐 칸")]
-    //[SerializeField]
-    //private float fadeTime = 0.5f;
+    [Header("캐릭터 정보 패널")]
+    public CanvasGroup characterInfoPanel;
+    public GameObject characterInfoPanelGo;
+
+    [Header("캐릭터 사진이 보이는 칸")]
+    [SerializeField]
+    private Image charImage;
+
+    [Header("캐릭터 이름이 적힐 칸")]
+    [SerializeField]
+    private TextMeshProUGUI nameTxt;
+
+    [Header("캐릭터 체력이 적힐 칸")]
+    [SerializeField]
+    private TextMeshProUGUI healthTxt;
+
+    [Header("캐릭터의 한마디가 적힐 칸")]
+    [SerializeField]
+    private TextMeshProUGUI charTalk;
+
+    [Header("캐릭터 해금에 필요한 쥬얼이 보이는 칸")]
+    [SerializeField]
+    private Image jewelImg;
+
+    [Header("캐릭터 능력이 적힐 칸")]
+    [SerializeField]
+    private TextMeshProUGUI abilityTxt;
+
+
 
 
 
     //초기 설정
     void Start()
     {
+        characterInfoPanel.transform.localPosition = new Vector3(0f, -1000f, 0f);
+
         foreach (Button button in makeScaleBtn)
         {
             button.onClick.AddListener(() =>
@@ -73,7 +102,34 @@ public class CharacterUIManager : MonoBehaviour
     //캐릭터에 맞는 정보 띄우기
     public void DisplayCharPanel(CharacterInfo charInfo)
     {
-
+        characterInfoPanelGo.GetComponent<Image>().sprite = charInfo.BgSprite;
+        charImage.sprite = charInfo.Photo;
+        nameTxt.text = charInfo.CharName;
+        healthTxt.text = charInfo.Health.ToString();
+        charTalk.text = charInfo.Talk;
+        jewelImg.GetComponent<Image>().sprite = charInfo.Jewel;
+        abilityTxt.text = charInfo.Ability;
+        
+        PanelFadeIn();
     }
 
+    //Fade In 효과
+    public void PanelFadeIn()
+    {
+        characterInfoPanel.alpha = 0;
+        RectTransform rectTransform = characterInfoPanel.GetComponent<RectTransform>();
+        rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+        characterInfoPanel.DOFade(1, fadeTime);
+    }
+
+    //Fade Out 효과
+    public void PanelFadeOut()
+    {
+        characterInfoPanel.alpha = 1;
+        RectTransform rectTransform = characterInfoPanel.GetComponent<RectTransform>();
+        rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
+        characterInfoPanel.DOFade(0, fadeTime);
+    }
 }
