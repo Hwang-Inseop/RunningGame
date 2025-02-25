@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace RunningGame.Managers
 {
@@ -10,8 +11,8 @@ namespace RunningGame.Managers
     public class MainUIManager : SceneSingleton<MainUIManager>
     {
         private bool isPause = false;
-        private float hp;
-
+        private PlayerController player;
+        public GameObject pauseBtn;
         public GameObject pauseMenu;
 
         [Header("점수 표시")]
@@ -24,6 +25,11 @@ namespace RunningGame.Managers
         private int gemAmount = 0;
         public TextMeshProUGUI totalGoldTxt;
 
+        [Header("체력 표시")]
+        private float hp;
+        public Slider healthSlider;
+        
+
         public override void Init()
         {
             // 시작할 때 필요한 초기화
@@ -33,7 +39,7 @@ namespace RunningGame.Managers
             Debug.Log("Click");
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
-            gameObject.SetActive(true);
+            pauseBtn.SetActive(true);
             isPause = false;
         }
 

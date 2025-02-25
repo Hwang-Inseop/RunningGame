@@ -15,14 +15,10 @@ public class PauseBtn : MonoBehaviour
     [Header("일시정지 버튼")]
     public GameObject pauseMenu;
     private bool isPause = false;
-
-
-
     public void PauseGame() // 게임 일시 정지
     {
         isPause = !isPause;
         pauseMenu.SetActive(true);
-        // gameObject.SetActive(false);
         Time.timeScale = 0f;
     }
 }
