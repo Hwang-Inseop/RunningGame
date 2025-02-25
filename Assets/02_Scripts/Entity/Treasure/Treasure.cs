@@ -12,7 +12,7 @@ public class Treasure : MonoBehaviour
     [Header("보물 스탯")]
     [SerializeField] private float speed; // 속도 증가량
     [SerializeField] private float healthDrain; // 체력 감소량
-    [SerializeField] private bool canRevive; // 부활 가능 여부
+    [SerializeField] private int canRevive; // 부활 가능 횟수
 
 
     public void Equip()
@@ -21,9 +21,9 @@ public class Treasure : MonoBehaviour
         {
             IsEquipped = true;
             // 플레이어 참조해서 추가 스탯 적용
-            if (canRevive)
+            if (canRevive > 0)
             {
-                // 낙사 했을 때 체력 받아와서 부활
+                // Player 부활 가능 횟수 += canRevive
             }
         }
     }
@@ -34,6 +34,10 @@ public class Treasure : MonoBehaviour
         {
             IsEquipped = false;
             // Equip() 로직 반대로
+            if(canRevive > 0)
+            {
+                // Player 부활 가능 횟수 -= canRevive
+            }
         }
     }
 }
