@@ -49,7 +49,7 @@ public class CharacterInfo : ScriptableObject
 
     public Sprite Photo { get { return photo; } }
 
-    //캐릭터 선택창 배경색
+    //캐릭터 선택창 배경
     [SerializeField]
     private Sprite bgSprite;
 
@@ -60,5 +60,11 @@ public class CharacterInfo : ScriptableObject
     private bool isOpened;
 
     public bool IsOpened { get { return isOpened; } set { isOpened = value; } }
+
+    //캐릭터 사진
+    [SerializeField]
+    private Sprite charSprite;
+
+    public Sprite CharSprite { get { return charSprite; } }
 
 }

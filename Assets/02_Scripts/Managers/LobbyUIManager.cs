@@ -32,8 +32,19 @@ public class LobbyUIManager : MonoBehaviour
     [Header("체크 이미지 리스트")]
     public List<GameObject> checkImg = new List<GameObject>();
 
+    [Header("첫 주자 이미지")]
+    [SerializeField]
+    private Image firstRunnerImg;
+
+    [Header("둘째 주자 이미지")]
+    [SerializeField]
+    private Image secondRunnerImg;
+
     [Header("StageInfo")]
     public List<StageInfo> stages = new List<StageInfo>();
+
+    [Header("CharacterInfo")]
+    public List<CharacterInfo> cInfos = new List<CharacterInfo>();
 
 
     //초기 설정
@@ -42,6 +53,7 @@ public class LobbyUIManager : MonoBehaviour
         stageDescriptionTxt.text = GameManager.Instance.stageinfo.StageDescription;
         stageDescriptionImg.sprite = GameManager.Instance.stageinfo.Background;
         CheckSelectedStage();
+        InitCharacterImg();
 
         fadePanelGo.SetActive(true);
         fadePanel.alpha = 0f;
@@ -122,6 +134,34 @@ public class LobbyUIManager : MonoBehaviour
     public void LoadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);  
+    }
+
+    //시작 시에 선택된 캐릭터의 이미지가 보이게 하도록 하기 
+    public void InitCharacterImg()
+    {
+        CharacterInfo cInfo_01 = cInfos.FirstOrDefault(info => info.CharacterNum == PlayerPrefs.GetInt("firstRunnerNum"));
+        firstRunnerImg.sprite = cInfo_01.CharSprite;
+        
+        //이어달리기 유무를 고려
+        if (PlayerPrefs.GetInt("secondRunnerNum") != 0)
+        {
+            SetSecondImageOpicity(1);
+            CharacterInfo cInfo_02 = cInfos.FirstOrDefault(info => info.CharacterNum == PlayerPrefs.GetInt("secondRunnerNum"));
+            secondRunnerImg.sprite = cInfo_02.CharSprite;
+        }
+        else
+        {
+            SetSecondImageOpicity(0);
+        }
+
+    }
+
+    //2번째 주자의 이미지 투명도 조절
+    public void SetSecondImageOpicity(float index)
+    {
+        Color color = secondRunnerImg.color;
+        color.a = Mathf.Clamp01(index);
+        secondRunnerImg.color = color;
     }
 
 }
