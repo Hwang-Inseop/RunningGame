@@ -6,10 +6,11 @@ public class CoinTreasure : Treasure, ICoinGenerator
 {
     [SerializeField] private GameObject extraCoin; // 추가 코인 생성
     [SerializeField] private Transform coinPosition; // 추가 코인 생성 위치
+    private bool hasSpawned = false;
 
-    private void Start()
+    private void Update()
     {
-        if (IsEquipped)
+        if (IsEquipped && !hasSpawned) 
         {
             GenerateCoin();
         }
@@ -24,10 +25,12 @@ public class CoinTreasure : Treasure, ICoinGenerator
 
     private IEnumerator SpawnCoin()
     {
+        hasSpawned = true;
         while (true)
         {
             yield return new WaitForSeconds(intervalTime);
             Instantiate(extraCoin, coinPosition.position, Quaternion.identity);
+            //게임 끝나면 break
         }
     }
 }
