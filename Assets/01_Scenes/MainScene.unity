@@ -23265,19 +23265,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090e6441c61936c4ebe840bcc956789f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage01_Placers:
+  tilemapObjectPlacers:
   - {fileID: 5639116781425233024}
   - {fileID: 1141881076}
   - {fileID: 1668389714}
   - {fileID: 1144573490}
   - {fileID: 1021527040}
-  stage02_Placers:
   - {fileID: 735713977}
   - {fileID: 1628320728}
   - {fileID: 1929555454}
   - {fileID: 763785739}
   - {fileID: 1366966250}
-  stage03_Placers:
   - {fileID: 1607811019}
   - {fileID: 1963081240}
   - {fileID: 469907990}

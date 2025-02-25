@@ -22,7 +22,12 @@ public class TilemapObjectPlacer : MonoBehaviour
         tilemapRenderer = GetComponent<TilemapRenderer>();
         
         if (objectPlacerType == ObjectPlacerType.Static) return;
-        PlaceObject();
+        MainSceneBase.Instance.AddGameStartListener(PlaceObject);
+    }
+
+    private void OnDestroy()
+    {
+        MainSceneBase.Instance.RemoveGameStartListener(PlaceObject);
     }
 
     public void PlaceObject()
