@@ -371,7 +371,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1929659976}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
         m_MethodName: LoadToLobby
         m_Mode: 1
@@ -2763,11 +2763,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseBtn: {fileID: 978249452}
   pauseMenu: {fileID: 944464595}
+  item: {fileID: 0}
   totalScore: 0
   totalScoreTxt: {fileID: 1241133655}
   totalGold: 0
   totalGoldTxt: {fileID: 1413569902}
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 1783450150}
 --- !u!4 &950254566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4500859681900916167, guid: a80dd5d7ab20d0b49bc79a386b80247f, type: 3}
@@ -4335,6 +4336,7 @@ GameObject:
   - component: {fileID: 1618511680}
   - component: {fileID: 1618511682}
   - component: {fileID: 1618511681}
+  - component: {fileID: 1618511683}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -4401,6 +4403,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618511679}
   m_CullTransparentMesh: 1
+--- !u!114 &1618511683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618511679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a990790c58a6604a97d65e0b456e631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverSelectPanel: {fileID: 1929659975}
+  makeScaleBtn:
+  - {fileID: 53981945}
+  fadeTime: 1
 --- !u!1 &1783450148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4830,7 +4848,6 @@ GameObject:
   - component: {fileID: 1929659973}
   - component: {fileID: 1929659972}
   - component: {fileID: 1929659975}
-  - component: {fileID: 1929659976}
   m_Layer: 5
   m_Name: GameStatusPanel
   m_TagString: Untagged
@@ -4912,22 +4929,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1929659976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929659970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a990790c58a6604a97d65e0b456e631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverSelectPanel: {fileID: 1929659975}
-  makeScaleBtn:
-  - {fileID: 53981945}
-  fadeTime: 1
 --- !u!1 &1950495000
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ namespace RunningGame.Managers
         public GameObject pauseBtn;
         public GameObject pauseMenu;
         public Item item;
+        public GameObject gameOverPanel;
 
         [Header("점수 표시")]
         public int totalScore = 0;
@@ -69,7 +70,10 @@ namespace RunningGame.Managers
             Debug.Log("골드 추가");
             totalGoldTxt.text = totalGold.ToString();
         }
-
+        public void OpenPanel()
+        {
+            gameOverPanel.SetActive(true);
+        }
     }
 }
 
