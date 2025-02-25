@@ -176,6 +176,9 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(hpDrainInterval);
             TakeDamage(damage);
             Debug.Log("HP: " + currentHP);
+            
+            if (currentHP <= 0) // 체력이 <= 0이면 Die
+                Die();
         }
     }
     
@@ -188,10 +191,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Collision, Damaged -10");
         StartCoroutine(Invincible());
         
+        // 낙사 구간에 빠지면 Die
         if(collision.gameObject.CompareTag("DropZone"))
             Die();
     }
 
+    /// <summary>
+    /// 장애물과 충돌 시 invincible 시간동안 무적 상태
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Invincible()
     {
         damaged = true;
@@ -221,6 +229,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 사망 시 호출되는 메서드
+    /// </summary>
     void Die()
     {
         die = true;
