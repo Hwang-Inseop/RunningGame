@@ -47,11 +47,6 @@ public class GameOverPanel : MonoBehaviour
         gameOverSelectPanel.DOFade(1, fadeTime);
     }
 
-    // UIManager로 이동할 부분
-    public void LoadToLobby()
-    {
-        Time.timeScale = 0f;
-        SceneManager.LoadScene(0);
-    }
+
 }
 
