@@ -46,7 +46,10 @@ public class GameOverPanel : MonoBehaviour
         rectTransform.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce);
         gameOverSelectPanel.DOFade(1, fadeTime);
     }
-
-
+    public void LoadToLobby()
+    {
+        Time.timeScale = 0f;
+        SceneManager.LoadScene(0);
+    }
 }
 

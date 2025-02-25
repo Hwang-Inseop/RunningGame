@@ -14,15 +14,14 @@ namespace RunningGame.Managers
         private PlayerController player;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
+        public Item item;
 
         [Header("점수 표시")]
         public int totalScore = 0;
-        private int score = 0;
         public TextMeshProUGUI totalScoreTxt;
 
         [Header("골드 표시")]
         public int totalGold = 0;
-        private int gemAmount = 0;
         public TextMeshProUGUI totalGoldTxt;
 
         [Header("체력 표시")]
@@ -61,21 +60,16 @@ namespace RunningGame.Managers
         public void AddScore() // 점수 추가
         {
             Debug.Log("점수 추가");
-            totalScore += score;
+            
             totalScoreTxt.text = totalScore.ToString();
         }
 
         public void AddGold() // 재화 추가
         {
             Debug.Log("골드 추가");
-            totalGold += gemAmount;
             totalGoldTxt.text = totalGold.ToString();
         }
-        public void LoadToLobby()
-        {
-            Time.timeScale = 0f;
-            SceneManager.LoadScene(0);
-        }
+
     }
 }
 
