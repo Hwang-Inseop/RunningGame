@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Loopable
   - Ground
+  - Item
+  - Obstacle
+  - LoopableItem
+  - DropZone
   layers:
   - Default
   - TransparentFX

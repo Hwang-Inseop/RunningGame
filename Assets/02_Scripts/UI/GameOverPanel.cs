@@ -46,8 +46,6 @@ public class GameOverPanel : MonoBehaviour
         rectTransform.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce);
         gameOverSelectPanel.DOFade(1, fadeTime);
     }
-
-    // UIManager로 이동할 부분
     public void LoadToLobby()
     {
         Time.timeScale = 0f;

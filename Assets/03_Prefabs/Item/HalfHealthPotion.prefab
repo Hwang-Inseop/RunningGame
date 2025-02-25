@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: -5954564397623193349}
   m_Layer: 0
   m_Name: HalfHealthPotion
-  m_TagString: Item
+  m_TagString: LoopableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

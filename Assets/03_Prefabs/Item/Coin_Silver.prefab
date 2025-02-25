@@ -118,8 +118,8 @@ GameObject:
   - component: {fileID: 7521000947446237827}
   - component: {fileID: 4986492679170363895}
   m_Layer: 0
-  m_Name: Coin_Sliver
-  m_TagString: Item
+  m_Name: Coin_Silver
+  m_TagString: LoopableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

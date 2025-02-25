@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 3
   description: "1\uD68C \uB099\uC0AC \uBC29\uC9C0"
+  reqGem: 1
   intervalTime: 0
   duration: 0
   speed: 0

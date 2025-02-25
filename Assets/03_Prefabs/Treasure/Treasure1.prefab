@@ -115,6 +115,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7574542229806691361}
+  - {fileID: 5443649001392401813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2479381940352032065
@@ -132,9 +133,42 @@ MonoBehaviour:
   name: 1
   description: "\uC77C\uC815 \uC2DC\uAC04 \uB9C8\uB2E4 \uCD94\uCE74 \uCF54\uC778
     \uC0DD\uC131"
-  intervalTime: 4
+  reqGem: 1
+  intervalTime: 30
   duration: 0
   speed: 0
   healthDrain: 0
   canRevive: 0
   extraCoin: {fileID: 2755780699745716068, guid: e01b46b2a4223814c93f1e08b943703d, type: 3}
+  coinPosition: {fileID: 5443649001392401813}
+--- !u!1 &8906254562445270968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5443649001392401813}
+  m_Layer: 0
+  m_Name: CoinPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5443649001392401813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906254562445270968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1237515836865449382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
