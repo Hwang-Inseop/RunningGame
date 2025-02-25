@@ -371,7 +371,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1929659976}
         m_TargetAssemblyTypeName: GameOverPanel, Assembly-CSharp
         m_MethodName: LoadToLobby
         m_Mode: 1
@@ -646,7 +646,7 @@ Transform:
   m_GameObject: {fileID: 272266963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.8, y: 0, z: -10}
+  m_LocalPosition: {x: 18.9, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2253,9 +2253,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1783450149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -35.00003, y: -15.000004}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &705868889
@@ -2768,7 +2768,7 @@ MonoBehaviour:
   totalScoreTxt: {fileID: 1241133655}
   totalGold: 0
   totalGoldTxt: {fileID: 1413569902}
-  healthSlider: {fileID: 1783450150}
+  healthSlider: {fileID: 0}
 --- !u!4 &950254566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4500859681900916167, guid: a80dd5d7ab20d0b49bc79a386b80247f, type: 3}
@@ -4226,7 +4226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ff81e779f316d024d98ed47ef23fd219, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23d049f0c24c72d4fadc91e4f192b642, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4336,7 +4336,6 @@ GameObject:
   - component: {fileID: 1618511680}
   - component: {fileID: 1618511682}
   - component: {fileID: 1618511681}
-  - component: {fileID: 1618511683}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -4403,22 +4402,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618511679}
   m_CullTransparentMesh: 1
---- !u!114 &1618511683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618511679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a990790c58a6604a97d65e0b456e631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverSelectPanel: {fileID: 1929659975}
-  makeScaleBtn:
-  - {fileID: 53981945}
-  fadeTime: 1
 --- !u!1 &1783450148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4456,8 +4439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: 309.99997}
-  m_SizeDelta: {x: 100, y: 30}
+  m_AnchoredPosition: {x: 250, y: 304.9}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783450150
 MonoBehaviour:
@@ -4502,7 +4485,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1151020467}
   m_FillRect: {fileID: 1512360680}
   m_HandleRect: {fileID: 1151020466}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -4793,8 +4776,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1783450149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4818,8 +4801,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d4aed77f177a9e740b1d6c01604ccc6e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4848,6 +4831,7 @@ GameObject:
   - component: {fileID: 1929659973}
   - component: {fileID: 1929659972}
   - component: {fileID: 1929659975}
+  - component: {fileID: 1929659976}
   m_Layer: 5
   m_Name: GameStatusPanel
   m_TagString: Untagged
@@ -4929,6 +4913,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1929659976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929659970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a990790c58a6604a97d65e0b456e631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverSelectPanel: {fileID: 1929659975}
+  makeScaleBtn:
+  - {fileID: 53981945}
+  fadeTime: 1
 --- !u!1 &1950495000
 GameObject:
   m_ObjectHideFlags: 0
