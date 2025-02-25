@@ -104,10 +104,5 @@ namespace RunningGame.Managers
         {
             onGameStart.AddListener(action);
         }
-
-        public void RemoveGameStartListener(UnityAction action)
-        {
-            onGameStart.RemoveListener(action);
-        }
     }
 }
