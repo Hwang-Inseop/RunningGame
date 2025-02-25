@@ -1,28 +1,28 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class LobbyBGLooper : MonoBehaviour
 {
-    [Header("Background ¸®½ºÆ®")]
+    [Header("Background ë¦¬ìŠ¤íŠ¸")]
     public List<GameObject> bgs = new List<GameObject>();
 
-    [Header("Background¸¦ ¹İº¹½ÃÅ³ Looper")]
+    [Header("Backgroundë¥¼ ë°˜ë³µì‹œí‚¬ Looper")]
     public GameObject looper;
 
     [Header("StageInfo")]
     public List<StageInfo> stages = new List<StageInfo>();
 
-    [Header("ÀÌµ¿ ¼Óµµ")]
+    [Header("ì´ë™ ì†ë„")]
     private float moveSpeed = 0.005f;
 
-    [Header("ÀÌµ¿½ÃÅ³ À§Ä¡")]
+    [Header("ì´ë™ì‹œí‚¬ ìœ„ì¹˜")]
     private Vector3 MovePos;
 
     void Start()
     {
-        MovePos = bgs[bgs.Count - 1].transform.position;
+        MovePos = bgs[bgs.Count - 1].transform.position - new Vector3(0.1f,0,0);
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class LobbyBGLooper : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Ãæµ¹!");
+        //Debug.Log("ì¶©ëŒ!");
         collision.transform.position = MovePos;
     }
 

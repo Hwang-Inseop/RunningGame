@@ -1,18 +1,18 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Treasure : MonoBehaviour
 {
-    public bool IsEquipped { get; private set; } // ÀåÂø ¿©ºÎ
-    [SerializeField] private string name; // ÀÌ¸§
-    [SerializeField] private string description; // ¼³¸í
-    [SerializeField] protected float intervalTime; // ÄğÅ¸ÀÓ
-    [SerializeField] private float duration; // È¿°ú Áö¼Ó ½Ã°£
-    [Header("º¸¹° ½ºÅÈ")]
-    [SerializeField] private float speed; // ¼Óµµ Áõ°¡·®
-    [SerializeField] private float healthDrain; // Ã¼·Â °¨¼Ò·®
-    [SerializeField] private int canRevive; // ºÎÈ° °¡´É È½¼ö
+    public bool IsEquipped { get; private set; } // ì¥ì°© ì—¬ë¶€
+    [SerializeField] private string name; // ì´ë¦„
+    [SerializeField] private string description; // ì„¤ëª…
+    [SerializeField] protected float intervalTime; // ì¿¨íƒ€ì„
+    [SerializeField] private float duration; // íš¨ê³¼ ì§€ì† ì‹œê°„
+    [Header("ë³´ë¬¼ ìŠ¤íƒ¯")]
+    [SerializeField] private float speed; // ì†ë„ ì¦ê°€ëŸ‰
+    [SerializeField] private float healthDrain; // ì²´ë ¥ ê°ì†ŒëŸ‰
+    [SerializeField] private int canRevive; // ë¶€í™œ ê°€ëŠ¥ íšŸìˆ˜
 
 
     public void Equip(Player player)
@@ -20,7 +20,7 @@ public class Treasure : MonoBehaviour
         if (!IsEquipped)
         {
             IsEquipped = true;
-            // ÇÃ·¹ÀÌ¾î ÂüÁ¶ÇØ¼­ Ãß°¡ ½ºÅÈ Àû¿ë
+            // í”Œë ˆì´ì–´ ì°¸ì¡°í•´ì„œ ì¶”ê°€ ìŠ¤íƒ¯ ì ìš©
             if (canRevive != 0)
             {
                 player.reviveCount += canRevive;
@@ -33,7 +33,7 @@ public class Treasure : MonoBehaviour
         if (IsEquipped)
         {
             IsEquipped = false;
-            // Equip() ·ÎÁ÷ ¹İ´ë·Î
+            // Equip() ë¡œì§ ë°˜ëŒ€ë¡œ
         }
     }
 }
