@@ -32,7 +32,7 @@ namespace RunningGame.Managers
         private void CreatPatternPool()
         {
             // TODO: GameManager에서 선택한 스테이지 정보 가져오기
-            selectedStage = 1;
+            selectedStage = 3;
             var patternList = patternDatas.GetPatternList(selectedStage);
             for (int i = 0; i < patternList.Count; i++)
             {
