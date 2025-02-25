@@ -17,7 +17,7 @@ namespace RunningGame.Managers
             poolParent = new GameObject("PoolParent").transform;
         }
         
-        public void AddPool(GameObject prefab, int poolSize = 5)
+        public void CreatePool(GameObject prefab, int poolSize = 5)
         {
             string poolKey = prefab.name;
             
@@ -97,14 +97,10 @@ namespace RunningGame.Managers
             poolDict[poolKey].Enqueue(obj);
             despawnObj.Add(obj);
         }
-    }
-
-    public enum PatternType
-    {
-        Pattern1 = 1,
-        Pattern2,
-        Pattern3,
-        Pattern4,
-        Pattern5,
+        
+        public bool IsExistPool(string poolKey)
+        {
+            return poolDict.ContainsKey(poolKey);
+        }
     }
 }

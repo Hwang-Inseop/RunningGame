@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public Collider2D slideCollider; // 슬라이딩용 콜라이더
     
     private Rigidbody2D rb;
+    private Animator animator;
     
     private PlayerState playerState;
     
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         
         // 기본적으로 슬라이딩 콜라이더 비활성화
         slideCollider.enabled = false;
@@ -69,13 +71,15 @@ public class PlayerController : MonoBehaviour
     // 점프 조작 메서드
     void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && isRunning) // Z키 처음 눌렀을 때
+        if (Input.GetKeyDown(KeyCode.Z) && isRunning) // Z키 눌렀을 때 && 땅에 붙어있을 때
         {
             isRunning = false;
             isJumping = true;
             canDoubleJump = true;
             jumpHoldTimer = 0f;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isJumping", true);
             Debug.Log("Jump");
         }
         else if (Input.GetKeyDown(KeyCode.Z) && canDoubleJump) // 공중에서 한 번 더 점프 가능
@@ -110,6 +114,7 @@ public class PlayerController : MonoBehaviour
             isSliding = true;
             normalCollider.enabled = false; // 기본 콜라이더 비활성화
             slideCollider.enabled = true; // 슬라이딩용 콜라이더 활성화
+            animator.SetBool("isSliding", true);
             Debug.Log("Start Slide");
         }
         else if (Input.GetKeyUp(KeyCode.X) && isSliding)
@@ -117,6 +122,7 @@ public class PlayerController : MonoBehaviour
             isSliding = false;
             normalCollider.enabled = true; // 기본 콜라이더 활성화
             slideCollider.enabled = false; // 슬라이딩용 콜라이더 비활성화
+            animator.SetBool("isSliding", false);
             Debug.Log("End Slide");
         }
     }
@@ -133,5 +139,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ground"))
             isRunning = true;
+        animator.SetBool("isRunning", true);
+        animator.SetBool("isJumping", false);
     }
 }
