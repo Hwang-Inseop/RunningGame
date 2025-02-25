@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3688883408641815582}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 1215259227630513781}
   - component: {fileID: 3694281638212174790}
   - component: {fileID: 5979129910466094037}
+  - component: {fileID: 6452785673970406665}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -864,6 +865,19 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &6452785673970406665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011178022569371709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 1
 --- !u!1 &6626617156547060883
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +891,7 @@ GameObject:
   - component: {fileID: 1538480845063482103}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

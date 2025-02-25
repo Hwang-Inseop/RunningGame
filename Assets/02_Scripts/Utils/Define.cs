@@ -8,6 +8,7 @@ namespace RunningGame.Utils
     {
         public const string PatternKey = "Stage0";
         public const string LoopableTag = "Loopable";
+        public const string LoopableItemTag = "LoopableItem";
         public const int PatternMaxCount = 5;
     }
 }
