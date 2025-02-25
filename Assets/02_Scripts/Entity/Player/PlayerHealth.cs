@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public int currentHP; // 현재 HP
     
     public float hpDrainInterval = 1f; // 체력 지속 소모 시간 간격 (1초)
+
+    public int damage;
     
     private bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
     public float invincibleTime; // 무적 시간
@@ -29,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
         while (currentHP > 0)
         {
             yield return new WaitForSeconds(hpDrainInterval);
-            TakeDamage(1);
+            TakeDamage(damage);
             Debug.Log("HP: " + currentHP);
 
         }
