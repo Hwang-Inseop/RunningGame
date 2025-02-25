@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance; // ½Ì±ÛÅæ ÀÎ½ºÅÏ½º
-
-    public static GameManager Instance // ½Ì±ÛÅæ ÇÁ·ÎÆÛÆ¼
+    private static GameManager instance; // ì‹±ê¸€í†¤ ì¸ìŠ¤í„´ìŠ¤
+    public static GameManager Instance // ì‹±ê¸€í†¤ í”„ë¡œí¼í‹°
     {
         get
         {
@@ -20,12 +19,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //ÃÊ±â ¼³Á¤
+    //ì´ˆê¸° ì„¤ì •
     public StageInfo stageinfo;
 
     public CharacterInfo firstCharacterInfo;
 
     public CharacterInfo CharacterInfo;
+
+    private PlayerController player;
+    public enum characterState //enumì„ í†µí•œ ìºë¦­í„° ìƒíƒœ 
+    {
+        ready,
+        running,
+        finished
+    }
 
     private void Awake()
     {
@@ -42,13 +49,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //ÇöÀç ¼±ÅÃµÈ ½ºÅ×ÀÌÁö -> 1·Î ¼³Á¤ÇØ ±âº» ½ºÅ×ÀÌÁö¿¡¼­ ´Ş¸®´Â ¼³Á¤
+        //í˜„ì¬ ì„ íƒëœ ìŠ¤í…Œì´ì§€ -> 1ë¡œ ì„¤ì •í•´ ê¸°ë³¸ ìŠ¤í…Œì´ì§€ì—ì„œ ë‹¬ë¦¬ëŠ” ì„¤ì •
         PlayerPrefs.SetInt("choosedStage", 1);
 
-        //ÇöÀç ¼±ÅÃµÈ Ã¹¹øÂ° ÁÖÀÚÀÇ ÇÃ·¹ÀÌ¾î ¹øÈ£ -> 1·Î ¼³Á¤ÇØ ±âº» Ä³¸¯ÅÍ·Î ´Ş¸®´Â ¼³Á¤
+        //í˜„ì¬ ì„ íƒëœ ì²«ë²ˆì§¸ ì£¼ìì˜ í”Œë ˆì´ì–´ ë²ˆí˜¸ -> 1ë¡œ ì„¤ì •í•´ ê¸°ë³¸ ìºë¦­í„°ë¡œ ë‹¬ë¦¬ëŠ” ì„¤ì •
         PlayerPrefs.SetInt("firstRunnerNum", 1);
 
-        //ÇöÀç ¼±ÅÃµÈ µÎ¹øÂ° ÁÖÀÚÀÇ ÇÃ·¹ÀÌ¾î ¹øÈ£ -> 0À¸·Î ¼³Á¤ÇØ ±âº»ÀûÀ¸·Î ¾ø´Â ¼³Á¤
+        //í˜„ì¬ ì„ íƒëœ ë‘ë²ˆì§¸ ì£¼ìì˜ í”Œë ˆì´ì–´ ë²ˆí˜¸ -> 0ìœ¼ë¡œ ì„¤ì •í•´ ê¸°ë³¸ì ìœ¼ë¡œ ì—†ëŠ” ì„¤ì •
         PlayerPrefs.SetInt("secondRunnerNum", 0);
     }
 }
