@@ -1,12 +1,13 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using DG.Tweening;
 using JetBrains.Annotations;
 using RunningGame.Managers;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseBtn : MonoBehaviour
@@ -28,40 +29,39 @@ public class PauseBtn : MonoBehaviour
 
     private float hp;
 
-    [Header("게임 오버시 선택 패널")]
-    public CanvasGroup gameOverSelectPanel;
-    [Header("크기 변화 이펙트 적용되는 버튼 리스트")]
-    public List<Button> makeScaleBtn = new List<Button>();
-
-    [Header("Fade 효과 시간")]
-    [SerializeField] private float fadeTime = 0.5f;
-
     public void PauseGame() // 게임 일시 정지
     {
         isPause = !isPause;
-        if (isPause)
-            pauseMenu.SetActive(true);
+        pauseMenu.SetActive(true);
+        gameObject.SetActive(false);
         Time.timeScale = 0f;
     }
 
     #region UI매니저로 이동할 부분
     public void ResumeGame()
     {
-        isPause = false;
+        Debug.Log("Click");
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        gameObject.SetActive(true);
+        isPause = false;
+        
     }
 
 
     public void SelectStageBtn() // 스테이지 선택창 
     {
         Time.timeScale = 1f;
-        //불러올 씬의 정보로 로드 MainSceneBase.LoadScene(" " );
+        SceneManager.LoadScene("CharacterScene");
     }
 
     public void QuitGame()   // 게임 종료
     {
+#if UNITY_EDITOR    //Unity 에디터에서 실행시
+        EditorApplication.isPlaying = false;
+#else   //실제 빌드된 게임에서 실행시
         Application.Quit();
+#endif
     }
 
     public void AddScore() // 점수 추가
@@ -84,25 +84,6 @@ public class PauseBtn : MonoBehaviour
         {
             //  onDamage(데미지변수 입력);
         }
-    }
-
-    void Start() //도트윈 사용방법
-    {
-        foreach (Button button in makeScaleBtn)
-        {
-            button.onClick.AddListener(() =>
-            {
-                button.transform.DOKill();
-                button.transform.localScale = Vector3.one;
-
-                button.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
-            });
-        }
-
-        RectTransform rectTransform = gameOverSelectPanel.GetComponent<RectTransform>();
-        rectTransform.transform.localPosition = new Vector3(0f, -500f, 0f);
-        rectTransform.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce);
-        gameOverSelectPanel.DOFade(1, fadeTime);
     }
 }
 #endregion
