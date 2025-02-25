@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
     public float invincible; //무적 시간
     
+    private bool die = false; // 사망 상태
+    
     private Rigidbody2D rb;
     private Animator animator;
     
@@ -148,6 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 
             isRunning = true;
+        Debug.Log("isRunning");
         animator.SetBool("isRunning", true);
         animator.SetBool("isJumping", false);
     }
@@ -176,22 +179,29 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    // 장애물과 충돌하면 대미지, 잠시 무적
-    private void OnCollisionTrigger2D(Collider2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 장애물과 충돌하면 대미지, 잠시 무적
         if(!damaged && collision.gameObject.CompareTag("Obstacle"))
             TakeDamage(10);
+        Debug.Log("Collision, Damaged -10");
         StartCoroutine(Invincible());
+        
+        if(collision.gameObject.CompareTag("DropZone"))
+            Die();
     }
 
     IEnumerator Invincible()
     {
         damaged = true;
         float invincibleTime = invincible;
+        Debug.Log("Invincible Start");
         
         yield return new WaitForSeconds(invincibleTime);
         
         damaged = false;
+        Debug.Log("Invincible End");
     }
     
     /// <summary>
@@ -213,6 +223,7 @@ public class PlayerController : MonoBehaviour
     
     void Die()
     {
+        die = true;
         Debug.Log("Die");
     }
 }
