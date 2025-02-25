@@ -1,12 +1,12 @@
 using RunningGame.Scriptable;
-using RunningGame.Singleton;
 using RunningGame.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace RunningGame.Managers
 {
-    public class MainSceneBase : SceneSingleton<MainSceneBase>
+    public class MainSceneBase : Singleton.SceneSingleton<MainSceneBase>
     {
         [Header("Components")]
         [SerializeField] private PatternLooper patternLooper;
@@ -29,6 +29,11 @@ namespace RunningGame.Managers
         {
             Init();
         }
+        
+        private void OnDestroy()
+        {
+            onGameStart.RemoveAllListeners();
+        }
 
         public override void Init()
         {
@@ -40,7 +45,7 @@ namespace RunningGame.Managers
             CreatPatternPool();
             CreateItemPool();
             patternLooper.Init(selectedStage);
-            staticObjectPlacer.AddGameStartListener(onGameStart);
+            staticObjectPlacer.AddGameStartListener(onGameStart, selectedStage);
             
             // 게임 시작
             onGameStart?.Invoke();
