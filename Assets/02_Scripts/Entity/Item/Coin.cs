@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -6,9 +6,9 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Coin : Item
 {
 
-    public override void ApplyEffect()
+    public override void ApplyEffect(PlayerController player)
     {
-        base.ApplyEffect();
+        base.ApplyEffect(player);
         // 코인 증가 += cointAmount;
     }
 

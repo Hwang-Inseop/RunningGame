@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,16 +13,17 @@ public class Treasure : MonoBehaviour
 
     [SerializeField] private int canRevive; // 부활 가능 횟수
 
+    private PlayerController player;
     private void Start()
     {
         StartCoroutine(WaitForStart());
     }
-    public void Equip()
+    public void Equip(PlayerController player)
     {
         if (!IsEquipped)
         {
             IsEquipped = true;
-            // 플레이어 참조해서 추가 스탯 적용
+            this.player = player;
             if (canRevive > 0)
             {
                 // Player 부활 가능 횟수 += canRevive
@@ -35,21 +36,21 @@ public class Treasure : MonoBehaviour
         if (IsEquipped)
         {
             IsEquipped = false;
-            // Equip() 로직 반대로
+
             if(canRevive > 0)
             {
                 // Player 부활 가능 횟수 -= canRevive
             }
         }
     }
-    public virtual void ApplyEffect() { }
+    public virtual void ApplyEffect(PlayerController player) { }
     private IEnumerator WaitForStart() // 게임 시작까지 대기
     {
         while (true) // -> !MainSceneBase.Instance.IsStart())
         {
             yield return null;
         }
-        if (IsEquipped) ApplyEffect();
+        if (IsEquipped) ApplyEffect(player);
     }
 }
 

@@ -6,24 +6,24 @@ public class CycleTreasure : Treasure
 {
     [SerializeField] private float healthDrain; // 체력 감소량
 
-    public override void ApplyEffect()
+    public override void ApplyEffect(PlayerController player)
     {
-        StartCoroutine(CoDrain());
+        StartCoroutine(CoDrain(player));
     } 
     
-    private IEnumerator CoDrain()
+    private IEnumerator CoDrain(PlayerController player)
     {
         while (true)
         {
             //if (!MainSceneBase.Instance.IsStart()) yield break; //게임 끝나면 중단
             yield return new WaitForSeconds(intervalTime);
 
-            //float originalDamage = Player.instance.damage;
-            //Player.instance.damage *= healthDrain;
+            int originalDamage = player.damage;
+            player.damage -= (int)healthDrain;
 
-            //yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(duration);
 
-            //Player.instance.damage = originalDamage; // 상태 복구
+            player.damage = originalDamage; // 상태 복구
         }
     }
 

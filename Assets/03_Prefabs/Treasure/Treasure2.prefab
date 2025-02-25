@@ -52,7 +52,7 @@ MonoBehaviour:
   intervalTime: 30
   duration: 5
   canRevive: 0
-  healthDrain: 0.5
+  healthDrain: 1
 --- !u!1 &6900576000265110598
 GameObject:
   m_ObjectHideFlags: 0

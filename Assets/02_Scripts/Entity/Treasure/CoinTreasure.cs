@@ -1,4 +1,4 @@
-﻿using RunningGame.Managers;
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +9,7 @@ public class CoinTreasure : Treasure
     [SerializeField] private Transform coinPosition; // 추가 코인 생성 위치
     private bool hasSpawned = false;
 
-    public override void ApplyEffect()
+    public override void ApplyEffect(PlayerController player)
     {
         if (extraCoin != null && coinPosition != null && !hasSpawned)
         {
