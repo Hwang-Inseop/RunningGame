@@ -1886,6 +1886,7 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+<<<<<<< HEAD
 --- !u!1 &5203154648287020941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,6 +1964,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 1}
   m_EdgeRadius: 0
+=======
+>>>>>>> parent of 6092177 ([Feat] 낭떠러지 Collider 및 태그 추가)
 --- !u!1 &7784742021456702779
 GameObject:
   m_ObjectHideFlags: 0

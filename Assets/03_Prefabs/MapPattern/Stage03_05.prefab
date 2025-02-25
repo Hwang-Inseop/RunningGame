@@ -498,6 +498,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+<<<<<<< HEAD
 --- !u!1 &4421428910717427795
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +576,8 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 1}
   m_EdgeRadius: 0
+=======
+>>>>>>> parent of 6092177 ([Feat] 낭떠러지 Collider 및 태그 추가)
 --- !u!1 &6875705980021305075
 GameObject:
   m_ObjectHideFlags: 0
