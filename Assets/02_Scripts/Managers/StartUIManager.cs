@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class StartUIManager : MonoBehaviour
 {
-    [Header("Å©±â º¯È­ ÀÌÆåÆ® Àû¿ëµÇ´Â ¹öÆ° ¸®½ºÆ®")]
+    [Header("í¬ê¸° ë³€í™” ì´í™íŠ¸ ì ìš©ë˜ëŠ” ë²„íŠ¼ ë¦¬ìŠ¤íŠ¸")]
     public List<Button> makeScaleBtn = new List<Button>();
 
     private void Start()
@@ -16,25 +16,25 @@ public class StartUIManager : MonoBehaviour
         
     }
 
-    //¾À ·Îµå
+    //ì”¬ ë¡œë“œ
     public void LoadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
-    //°ÔÀÓ Á¾·á
+    //ê²Œì„ ì¢…ë£Œ
     public void OnApplicationQuit()
     {
-        Debug.Log("°ÔÀÓÁ¾·á");
+        Debug.Log("ê²Œì„ì¢…ë£Œ");
     }
 
-    //Å©±â Áõ°¡
+    //í¬ê¸° ì¦ê°€
     public void IncreaseScale(Button btn)
     {
         btn.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
     }
 
-    //Å©±â °¨¼Ò (¿ø»óº¹±¸)
+    //í¬ê¸° ê°ì†Œ (ì›ìƒë³µêµ¬)
     public void DecreaseScale(Button btn)
     {
         btn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);

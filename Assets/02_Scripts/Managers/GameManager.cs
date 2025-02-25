@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     //초기 설정
     public StageInfo stageinfo;
 
-    public CharacterInfo characterInfo;
+    public CharacterInfo firstCharacterInfo;
+
+    public CharacterInfo CharacterInfo;
 
     private void Awake()
     {
@@ -40,6 +42,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        //현재 선택된 스테이지 -> 1로 설정해 기본 스테이지에서 달리는 설정
+        PlayerPrefs.SetInt("choosedStage", 1);
+
+        //현재 선택된 첫번째 주자의 플레이어 번호 -> 1로 설정해 기본 캐릭터로 달리는 설정
+        PlayerPrefs.SetInt("firstRunnerNum", 1);
+
+        //현재 선택된 두번째 주자의 플레이어 번호 -> 0으로 설정해 기본적으로 없는 설정
+        PlayerPrefs.SetInt("secondRunnerNum", 0);
     }
 }

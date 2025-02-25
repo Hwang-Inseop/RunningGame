@@ -48,9 +48,6 @@ public class LobbyUIManager : MonoBehaviour
         RectTransform rectTransform = fadePanel.GetComponent<RectTransform>();
         rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
 
-        PlayerPrefs.SetInt("choosedStage", 1);
-
-
         foreach (Button button in makeScaleBtn)
         {
             button.onClick.AddListener(() =>
@@ -114,12 +111,14 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
+    //선택된 스테이지로 변경
     public void ChangeSelectedStage()
     {
         StageInfo stage = stages.FirstOrDefault(stage => stage.StageNum == PlayerPrefs.GetInt("choosedStage"));
         GameManager.Instance.stageinfo = stage;
     }
 
+    //씬 로드
     public void LoadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);  

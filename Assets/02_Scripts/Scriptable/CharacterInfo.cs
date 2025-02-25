@@ -54,4 +54,11 @@ public class CharacterInfo : ScriptableObject
     private Sprite bgSprite;
 
     public Sprite BgSprite { get { return bgSprite; } }
+
+    //캐릭터 해금 여부
+    [SerializeField]
+    private bool isOpened;
+
+    public bool IsOpened { get { return isOpened; } set { isOpened = value; } }
+
 }
