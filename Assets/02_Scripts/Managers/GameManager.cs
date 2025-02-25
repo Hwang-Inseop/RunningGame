@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance; // 싱글톤 인스턴스
-
     public static GameManager Instance // 싱글톤 프로퍼티
     {
         get
@@ -26,6 +25,14 @@ public class GameManager : MonoBehaviour
     public CharacterInfo firstCharacterInfo;
 
     public CharacterInfo CharacterInfo;
+
+    private PlayerController player;
+    public enum characterState //enum을 통한 캐릭터 상태 
+    {
+        ready,
+        running,
+        finished
+    }
 
     private void Awake()
     {
