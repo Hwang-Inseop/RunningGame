@@ -48,6 +48,7 @@ MonoBehaviour:
   name: 2
   description: "\uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4 \uC9C0\uC18D\uC801\uC73C\uB85C
     \uCCB4\uB825 \uC18C\uBAA8\uB7C9 \uAC10\uC18C"
+  reqGem: 1
   intervalTime: 30
   duration: 5
   speed: 0

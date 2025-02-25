@@ -133,6 +133,7 @@ MonoBehaviour:
   name: 1
   description: "\uC77C\uC815 \uC2DC\uAC04 \uB9C8\uB2E4 \uCD94\uCE74 \uCF54\uC778
     \uC0DD\uC131"
+  reqGem: 1
   intervalTime: 30
   duration: 0
   speed: 0

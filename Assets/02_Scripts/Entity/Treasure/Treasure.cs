@@ -7,6 +7,7 @@ public class Treasure : MonoBehaviour
     public bool IsEquipped { get; private set; } // 장착 여부
     [SerializeField] private string name; // 이름
     [SerializeField] private string description; // 설명
+    [SerializeField] private int reqGem; // 필요한 젬 개수
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] private float duration; // 효과 지속 시간
     [Header("보물 스탯")]
