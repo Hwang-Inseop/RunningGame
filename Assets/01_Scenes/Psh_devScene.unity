@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 974501757}
   - component: {fileID: 974501756}
   - component: {fileID: 974501760}
+  - component: {fileID: 974501761}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -660,22 +661,35 @@ MonoBehaviour:
   maxHealth: 0
   reviveCount: 0
   trasureBtn: {fileID: 0}
+  isStart: 0
+--- !u!114 &974501761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974501755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda9738527c9d8c438221513276f5e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 0
+  maxJumpHoldTime: 0
+  doubleJumpForce: 0
+  isSliding: 0
+  normalCollider: {fileID: 0}
+  slideCollider: {fileID: 0}
+  maxHP: 100
+  currentHP: 100
+  damage: 1
+  hpDrainInterval: 1
+  invincible: 0
 --- !u!4 &1306219989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1237515836865449382, guid: 58fe8a4c877bad0488a60b86dd13ece6, type: 3}
   m_PrefabInstance: {fileID: 602748871}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1306219990 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2479381940352032065, guid: 58fe8a4c877bad0488a60b86dd13ece6, type: 3}
-  m_PrefabInstance: {fileID: 602748871}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2937d2d8ecd1242a3b2de00eafba6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1485716508
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +779,7 @@ MonoBehaviour:
         m_MethodName: Equip
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1306219990}
+          m_ObjectArgument: {fileID: 5333839179032994731, guid: 05d626e39e4455c4e88deb166775bc43, type: 3}
           m_ObjectArgumentAssemblyTypeName: Treasure, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

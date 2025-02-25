@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Treasure treasure;
     public Button trasureBtn;
     public bool isStart = false;
+    private PlayerController playerController;
     private void Start()
     {
         originPosition = transform.position;
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
             Unequip();
         }
         treasure = t;
-        treasure.Equip(this);
+        treasure.Equip(playerController);
         if(treasure != null) Debug.Log(treasure);
     }
 

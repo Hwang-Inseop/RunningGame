@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public float invincible; //무적 시간
     
     private bool die = false; // 사망 상태
-    
+    public Treasure treasure;
     private Rigidbody2D rb;
     private Animator animator;
     
@@ -236,5 +236,25 @@ public class PlayerController : MonoBehaviour
     {
         die = true;
         Debug.Log("Die");
+    }
+
+    public void Equip(Treasure t)
+    {
+        if (treasure != null)
+        {
+            Unequip();
+        }
+        treasure = t;
+        treasure.Equip(this);
+        if (treasure != null) Debug.Log(treasure);
+    }
+
+    public void Unequip()
+    {
+        if (treasure != null)
+        {
+            treasure.Unequip();
+            treasure = null;
+        }
     }
 }

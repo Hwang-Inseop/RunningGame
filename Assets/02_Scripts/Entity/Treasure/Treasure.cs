@@ -10,14 +10,11 @@ public class Treasure : MonoBehaviour
     [SerializeField] private int reqGem; // 필요한 젬 개수
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] protected float duration; // 효과 지속 시간
-
+    private bool hasEffect = false;
     [SerializeField] private int canRevive; // 부활 가능 횟수
 
     private PlayerController player;
-    private void Start()
-    {
-        StartCoroutine(WaitForStart());
-    }
+
     public void Equip(PlayerController player)
     {
         if (!IsEquipped)
@@ -28,6 +25,8 @@ public class Treasure : MonoBehaviour
             {
                 // Player 부활 가능 횟수 += canRevive
             }
+            ApplyEffect(player);
+            //StartCoroutine(WaitForStart());
         }
     }
 
@@ -50,7 +49,11 @@ public class Treasure : MonoBehaviour
         {
             yield return null;
         }
-        if (IsEquipped) ApplyEffect(player);
+        if (IsEquipped && !hasEffect)
+        {
+            ApplyEffect(player);
+            hasEffect = true;
+        }
     }
 }
 

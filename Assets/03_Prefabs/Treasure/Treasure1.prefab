@@ -134,10 +134,8 @@ MonoBehaviour:
   description: "\uC77C\uC815 \uC2DC\uAC04 \uB9C8\uB2E4 \uCD94\uCE74 \uCF54\uC778
     \uC0DD\uC131"
   reqGem: 1
-  intervalTime: 30
+  intervalTime: 5
   duration: 0
-  speed: 0
-  healthDrain: 0
   canRevive: 0
   extraCoin: {fileID: 2755780699745716068, guid: e01b46b2a4223814c93f1e08b943703d, type: 3}
   coinPosition: {fileID: 5443649001392401813}

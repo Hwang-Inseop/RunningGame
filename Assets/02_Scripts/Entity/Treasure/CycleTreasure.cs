@@ -5,10 +5,16 @@ using UnityEngine;
 public class CycleTreasure : Treasure
 {
     [SerializeField] private float healthDrain; // 체력 감소량
-
+    private bool isActive = false;
+    int originalDamage;
     public override void ApplyEffect(PlayerController player)
     {
-        StartCoroutine(CoDrain(player));
+        if (!isActive)
+        {
+            isActive = true;
+            originalDamage = player.damage;
+            StartCoroutine(CoDrain(player));
+        }
     } 
     
     private IEnumerator CoDrain(PlayerController player)
@@ -16,11 +22,12 @@ public class CycleTreasure : Treasure
         while (true)
         {
             //if (!MainSceneBase.Instance.IsStart()) yield break; //게임 끝나면 중단
+            isActive = false;
             yield return new WaitForSeconds(intervalTime);
+            Debug.Log("체력 감소 감소");
 
-            int originalDamage = player.damage;
-            player.damage -= (int)healthDrain;
-
+            player.damage = originalDamage - (int)healthDrain;
+            
             yield return new WaitForSeconds(duration);
 
             player.damage = originalDamage; // 상태 복구
