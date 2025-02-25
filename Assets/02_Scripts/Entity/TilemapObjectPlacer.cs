@@ -1,21 +1,36 @@
-﻿using RunningGame.Managers;
+﻿using System;
+using RunningGame.Managers;
 using RunningGame.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapObjectPlacer : MonoBehaviour
 {
+    [SerializeField] private ObjectPlacerType objectPlacerType; 
     private Tilemap tilemap;
     private TilemapRenderer tilemapRenderer;
 
+    public void Init()
+    {
+        tilemap = GetComponent<Tilemap>();
+        tilemapRenderer = GetComponent<TilemapRenderer>();
+    }
+    
     private void Start()
     {
         tilemap = GetComponent<Tilemap>();
         tilemapRenderer = GetComponent<TilemapRenderer>();
+        
+        if (objectPlacerType == ObjectPlacerType.Static) return;
         MainSceneBase.Instance.AddGameStartListener(PlaceObject);
     }
 
-    private void PlaceObject()
+    private void OnDestroy()
+    {
+        MainSceneBase.Instance.RemoveGameStartListener(PlaceObject);
+    }
+
+    public void PlaceObject()
     {
         if (tilemap == null)
         {
@@ -49,5 +64,11 @@ public class TilemapObjectPlacer : MonoBehaviour
         }
         
         tilemapRenderer.enabled = false;
+    }
+
+    public enum ObjectPlacerType
+    {
+        Static,
+        Dynamic,
     }
 }

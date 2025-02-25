@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3688883408641815582}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -877,6 +877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 1
 --- !u!1 &6626617156547060883
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +891,7 @@ GameObject:
   - component: {fileID: 1538480845063482103}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

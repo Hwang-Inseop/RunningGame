@@ -15,11 +15,6 @@ namespace RunningGame.Entity
         private float timeElapsed;
         private bool isStart;
 
-        private void Start()
-        {
-            MainSceneBase.Instance.AddGameStartListener(() => isStart = true);
-        }
-
         private void Update()
         {
             if (!isStart) return;
@@ -28,6 +23,13 @@ namespace RunningGame.Entity
             var speedMultiplier = 1f + acceleration * Mathf.Log(1f + timeElapsed);
             offset = new Vector3(Time.deltaTime * (scrollSpeed * speedMultiplier), 0, 0);
             tr.position -= offset;
+        }
+
+        public void Init()
+        {
+            timeElapsed = 0f;
+            tr.position = Vector3.zero;
+            isStart = true;
         }
     }
 }

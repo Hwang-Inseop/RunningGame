@@ -183,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: e15d4124cdee8c440b1c2d8f18cdecc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617934ae1e1b1e047850a89c0a1e1c81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -354,7 +354,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.19999999, z: 0}
   m_MaxChunkCount: 16
@@ -614,7 +614,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1162,7 +1162,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.0428572, y: 0.014285743, z: 0}
   m_MaxChunkCount: 16
@@ -1481,7 +1481,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2071e16316710014093f9480d0637dab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1591,7 +1591,7 @@ GameObject:
   - component: {fileID: 145122090}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2283,7 +2283,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3840,6 +3840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &281606372
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,7 +3914,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -4640,7 +4641,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -5963,7 +5964,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6351,7 +6352,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.42142856, y: 0.007142842, z: 0}
   m_MaxChunkCount: 16
@@ -7305,6 +7306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &498733004
 GameObject:
   m_ObjectHideFlags: 0
@@ -7401,7 +7403,7 @@ GameObject:
   - component: {fileID: 513264291}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7824,7 +7826,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2071e16316710014093f9480d0637dab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7989,7 +7991,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2071e16316710014093f9480d0637dab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8015,7 +8017,7 @@ GameObject:
   - component: {fileID: 559917719}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8267,7 +8269,7 @@ GameObject:
   - component: {fileID: 581967237}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10096,6 +10098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &664017898
 GameObject:
   m_ObjectHideFlags: 0
@@ -10236,7 +10239,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.42142856, y: 0.007142842, z: 0}
   m_MaxChunkCount: 16
@@ -10486,7 +10489,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -12283,6 +12286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &754966041
 GameObject:
   m_ObjectHideFlags: 0
@@ -12355,7 +12359,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2071e16316710014093f9480d0637dab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12852,6 +12856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &767631601
 GameObject:
   m_ObjectHideFlags: 0
@@ -13005,7 +13010,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2cbb00a8708c1fc4e97da58b13bf009a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13090,7 +13095,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.19999999, z: 0}
   m_MaxChunkCount: 16
@@ -13506,10 +13511,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patternLooper: {fileID: 1939654913}
+  staticObjectPlacer: {fileID: 1825072483}
   interactionItemDatas: {fileID: 11400000, guid: 5986497ed07ef6344bd721b56208ada7, type: 2}
   patternDatas: {fileID: 11400000, guid: 6da12a26d309f494086b0c64e15cc3d4, type: 2}
   LoopableObjectRoot: {fileID: 572768552}
   playerSpawnPoint: {fileID: 1479422632}
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 170823635}
+        m_TargetAssemblyTypeName: RunningGame.Entity.PatternScroller, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &838979975
 Transform:
   m_ObjectHideFlags: 0
@@ -13598,7 +13619,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.0428572, y: 0.014285743, z: 0}
   m_MaxChunkCount: 16
@@ -13856,7 +13877,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -14817,6 +14838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1036072462
 GameObject:
   m_ObjectHideFlags: 0
@@ -14889,7 +14911,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2071e16316710014093f9480d0637dab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15056,7 +15078,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -15286,7 +15308,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -15948,7 +15970,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -16337,7 +16359,7 @@ GameObject:
   - component: {fileID: 1136252757}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17103,6 +17125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1144573486
 GameObject:
   m_ObjectHideFlags: 0
@@ -17678,6 +17701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1216570002
 GameObject:
   m_ObjectHideFlags: 0
@@ -17751,7 +17775,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -18291,7 +18315,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -18526,7 +18550,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -19440,6 +19464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1397676814
 GameObject:
   m_ObjectHideFlags: 0
@@ -19638,7 +19663,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -20304,7 +20329,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.42142856, y: 0.007142842, z: 0}
   m_MaxChunkCount: 16
@@ -20564,7 +20589,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -21590,6 +21615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1628320724
 GameObject:
   m_ObjectHideFlags: 0
@@ -22005,6 +22031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1639604400
 GameObject:
   m_ObjectHideFlags: 0
@@ -22019,7 +22046,7 @@ GameObject:
   - component: {fileID: 1639604402}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22352,7 +22379,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2cbb00a8708c1fc4e97da58b13bf009a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -22437,7 +22464,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -23127,6 +23154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1811587491
 GameObject:
   m_ObjectHideFlags: 0
@@ -23208,6 +23236,66 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!1 &1825072482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1825072484}
+  - component: {fileID: 1825072483}
+  m_Layer: 0
+  m_Name: StaticObjectPlacer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1825072483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825072482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090e6441c61936c4ebe840bcc956789f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemapObjectPlacers:
+  - {fileID: 5639116781425233024}
+  - {fileID: 1141881076}
+  - {fileID: 1668389714}
+  - {fileID: 1144573490}
+  - {fileID: 1021527040}
+  - {fileID: 735713977}
+  - {fileID: 1628320728}
+  - {fileID: 1929555454}
+  - {fileID: 763785739}
+  - {fileID: 1366966250}
+  - {fileID: 1607811019}
+  - {fileID: 1963081240}
+  - {fileID: 469907990}
+  - {fileID: 272155815}
+  - {fileID: 634441527}
+--- !u!4 &1825072484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825072482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1866052214
 GameObject:
   m_ObjectHideFlags: 0
@@ -23825,7 +23913,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2cbb00a8708c1fc4e97da58b13bf009a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -23993,7 +24081,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2cbb00a8708c1fc4e97da58b13bf009a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -24440,6 +24528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &1939654911
 GameObject:
   m_ObjectHideFlags: 0
@@ -25211,6 +25300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!1 &2044902764
 GameObject:
   m_ObjectHideFlags: 8
@@ -26594,7 +26684,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 2cbb00a8708c1fc4e97da58b13bf009a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -26860,6 +26950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPlacerType: 0
 --- !u!4 &6788858924903857279
 Transform:
   m_ObjectHideFlags: 0
@@ -26948,7 +27039,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -26997,7 +27088,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.42142856, y: 0.007142842, z: 0}
   m_MaxChunkCount: 16
@@ -27013,6 +27104,7 @@ SceneRoots:
   - {fileID: 2044902765}
   - {fileID: 968454260}
   - {fileID: 1939654914}
+  - {fileID: 1825072484}
   - {fileID: 1397676816}
   - {fileID: 1479422632}
   - {fileID: 679054549}

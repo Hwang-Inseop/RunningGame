@@ -43,12 +43,19 @@ public class PatternLooper : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // LoopableItemTag인 경우 Despawn 하고 return
+        if (other.CompareTag(Define.LoopableItemTag))
+        {
+            MainPoolManager.Instance.Despawn(other.gameObject);
+            return;
+        }
+        
+        // LoopableTag가 아닌 경우 return
         if (!other.CompareTag(Define.LoopableTag)) return;
         
-        Debug.Log("OnTriggerEnter2D : Loopable entered");
         if (!MainPoolManager.Instance.IsExistPool(other.name))
         {
-            // other.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
         else
             MainPoolManager.Instance.Despawn(other.gameObject);

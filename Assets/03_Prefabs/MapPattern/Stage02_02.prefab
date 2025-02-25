@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8503299453164406150}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -954,6 +954,7 @@ GameObject:
   - component: {fileID: 7540482834180342112}
   - component: {fileID: 7460142441610361130}
   - component: {fileID: 3390556928768274960}
+  - component: {fileID: 6932460179441939209}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -1541,6 +1542,19 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &6932460179441939209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3953589167347418023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 1
 --- !u!1 &4925262295260392855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,7 +1652,7 @@ GameObject:
   - component: {fileID: 1711636445514806114}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1834,7 +1848,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.03571427, y: 0, z: 0}
   m_MaxChunkCount: 16

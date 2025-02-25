@@ -10,8 +10,9 @@ namespace RunningGame.Managers
     {
         [Header("Components")]
         [SerializeField] private PatternLooper patternLooper;
+        [SerializeField] private StaticObjectPlacers staticObjectPlacer;
         
-        [Header("Scriptable Objects")]
+        [Header("MainScene Datas")]
         [SerializeField] private InteractionItemDatas interactionItemDatas;
         [SerializeField] private PatternDatas patternDatas;
         
@@ -19,8 +20,10 @@ namespace RunningGame.Managers
         [SerializeField] private Transform LoopableObjectRoot;
         [SerializeField] private Transform playerSpawnPoint;
         
-        private readonly UnityEvent onGameStart = new();
+        [Header("Event")]
+        [SerializeField] private UnityEvent onGameStart = new();
         private int selectedStage;
+        private bool isGameStart;
         
         private void Start()
         {
@@ -37,9 +40,11 @@ namespace RunningGame.Managers
             CreatPatternPool();
             CreateItemPool();
             patternLooper.Init(selectedStage);
+            staticObjectPlacer.AddGameStartListener(onGameStart);
             
             // 게임 시작
             onGameStart?.Invoke();
+            isGameStart = true;
         }
 
         private void CreatPatternPool()
@@ -63,6 +68,13 @@ namespace RunningGame.Managers
                 var prefab = coinList[i];
                 MainPoolManager.Instance.CreatePool(prefab, 50);
             }
+
+            var heartList = interactionItemDatas.GetHeartPrefabs();
+            for (int i = 0; i < heartList.Count; i++)
+            {
+                var prefab = heartList[i];
+                MainPoolManager.Instance.CreatePool(prefab);
+            }
             
             var gemPrefab = interactionItemDatas.GetGemPrefab();
             MainPoolManager.Instance.CreatePool(gemPrefab, 10);
@@ -73,6 +85,11 @@ namespace RunningGame.Managers
             // TODO: 플레이어 스폰 구현
         }
 
+        public bool IsStart()
+        {
+            return isGameStart;
+        }
+
         public Transform GetLoopableRoot()
         {
             return LoopableObjectRoot;
@@ -81,6 +98,11 @@ namespace RunningGame.Managers
         public void AddGameStartListener(UnityAction action)
         {
             onGameStart.AddListener(action);
+        }
+
+        public void RemoveGameStartListener(UnityAction action)
+        {
+            onGameStart.RemoveListener(action);
         }
     }
 }
