@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class CharacterInfo : ScriptableObject
 {
+    //이름 / 해금에 따른 재화 / 능력설명 / 한마디 / 체력 / 색깔 / 배경 sprite
     //캐릭터 번호
     [SerializeField]
     private int characterNum;
@@ -18,11 +19,17 @@ public class CharacterInfo : ScriptableObject
 
     public string CharName { get { return charName; } }
 
-    //해금 조건
+    //캐릭터 체력
     [SerializeField]
-    private string howToGet;
+    private float health;
 
-    public string HowToGet { get { return howToGet; } }
+    public float Health { get { return health; } }
+
+    //해금 조건에 맞는 보석
+    [SerializeField]
+    private Sprite jewel;
+
+    public Sprite Jewel { get { return jewel; } }
 
     //능력 설명
     [SerializeField]
@@ -41,5 +48,17 @@ public class CharacterInfo : ScriptableObject
     private Sprite photo;
 
     public Sprite Photo { get { return photo; } }
+
+    //캐릭터 선택창 배경색
+    [SerializeField]
+    private Sprite bgSprite;
+
+    public Sprite BgSprite { get { return bgSprite; } }
+
+    //캐릭터 해금 여부
+    [SerializeField]
+    private bool isOpened;
+
+    public bool IsOpened { get { return isOpened; } set { isOpened = value; } }
 
 }

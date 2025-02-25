@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterNum: 2
   charName: "\uD30C\uB7AD\uC774"
-  howToGet: "\uD30C\uB7AD\uC774 - \uD574\uAE08\uC870\uAC74"
+  health: 110
+  jewel: {fileID: 21300000, guid: d5dfdf771ea3e1e4b9f682ec2a4da4ff, type: 3}
   ability: "\uD30C\uB7AD\uC774 - \uB2A5\uB825"
   talk: "\uD558\uB298\uC774 \uB108\uBB34 \uD30C\uB7AD"
   photo: {fileID: 21300000, guid: d5367c4cf08cc8946829f7970fd9b454, type: 3}
+  color: {r: 0.42745098, g: 0.45882353, b: 0.7372549, a: 0}
+  bgSprite: {fileID: 21300000, guid: dbd37fcb722bf8641892fcc0850a4bb7, type: 3}
