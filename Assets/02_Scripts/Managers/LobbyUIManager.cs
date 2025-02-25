@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -31,16 +32,21 @@ public class LobbyUIManager : MonoBehaviour
     [Header("체크 이미지 리스트")]
     public List<GameObject> checkImg = new List<GameObject>();
 
+    [Header("StageInfo")]
+    public List<StageInfo> stages = new List<StageInfo>();
+
+
     //초기 설정
     void Start()
     {
+        stageDescriptionTxt.text = GameManager.Instance.stageinfo.StageDescription;
+        stageDescriptionImg.sprite = GameManager.Instance.stageinfo.Background;
+        CheckSelectedStage();
+
         fadePanelGo.SetActive(true);
         fadePanel.alpha = 0f;
         RectTransform rectTransform = fadePanel.GetComponent<RectTransform>();
         rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
-
-        PlayerPrefs.SetInt("choosedStage", 1);
-
 
         foreach (Button button in makeScaleBtn)
         {
@@ -105,6 +111,14 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
+    //선택된 스테이지로 변경
+    public void ChangeSelectedStage()
+    {
+        StageInfo stage = stages.FirstOrDefault(stage => stage.StageNum == PlayerPrefs.GetInt("choosedStage"));
+        GameManager.Instance.stageinfo = stage;
+    }
+
+    //씬 로드
     public void LoadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);  
