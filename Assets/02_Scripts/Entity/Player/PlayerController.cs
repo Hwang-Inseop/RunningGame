@@ -48,12 +48,14 @@ public class PlayerController : MonoBehaviour
         UpdateState();
     }
 
+    // 키 입력을 받으면 상태 전이
     void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Z)) ChangeState(PlayerState.isJumping);
         if (Input.GetKeyDown(KeyCode.X)) ChangeState(PlayerState.isSliding);
     }
     
+    // 상태 전이 시 조작 메서드 실행
     private void UpdateState()
     {
         switch (playerState)
@@ -107,6 +109,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region 슬라이드 조작
+    // 슬라이드 조작 메서드
     void PlayerSlide()
     {
         if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping)
@@ -127,19 +130,20 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+    
+    // 땅에서 달리는 상태
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+            isRunning = true;
+        animator.SetBool("isRunning", true);
+        animator.SetBool("isJumping", false);
+    }
 
     private void ChangeState(PlayerState newState)
     {
         if (newState == playerState) return;
         playerState = newState;
         
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Ground"))
-            isRunning = true;
-        animator.SetBool("isRunning", true);
-        animator.SetBool("isJumping", false);
     }
 }
