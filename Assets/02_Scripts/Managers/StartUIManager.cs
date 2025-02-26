@@ -45,5 +45,4 @@ public class StartUIManager : MonoBehaviour
         startDisplay.OnStartButtonClicked();
         Invoke("LoadSceneDelayed", 1.5f);
     }
-
 }
