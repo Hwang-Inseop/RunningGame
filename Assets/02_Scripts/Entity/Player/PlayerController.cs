@@ -85,7 +85,9 @@ public class PlayerController : MonoBehaviour
     }
 
     #region 점프 조작
-    // 점프 조작 메서드
+    /// <summary>
+    /// 점프 조작 메서드
+    /// </summary>
     void PlayerJump()
     {
         if (Input.GetKeyDown(KeyCode.Z) && isRunning) // Z키 눌렀을 때 && 땅에 붙어있을 때
@@ -124,7 +126,9 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region 슬라이드 조작
-    // 슬라이드 조작 메서드
+    /// <summary>
+    /// 슬라이드 조작 메서드
+    /// </summary>
     void PlayerSlide()
     {
         if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping)
@@ -148,7 +152,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 
+        if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 바닥에서 달리는 상태
             isRunning = true;
         Debug.Log("isRunning");
         animator.SetBool("isRunning", true);

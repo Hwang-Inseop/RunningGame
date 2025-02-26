@@ -19,5 +19,6 @@ MonoBehaviour:
   ability: "\uB178\uB7AD\uC774 - \uB2A5\uB825"
   talk: "\uBE75\uC0C1? \uAE68\uB77C\uAE4C\uB791?!"
   photo: {fileID: 21300000, guid: 26aba58622ab4e443841c02baf87e6c7, type: 3}
-  color: {r: 0.88235295, g: 0.8901961, b: 0.4509804, a: 0}
   bgSprite: {fileID: 21300000, guid: 36d985f9cd51c1a4598c4156faa78d68, type: 3}
+  isOpened: 0
+  charSprite: {fileID: 21300000, guid: 26aba58622ab4e443841c02baf87e6c7, type: 3}
