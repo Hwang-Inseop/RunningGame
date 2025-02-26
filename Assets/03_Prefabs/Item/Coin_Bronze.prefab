@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 7893872452766885136}
   - component: {fileID: 5547669620937057660}
   - component: {fileID: 7794877269646192516}
+  - component: {fileID: -3612831089261582845}
   m_Layer: 0
   m_Name: Coin_Bronze
   m_TagString: LoopableItem
@@ -188,3 +189,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.018217951}
   serializedVersion: 2
   m_Radius: 0.26726595
+--- !u!95 &-3612831089261582845
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755780699745716068}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56464be459f634d4a8bb733b79c70b24, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

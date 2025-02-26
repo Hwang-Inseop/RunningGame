@@ -1,33 +1,31 @@
-﻿using System.Collections;
+using RunningGame.Managers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinTreasure : Treasure, ICoinGenerator
+public class CoinTreasure : Treasure
 {
     [SerializeField] private GameObject extraCoin; // 추가 코인 생성
     [SerializeField] private Transform coinPosition; // 추가 코인 생성 위치
+    private bool hasSpawned = false;
 
-    private void Start()
+    public override void ApplyEffect(PlayerController player)
     {
-        if (IsEquipped)
+        if (extraCoin != null && coinPosition != null && !hasSpawned)
         {
-            GenerateCoin();
-        }
-    }
-    public void GenerateCoin()
-    {
-        if (extraCoin != null && coinPosition != null)
-        {
-            StartCoroutine(SpawnCoin());
+            StartCoroutine(GenerateCoin());
         }
     }
 
-    private IEnumerator SpawnCoin()
+    private IEnumerator GenerateCoin()
     {
+        hasSpawned = true;
         while (true)
         {
+            //if (!MainSceneBase.Instance.IsStart()) yield break; //게임 끝나면 중단
             yield return new WaitForSeconds(intervalTime);
             Instantiate(extraCoin, coinPosition.position, Quaternion.identity);
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
     }
-    public virtual void ApplyEffect() // 아이템 효과
+    public virtual void ApplyEffect(PlayerController player) // 아이템 효과
     {  
         // 플레이어 점수 += Score;
     }
@@ -26,7 +26,8 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player")) // 플레이어와 충돌 시
         {
-            ApplyEffect();
+            PlayerController player = collision.GetComponent<PlayerController>();
+            ApplyEffect(player);
             DestroyItem();
         }
     }
