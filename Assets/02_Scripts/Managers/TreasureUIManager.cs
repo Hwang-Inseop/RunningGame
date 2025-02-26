@@ -27,6 +27,12 @@ public class TreasureUIManager : MonoBehaviour
     [Header("TreasureInfo")]
     public List<TreasureInfo> treasureInfos = new List<TreasureInfo>();
 
+    [Header("AlienTalkInfo")]
+    public List<AlienTalkInfo> alienTalkInfos = new List<AlienTalkInfo>();
+
+    [Header("Alien 말풍선 Text")]
+    public TextMeshProUGUI alienTalk;
+
     [Header("보물 정보 패널을 띄우는 Button")]
     public List<Button> displayInfoBtns = new List<Button>();
 
@@ -157,5 +163,11 @@ public class TreasureUIManager : MonoBehaviour
             treasureInfos[currentTreasureNum - 1].IsOpened = true;
             unlockBtn.SetActive(false);
         }
+    }
+
+    public void ChangeTalk()
+    {
+        Random random = new Random();
+        alienTalk.text = alienTalkInfos[random.Next(alienTalkInfos.Count)].Talk;
     }
 }

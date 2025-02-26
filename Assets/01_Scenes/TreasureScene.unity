@@ -1010,13 +1010,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 568607885}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 568607886}
+        m_TargetAssemblyTypeName: TreasureUIManager, Assembly-CSharp
+        m_MethodName: ChangeTalk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1440,6 +1440,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5557262d79d3f3f4eb83b7fd20ddc51e, type: 2}
   - {fileID: 11400000, guid: 142e66a77b4311e4ab3f14bfdb3f5b66, type: 2}
   - {fileID: 11400000, guid: 56e8c291b965345419509d4f3c587a1e, type: 2}
+  alienTalkInfos:
+  - {fileID: 11400000, guid: 4e695c0ca924b894997e69a22a2880f7, type: 2}
+  - {fileID: 11400000, guid: 0daa87fdf20ff3b49a92bd9558127698, type: 2}
+  - {fileID: 11400000, guid: cb43dc56aed617647906ee4e8c7a56a4, type: 2}
+  - {fileID: 11400000, guid: be0805da8cef3b441bffcbc65a7d485f, type: 2}
+  alienTalk: {fileID: 1116658509}
   displayInfoBtns:
   - {fileID: 42495387}
   - {fileID: 1722477911}
@@ -3675,7 +3681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1509531023
 RectTransform:
   m_ObjectHideFlags: 0
