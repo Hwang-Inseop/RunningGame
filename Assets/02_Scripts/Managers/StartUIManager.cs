@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,18 +8,19 @@ using UnityEngine.UI;
 
 public class StartUIManager : MonoBehaviour
 {
+    private StartDisplay startDisplay;
     [Header("크기 변화 이펙트 적용되는 버튼 리스트")]
     public List<Button> makeScaleBtn = new List<Button>();
 
     private void Start()
     {
-        
+        startDisplay = FindObjectOfType<StartDisplay>();
     }
 
     //씬 로드
-    public void LoadScene(String sceneName)
+    public void LoadSceneDelayed()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("LobbyScene", 0);
     }
 
     //게임 종료
@@ -38,5 +39,10 @@ public class StartUIManager : MonoBehaviour
     public void DecreaseScale(Button btn)
     {
         btn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
+    }
+    public void PressStart()
+    {
+        startDisplay.OnStartButtonClicked();
+        Invoke("LoadSceneDelayed", 1.5f);
     }
 }
