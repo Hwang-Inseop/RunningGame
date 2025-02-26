@@ -13,12 +13,12 @@ public class Treasure : MonoBehaviour
 
     [SerializeField] private int canRevive; // 부활 가능 횟수
 
-    private PlayerController player;
+    private Player player;
     private void Start()
     {
         StartCoroutine(WaitForStart());
     }
-    public void Equip(PlayerController player)
+    public void Equip(Player player)
     {
         if (!IsEquipped)
         {
@@ -43,7 +43,7 @@ public class Treasure : MonoBehaviour
             }
         }
     }
-    public virtual void ApplyEffect(PlayerController player) { }
+    public virtual void ApplyEffect(Player player) { }
     private IEnumerator WaitForStart() // 게임 시작까지 대기
     {
         while (true) // -> !MainSceneBase.Instance.IsStart())
