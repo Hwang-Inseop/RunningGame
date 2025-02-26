@@ -11,6 +11,7 @@ namespace RunningGame.Utils
                 "coinSilver"    => "Coin_Silver",
                 "coinBronze"    => "Coin_Bronze",
                 "coinGold"      => "Coin_Gold",
+                "gemYellow"     => "Gem",
                 "gemBlue"       => "Gem",
                 "hud_heartHalf" => "HalfHealthPotion",
                 "hud_heartFull" => "HealthPotion",
