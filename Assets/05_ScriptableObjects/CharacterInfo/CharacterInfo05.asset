@@ -19,5 +19,6 @@ MonoBehaviour:
   ability: "\uADF8\uB808\uC774 - \uB2A5\uB825"
   talk: "\uC778\uAC04 \uC2DC\uB300\uC758 \uB05D\uC774 \uB3C4\uB798\uD588\uB2E4"
   photo: {fileID: 21300000, guid: 6ba18dd1514c146458309423fa8b54c3, type: 3}
-  color: {r: 0.50980395, g: 0.50980395, b: 0.50980395, a: 0}
   bgSprite: {fileID: 21300000, guid: be0f5fa116e1f8f4c873e1ce209f8d20, type: 3}
+  isOpened: 0
+  charSprite: {fileID: 21300000, guid: 6ba18dd1514c146458309423fa8b54c3, type: 3}

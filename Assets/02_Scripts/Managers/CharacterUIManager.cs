@@ -26,6 +26,9 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField]
     private float fadeTime = 0.5f;
 
+    [Header("캐릭터 정보 패널이 뜰 때 패널 외 버튼의 상호작용 방지용 패널")]
+    public GameObject emptyPanel;
+
     [Header("캐릭터 정보 패널")]
     public CanvasGroup characterInfoPanel;
     public GameObject characterInfoPanelGo;
@@ -88,11 +91,6 @@ public class CharacterUIManager : MonoBehaviour
         characterSelectPanel.DOFade(1, fadeTime);
     }
 
-    void Update()
-    {
-
-    }
-
     //크기 증가
     public void IncreaseScale()
     {
@@ -124,6 +122,8 @@ public class CharacterUIManager : MonoBehaviour
 
         PlayerPrefs.SetInt("currentClickedButton", charInfo.CharacterNum);
         PanelFadeIn();
+
+        OpenEmptyPanel();
     }
 
     //Fade In 효과
@@ -170,6 +170,7 @@ public class CharacterUIManager : MonoBehaviour
                 }
             }
         }
+        CloseEmptyPanel();
     }
 
     //두번째 주자 바꾸기
@@ -196,6 +197,7 @@ public class CharacterUIManager : MonoBehaviour
                 }
             }
         }
+        CloseEmptyPanel();
     }
 
     //첫번째 주자 초기화
@@ -248,6 +250,7 @@ public class CharacterUIManager : MonoBehaviour
         Debug.Log("이미 주자로 선택된 캐릭터입니다.");
     }
 
+    //이어달리기 전부 해제
     public void CheckoutSecondRunner()
     {
         PlayerPrefs.SetInt("secondRunnerNum", 0);
@@ -257,4 +260,15 @@ public class CharacterUIManager : MonoBehaviour
         }
     }
 
+    //방지 패널 닫기
+    public void CloseEmptyPanel()
+    {
+        emptyPanel.SetActive(false);
+    }
+
+    //방지 패널 열기
+    public void OpenEmptyPanel()
+    {
+        emptyPanel.SetActive(true);
+    }
 }
