@@ -70,10 +70,6 @@ namespace RunningGame.Managers
             Debug.Log("골드 추가");
             totalGoldTxt.text = totalGold.ToString();
         }
-        public void OpenPanel()
-        {
-            gameOverPanel.SetActive(true);
-        }
     }
 }
 

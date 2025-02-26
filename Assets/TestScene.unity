@@ -2764,6 +2764,7 @@ MonoBehaviour:
   pauseBtn: {fileID: 978249452}
   pauseMenu: {fileID: 944464595}
   item: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   totalScore: 0
   totalScoreTxt: {fileID: 1241133655}
   totalGold: 0
@@ -4412,6 +4413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783450149}
   - component: {fileID: 1783450150}
+  - component: {fileID: 1783450151}
   m_Layer: 5
   m_Name: HPbar
   m_TagString: Untagged
@@ -4493,6 +4495,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1783450151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783450148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfedc59f8da8b94f9d130edfa23b048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1783450150}
 --- !u!1 &1837636731
 GameObject:
   m_ObjectHideFlags: 0

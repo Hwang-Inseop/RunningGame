@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using RunningGame.Managers;
 using RunningGame.Utils;
 using UnityEngine;
@@ -27,7 +27,7 @@ public class TilemapObjectPlacer : MonoBehaviour
 
     private void OnDestroy()
     {
-        MainSceneBase.Instance.RemoveGameStartListener(PlaceObject);
+       MainSceneBase.Instance.RemoveGameStartListener(PlaceObject);
     }
 
     public void PlaceObject()
