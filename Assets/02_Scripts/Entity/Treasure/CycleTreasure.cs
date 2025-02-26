@@ -6,12 +6,12 @@ public class CycleTreasure : Treasure
 {
     [SerializeField] private float healthDrain; // 체력 감소량
 
-    public override void ApplyEffect(PlayerController player)
+    public override void ApplyEffect(Player player)
     {
         StartCoroutine(CoDrain(player));
     } 
     
-    private IEnumerator CoDrain(PlayerController player)
+    private IEnumerator CoDrain(Player player)
     {
         while (true)
         {

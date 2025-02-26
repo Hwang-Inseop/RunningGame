@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Coin : Item
 {
 
-    public override void ApplyEffect(PlayerController player)
+    public override void ApplyEffect(Player player)
     {
         base.ApplyEffect(player);
         // 코인 증가 += cointAmount;

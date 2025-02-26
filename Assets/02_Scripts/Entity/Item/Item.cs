@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
     }
-    public virtual void ApplyEffect(PlayerController player) // 아이템 효과
+    public virtual void ApplyEffect(Player player) // 아이템 효과
     {  
         // 플레이어 점수 += Score;
     }
@@ -26,7 +26,7 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player")) // 플레이어와 충돌 시
         {
-            PlayerController player = collision.GetComponent<PlayerController>();
+            Player player = collision.GetComponent<Player>();
             ApplyEffect(player);
             DestroyItem();
         }

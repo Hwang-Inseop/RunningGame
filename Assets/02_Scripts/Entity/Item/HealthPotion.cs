@@ -6,7 +6,7 @@ public class HealthPotion : Item
 {
 
     public int healingAmount = 0;
-    public override void ApplyEffect(PlayerController player)
+    public override void ApplyEffect(Player player)
     {
         base.ApplyEffect(player);
         player.currentHP += healingAmount;
