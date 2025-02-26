@@ -8,7 +8,7 @@ using UnityEngine.XR;
 //플레이어가 가질 수 있는 상태 정의: 땅에서 달리는 상태, 땅에 붙어있는 상태, 점프한 상태
 public enum PlayerState {isRunning, isJumping, isSliding}
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private bool isRunning = false; // idle 바닥에서 달리는 중인 상태
     

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HPSlider : MonoBehaviour
 {
-    private PlayerController player;
+    private Player player;
     [SerializeField] private Slider slider;
     private float smoothSpeed = 5f; //체력이 자연스럽게 줄어들도록 만들기 위한 속도
     void Start()

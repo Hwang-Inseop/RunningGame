@@ -72,7 +72,7 @@ namespace RunningGame.Managers
         {
             AudioClip clip = GetAudioClip(sound.GetSoundKey());
             sfxSource.PlayOneShot(clip, volume);
-            yield return new WaitForSeconds(clip.length);
+            yield return new WaitForSeconds(clip.length); //사운드 종료되기 전 씬이 넘어가는 것을 방지
         }
     }
     
