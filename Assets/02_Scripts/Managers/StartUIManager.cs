@@ -3,6 +3,7 @@ using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class StartUIManager : MonoBehaviour
     private void Start()
     {
         startDisplay = FindObjectOfType<StartDisplay>();
+        SoundManager.Instance.PlayBgm(SoundType.TitleBgm, 0.01f);
     }
 
     //씬 로드
@@ -28,6 +30,11 @@ public class StartUIManager : MonoBehaviour
     public void OnApplicationQuit()
     {
         SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.8f);
+#if UNITY_EDITOR    //Unity 에디터에서 실행시
+        EditorApplication.isPlaying = false;
+#else   //실제 빌드된 게임에서 실행시
+        Application.Quit();
+#endif
         Debug.Log("게임종료");
     }
 

@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
@@ -14,8 +15,8 @@ public class Item : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
     public virtual void ApplyEffect(Player player) // 아이템 효과
-    {
-        // 플레이어 점수 += Score;
+    {  
+        MainUIManager.Instance.totalScore += Score;
     }
     public void DestroyItem() // 사라지는 애니메이션 후 Destroy
     {

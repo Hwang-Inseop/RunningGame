@@ -11,12 +11,12 @@ public class HPSlider : MonoBehaviour
     void Start()
     {
         slider.maxValue = player.maxHP;
-        slider.value = player.currentHP;
     }
 
     // Update is called once per frame
     void Update()
     {
+        slider.value = player.currentHP;
         float targetValue = player.currentHP; //체력이 자연스럽게 줄기위한 현재 줄어들고있는 체력의 목표값
         slider.value = Mathf.Lerp(slider.value, targetValue, Time.deltaTime * smoothSpeed); //Mathf를 통한 자연스러움으로 표현
     }

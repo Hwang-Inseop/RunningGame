@@ -30,9 +30,10 @@ namespace RunningGame.Managers
         public Slider healthSlider;
         
 
-        public override void Init()
+        public override void Init() //시작시 초기화 
         {
-            // 시작할 때 필요한 초기화
+            int totalGold = 0;
+            int totalScore = 0;
         }
         public void ResumeGame()
         {
@@ -60,14 +61,11 @@ namespace RunningGame.Managers
 
         public void AddScore() // 점수 추가
         {
-            Debug.Log("점수 추가");
-            
             totalScoreTxt.text = totalScore.ToString();
         }
 
         public void AddGold() // 재화 추가
         {
-            Debug.Log("골드 추가");
             totalGoldTxt.text = totalGold.ToString();
         }
     }
