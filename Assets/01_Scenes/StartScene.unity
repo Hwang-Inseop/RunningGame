@@ -538,6 +538,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 376954392}
+  - component: {fileID: 376954394}
+  - component: {fileID: 376954395}
   m_Layer: 0
   m_Name: Stars
   m_TagString: Untagged
@@ -575,6 +577,58 @@ Transform:
   - {fileID: 1235635753}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376954394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376954391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e2602ee073d8e478ac799c764be271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterSprites:
+  - {fileID: 21300000, guid: 6ba18dd1514c146458309423fa8b54c3, type: 3}
+  - {fileID: 21300000, guid: d5367c4cf08cc8946829f7970fd9b454, type: 3}
+  - {fileID: 21300000, guid: bc5843683a3fb6c4f9e3a2af735f2d17, type: 3}
+  - {fileID: 21300000, guid: c0a300ce9429a0e4ab573b9406d795db, type: 3}
+  - {fileID: 21300000, guid: 26aba58622ab4e443841c02baf87e6c7, type: 3}
+  countPlayer: 5
+  minPosition: {x: -10, y: 2.5}
+  maxPosition: {x: 5, y: 3.5}
+  animationDuration: 2
+  spawnOffset: 5
+  horizontal: 3
+--- !u!114 &376954395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376954391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c2b4d23ce763c48ac1a4068962e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject:
+  - {fileID: 401579102}
+  - {fileID: 1934517690}
+  - {fileID: 630300429}
+  - {fileID: 1869352603}
+  - {fileID: 1107758282}
+  - {fileID: 1639380962}
+  - {fileID: 57224144}
+  - {fileID: 1888045662}
+  - {fileID: 140813405}
+  - {fileID: 1853472123}
+  - {fileID: 1714454958}
+  - {fileID: 427966601}
+  - {fileID: 2088980246}
+  - {fileID: 2144264674}
+  - {fileID: 1235635751}
 --- !u!1 &401579102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,8 +1169,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1095731123}
         m_TargetAssemblyTypeName: StartUIManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: PressStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1680,7 +1734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageinfo: {fileID: 11400000, guid: c3c6f73215c18d14da07df8926c976e3, type: 2}
   firstCharacterInfo: {fileID: 11400000, guid: 476d4e559a05b13459fd2c2fad1221b7, type: 2}
-  secondCharacterInfo: {fileID: 0}
+  CharacterInfo: {fileID: 0}
 --- !u!4 &1535293293
 Transform:
   m_ObjectHideFlags: 0
