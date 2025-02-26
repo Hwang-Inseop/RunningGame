@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 311194537}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Ground
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7145089447525534909, guid: 6a279f1449de54c45bf219870266ae66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.83
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 7145089447525534909, guid: 6a279f1449de54c45bf219870266ae66, type: 3}
       propertyPath: m_LocalPosition.z

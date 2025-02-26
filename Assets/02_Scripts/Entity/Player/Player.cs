@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     public float invincible; //무적 시간
     
     protected bool die = false; // 사망 상태
-    
+    public bool isDropped = false;
     public int canRevive;
     
     private Rigidbody2D rb;
@@ -198,10 +198,13 @@ public class Player : MonoBehaviour
             TakeDamage(10);
         Debug.Log("Collision, Damaged -10");
         StartCoroutine(Invincible());
-        
+
         // 낙사 구간에 빠지면 Die
-        if(collision.gameObject.CompareTag("DropZone"))
+        if (collision.gameObject.CompareTag("DropZone"))
+        {
+            isDropped = true;
             Die();
+        }
     }
 
     /// <summary>
