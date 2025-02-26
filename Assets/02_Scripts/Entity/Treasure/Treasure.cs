@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,16 @@ public class Treasure : MonoBehaviour
     [SerializeField] private int reqGem; // 필요한 젬 개수
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] protected float duration; // 효과 지속 시간
-
-    [SerializeField] private int canRevive; // 부활 가능 횟수
+    private bool hasEffect = false;
 
     private Player player;
-    private void Start()
+
+    private void Update()
     {
-        StartCoroutine(WaitForStart());
+        if (!MainSceneBase.Instance.IsStart())
+        {
+            StopAllCoroutines();
+        }
     }
     public void Equip(Player player)
     {
@@ -24,10 +28,8 @@ public class Treasure : MonoBehaviour
         {
             IsEquipped = true;
             this.player = player;
-            if (canRevive > 0)
-            {
-                // Player 부활 가능 횟수 += canRevive
-            }
+
+            StartCoroutine(WaitForStart());
         }
     }
 
@@ -36,21 +38,20 @@ public class Treasure : MonoBehaviour
         if (IsEquipped)
         {
             IsEquipped = false;
-
-            if(canRevive > 0)
-            {
-                // Player 부활 가능 횟수 -= canRevive
-            }
         }
     }
     public virtual void ApplyEffect(Player player) { }
     private IEnumerator WaitForStart() // 게임 시작까지 대기
     {
-        while (true) // -> !MainSceneBase.Instance.IsStart())
+        while (!MainSceneBase.Instance.IsStart())
         {
             yield return null;
         }
-        if (IsEquipped) ApplyEffect(player);
+        if (IsEquipped && !hasEffect)
+        {
+            ApplyEffect(player);
+            hasEffect = true;
+        }
     }
 }
 

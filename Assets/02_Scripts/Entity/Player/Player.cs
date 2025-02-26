@@ -31,14 +31,15 @@ public class Player : MonoBehaviour
     public float invincible; //무적 시간
     
     protected bool die = false; // 사망 상태
-    
+    public bool isDropped = false;
     public int canRevive;
     
     private Rigidbody2D rb;
     private Animator animator;
     
     private PlayerState playerState;
-    
+
+    private Treasure treasure; // 착용 보물
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -197,10 +198,13 @@ public class Player : MonoBehaviour
             TakeDamage(10);
         Debug.Log("Collision, Damaged -10");
         StartCoroutine(Invincible());
-        
+
         // 낙사 구간에 빠지면 Die
-        if(collision.gameObject.CompareTag("DropZone"))
+        if (collision.gameObject.CompareTag("DropZone"))
+        {
+            isDropped = true;
             Die();
+        }
     }
 
     /// <summary>
@@ -245,6 +249,27 @@ public class Player : MonoBehaviour
         {
         die = true;
         Debug.Log("Die");
+        }
+    }
+
+    // 보물 관련
+    public void Equip(Treasure t)
+    {
+        if (treasure != null)
+        {
+            Unequip();
+        }
+        treasure = t;
+        treasure.Equip(this);
+
+    }
+
+    public void Unequip()
+    {
+        if (treasure != null)
+        {
+            treasure.Unequip();
+            treasure = null;
         }
     }
 }

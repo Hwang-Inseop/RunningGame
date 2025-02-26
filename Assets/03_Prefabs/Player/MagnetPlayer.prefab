@@ -87,9 +87,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7145089447525534909}
   - component: {fileID: 8598749919279931810}
-  - component: {fileID: -5718948176528159697}
+  - component: {fileID: -5019665270896115375}
   - component: {fileID: 4997763065254461336}
   - component: {fileID: 7757509413464118101}
+  - component: {fileID: -2613124879623156502}
   m_Layer: 0
   m_Name: MagnetPlayer
   m_TagString: Player
@@ -141,7 +142,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-5718948176528159697
+--- !u!114 &-5019665270896115375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,23 +151,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7971993537832504277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed49a7fe2a3e4042830486cb1456f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b319528e19b3fc4d9188c13765bff69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 3
   maxJumpHoldTime: 0.3
   doubleJumpForce: 5
   isSliding: 0
-  normalCollider: {fileID: 0}
-  slideCollider: {fileID: 0}
+  normalCollider: {fileID: 8895180005282644817}
+  slideCollider: {fileID: 7466042907592339946}
   maxHP: 0
   currentHP: 0
   damage: 0
   hpDrainInterval: 1
   invincible: 0
   canRevive: 0
-  coolTime: 0
-  abilityDuration: 0
+  coolTime: 30
+  duration: 5
 --- !u!212 &4997763065254461336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -240,6 +241,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &-2613124879623156502
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971993537832504277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.4189416
 --- !u!1 &7980905260183689520
 GameObject:
   m_ObjectHideFlags: 0
