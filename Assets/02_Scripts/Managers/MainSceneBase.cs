@@ -15,9 +15,10 @@ namespace RunningGame.Managers
         [Header("MainScene Datas")]
         [SerializeField] private InteractionItemDatas interactionItemDatas;
         [SerializeField] private PatternDatas patternDatas;
+        [SerializeField] private PlayerPrefabs playerPrefabs;
         
         [Header("MainScene Transform")]
-        [SerializeField] private Transform LoopableObjectRoot;
+        [SerializeField] private Transform loopableObjectRoot;
         [SerializeField] private Transform playerSpawnPoint;
         
         [Header("Event")]
@@ -49,6 +50,7 @@ namespace RunningGame.Managers
             
             // 게임 시작
             onGameStart?.Invoke();
+            SpawnPlayer();
             isGameStart = true;
         }
 
@@ -87,7 +89,20 @@ namespace RunningGame.Managers
 
         private void SpawnPlayer()
         {
-            // TODO: 플레이어 스폰 구현
+            // TODO: GameManager에서 선택한 캐릭터 정보 가져오기
+
+            var obj = playerPrefabs.GetPlayerPrefab(0);
+            var player = Instantiate(obj, playerSpawnPoint);
+            player.transform.localPosition = Vector3.zero;
+            player.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+        }
+
+        public void GameOver()
+        {
+            // if (!isSecondPlayer)
+            // 
+            // else
+            // GameOver
         }
 
         public bool IsStart()
@@ -97,7 +112,7 @@ namespace RunningGame.Managers
 
         public Transform GetLoopableRoot()
         {
-            return LoopableObjectRoot;
+            return loopableObjectRoot;
         }
         
         public void AddGameStartListener(UnityAction action)
