@@ -49,13 +49,17 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI charTalk;
 
-    [Header("캐릭터 해금에 필요한 쥬얼이 보이는 칸")]
-    [SerializeField]
-    private Image jewelImg;
-
     [Header("캐릭터 능력이 적힐 칸")]
     [SerializeField]
     private TextMeshProUGUI abilityTxt;
+
+    [Header("보유한 잼의 개수가 적힐 칸")]
+    [SerializeField]
+    private TextMeshProUGUI jemCountTxt;
+
+    [Header("해금하기 버튼")]
+    [SerializeField]
+    private GameObject unlockBtn;
 
     [Header("1주자로 달린다는 표시")]
     public List<GameObject> firstSelectedImage = new List<GameObject>();
@@ -65,6 +69,8 @@ public class CharacterUIManager : MonoBehaviour
 
     //패널에 뜨는 주자의 번호
     private int runnerPanelNum = 0;
+
+    private int limitToUnlock = 50;
 
     //초기 설정
     void Start()
@@ -119,8 +125,17 @@ public class CharacterUIManager : MonoBehaviour
         nameTxt.text = charInfo.CharName;
         healthTxt.text = charInfo.Health.ToString();
         charTalk.text = charInfo.Talk;
-        jewelImg.GetComponent<Image>().sprite = charInfo.Jewel;
         abilityTxt.text = charInfo.Ability;
+
+        jemCountTxt.text = GameManager.Instance.JemCount.ToString();
+        if(charInfo.IsOpened)
+        {
+            unlockBtn.SetActive(false);
+        }
+        else
+        {
+            unlockBtn.SetActive(true);
+        }
 
         runnerPanelNum = charInfo.CharacterNum;
         PanelFadeIn();
@@ -153,13 +168,10 @@ public class CharacterUIManager : MonoBehaviour
     //첫번째 주자 바꾸기
     public void ChangeFirstRunner()
     {
-        CharacterInfo cInfo01 = GameManager.Instance.firstCharacterInfo;
-        CharacterInfo cInfo02 = GameManager.Instance.secondCharacterInfo;
-        //여기에 두번째 주자와 같은가?를 검사하는 조건도 추가해야함
-        if (cInfo01 == cInfo02)
-        {
-            DisplayWarning();
-        }
+        CharacterInfo cInfo01 = GameManager.Instance.secondCharacterInfo;
+        CharacterInfo cInfo02 = characterInfos[runnerPanelNum - 1];
+
+        if (cInfo01 == cInfo02 || !cInfo02.IsOpened) { }
         else
         {
             GameManager.Instance.firstCharacterInfo = characterInfos[runnerPanelNum - 1];
@@ -181,13 +193,10 @@ public class CharacterUIManager : MonoBehaviour
     //두번째 주자 바꾸기
     public void ChangeSecondRunner()
     {
-        CharacterInfo cInfo01 = GameManager.Instance.firstCharacterInfo;
-        CharacterInfo cInfo02 = GameManager.Instance.secondCharacterInfo;
-        //여기에 첫번째 주자와 같은가?를 검사하는 조건도 추가해야함
-        if (cInfo02 == cInfo01)
-        {
-            DisplayWarning();
-        }
+        CharacterInfo cInfo01 = characterInfos[runnerPanelNum - 1];
+        CharacterInfo cInfo02 = GameManager.Instance.firstCharacterInfo;
+
+        if (cInfo02 == cInfo01 || !cInfo01.IsOpened) { }
         else
         {
             GameManager.Instance.secondCharacterInfo = characterInfos[runnerPanelNum - 1];
@@ -244,12 +253,6 @@ public class CharacterUIManager : MonoBehaviour
         }
     }
 
-    //"이미 주자로 선택된 캐릭터입니다." =>그냥 무시하기로?
-    public void DisplayWarning()
-    {
-        Debug.Log("이미 주자로 선택된 캐릭터입니다.");
-    }
-
     //이어달리기 전부 해제
     public void CheckoutSecondRunner()
     {
@@ -271,4 +274,17 @@ public class CharacterUIManager : MonoBehaviour
     {
         emptyPanel.SetActive(true);
     }
+
+    //캐릭터 잠금해제
+    public void UnlockCharacter()
+    {
+        if(GameManager.Instance.JemCount >= limitToUnlock)
+        {
+            GameManager.Instance.JemCount -= limitToUnlock;
+            jemCountTxt.text = GameManager.Instance.JemCount.ToString();
+            characterInfos[runnerPanelNum - 1].IsOpened = true;
+            unlockBtn.SetActive(false);
+        }
+    }
+
 }
