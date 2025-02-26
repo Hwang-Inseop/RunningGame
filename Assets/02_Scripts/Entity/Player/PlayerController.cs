@@ -39,14 +39,13 @@ public class PlayerController : MonoBehaviour
     
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         ChangeState(PlayerState.isRunning); //게임 시작 즉시 Awake에서 상태를 isRunning로
     }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        
         slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
         
         currentHP = maxHP; // 게임 시작시 HP MAX

@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Coin : Item
     {
         base.ApplyEffect(player);
         // 코인 증가 += cointAmount;
+        SoundManager.Instance.PlaySfx(SoundType.CoinSfx, 0.5f);
     }
 
 

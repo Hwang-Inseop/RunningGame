@@ -1,4 +1,5 @@
 using RunningGame.Managers;
+using System;
 
 namespace RunningGame.Utils
 {
@@ -16,6 +17,23 @@ namespace RunningGame.Utils
                 "hud_heartHalf" => "HalfHealthPotion",
                 "hud_heartFull" => "HealthPotion",
                 _               => throw new System.Exception("Invalid object name")
+            };
+        }
+
+        public static string GetSoundKey(this SoundType soundType)
+        {
+            return soundType switch
+            {
+                SoundType.TitleBgm    => "",
+                SoundType.LobbyBgm    => "",
+                SoundType.MainBgm     => "",
+                SoundType.CoinSfx     => "CoinCollect",
+                SoundType.JumpSfx     => "",
+                SoundType.SlideSfx    => "",
+                SoundType.HitSfx      => "",
+                SoundType.GameOverSfx => "",
+                SoundType.ButtonSfx   => "",
+                _                     => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
             };
         }
     }
