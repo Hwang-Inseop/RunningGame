@@ -83,16 +83,9 @@ namespace RunningGame.Managers
     // TODO: Define으로 옮기기
     public enum SoundType
     {
-        TitleBgm,
-        LobbyBgm,
         Stage01Bgm,
         Stage02Bgm,
         Stage03Bgm,
-        CoinSfx,
-        JumpSfx,
-        SlideSfx,
-        HitSfx,
-        GameOverSfx,
         ButtonSfx,
     }
 }

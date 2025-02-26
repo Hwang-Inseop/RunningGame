@@ -10,19 +10,16 @@ public class TilemapObjectPlacer : MonoBehaviour
     private Tilemap tilemap;
     private TilemapRenderer tilemapRenderer;
 
-    public void Init()
+    private void Awake()
     {
         tilemap = GetComponent<Tilemap>();
         tilemapRenderer = GetComponent<TilemapRenderer>();
     }
-    
+
     private void Start()
     {
-        tilemap = GetComponent<Tilemap>();
-        tilemapRenderer = GetComponent<TilemapRenderer>();
-        
         if (objectPlacerType == ObjectPlacerType.Static) return;
-        PlaceObject();
+            MainSceneBase.Instance.AddPatternSpawnListener(PlaceObject);
     }
 
     public void PlaceObject()

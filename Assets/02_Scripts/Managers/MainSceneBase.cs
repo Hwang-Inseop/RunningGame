@@ -23,6 +23,8 @@ namespace RunningGame.Managers
         
         [Header("Event")]
         [SerializeField] private UnityEvent onGameStart = new();
+        [SerializeField] private UnityEvent onPatternSpawn = new();
+        
         private int selectedStage;
         private bool isGameStart;
         
@@ -34,6 +36,7 @@ namespace RunningGame.Managers
         private void OnDestroy()
         {
             onGameStart.RemoveAllListeners();
+            onPatternSpawn.RemoveAllListeners();
         }
 
         public override void Init()
@@ -74,7 +77,7 @@ namespace RunningGame.Managers
             for (int i = 0; i < coinList.Count; i++)
             {
                 var prefab = coinList[i];
-                MainPoolManager.Instance.CreatePool(prefab, 50);
+                MainPoolManager.Instance.CreatePool(prefab, 100);
             }
 
             var heartList = interactionItemDatas.GetHeartPrefabs();
@@ -135,5 +138,17 @@ namespace RunningGame.Managers
         {
             return loopableObjectRoot;
         }
+
+        #region Event
+        public void AddPatternSpawnListener(UnityAction action)
+        {
+            onPatternSpawn.AddListener(action);
+        }
+        
+        public void InvokePatternSpawn()
+        {
+            onPatternSpawn?.Invoke();
+        }
+        #endregion
     }
 }
