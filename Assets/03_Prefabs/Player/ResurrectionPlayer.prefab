@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 8598749919279931810}
   - component: {fileID: 4997763065254461336}
   - component: {fileID: 4708338997121684143}
+  - component: {fileID: 1543228958631574746}
   m_Layer: 0
   m_Name: ResurrectionPlayer
   m_TagString: Untagged
@@ -181,7 +182,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 261e49c5e3cc73d47ab13ce0c4e5dbc1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da05768f282a90541a75a442dafe8cdd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -215,7 +216,29 @@ MonoBehaviour:
   damage: 1
   hpDrainInterval: 1
   invincible: 3
+  canRevive: 1
   revivalInterval: 1
+--- !u!95 &1543228958631574746
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971993537832504277}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d6468e50cad2da4ab1c8c9571a4af8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7980905260183689520
 GameObject:
   m_ObjectHideFlags: 0
