@@ -11,7 +11,7 @@ namespace RunningGame.Managers
     public class MainUIManager : SceneSingleton<MainUIManager>
     {
         private bool isPause = false;
-        private PlayerController player;
+        private Player player;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
         public Item item;
