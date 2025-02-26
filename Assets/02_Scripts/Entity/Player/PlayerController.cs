@@ -85,7 +85,9 @@ public class PlayerController : MonoBehaviour
     }
 
     #region 점프 조작
-    // 점프 조작 메서드
+    /// <summary>
+    /// 점프 조작 메서드
+    /// </summary>
     void PlayerJump()
     {
         if (Input.GetKeyDown(KeyCode.Z) && isRunning) // Z키 눌렀을 때 && 땅에 붙어있을 때
@@ -124,7 +126,9 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region 슬라이드 조작
-    // 슬라이드 조작 메서드
+    /// <summary>
+    /// 슬라이드 조작 메서드
+    /// </summary>
     void PlayerSlide()
     {
         if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping)
@@ -148,7 +152,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 
+        if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 바닥에서 달리는 상태
             isRunning = true;
         Debug.Log("isRunning");
         animator.SetBool("isRunning", true);
@@ -176,6 +180,9 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(hpDrainInterval);
             TakeDamage(damage);
             Debug.Log("HP: " + currentHP);
+            
+            if (currentHP <= 0) // 체력이 <= 0이면 Die
+                Die();
         }
     }
     
@@ -188,10 +195,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Collision, Damaged -10");
         StartCoroutine(Invincible());
         
+        // 낙사 구간에 빠지면 Die
         if(collision.gameObject.CompareTag("DropZone"))
             Die();
     }
 
+    /// <summary>
+    /// 장애물과 충돌 시 invincible 시간동안 무적 상태
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Invincible()
     {
         damaged = true;
@@ -221,6 +233,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 사망 시 호출되는 메서드
+    /// </summary>
     void Die()
     {
         die = true;
