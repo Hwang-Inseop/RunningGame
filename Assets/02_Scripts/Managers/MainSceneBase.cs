@@ -135,10 +135,5 @@ namespace RunningGame.Managers
         {
             return loopableObjectRoot;
         }
-        
-        public void AddGameStartListener(UnityAction action)
-        {
-            onGameStart.AddListener(action);
-        }
     }
 }

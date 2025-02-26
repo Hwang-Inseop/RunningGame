@@ -34,7 +34,6 @@ namespace RunningGame.Utils
                 SoundType.SlideSfx    => "",
                 SoundType.HitSfx      => "",
                 SoundType.GameOverSfx => "",
-                SoundType.ButtonSfx   => "MouseButton",
                 SoundType.ButtonSfx   => "ButtonClick",
                 _                     => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
             };
