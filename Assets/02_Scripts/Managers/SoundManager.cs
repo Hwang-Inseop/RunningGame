@@ -28,21 +28,6 @@ namespace RunningGame.Managers
             }
         }
 
-        public void Init()
-        {
-            var mainCam = Camera.main;
-            if (mainCam == null)
-            {
-                Debug.LogError("SoundManager : Camera.main이 존재하지 않습니다.");
-                return;
-            }
-
-            bgmSource.transform.SetParent(mainCam.transform);
-            bgmSource.transform.localPosition = Vector3.zero;
-            sfxSource.transform.SetParent(mainCam.transform);
-            sfxSource.transform.localPosition = Vector3.zero;
-        }
-
         private AudioClip GetAudioClip(string key)
         {
             if (audioClips.TryGetValue(key, out AudioClip clip))
@@ -60,12 +45,6 @@ namespace RunningGame.Managers
                 audioClips.Add(key, audioClip);
                 return audioClip;
             }
-        }
-
-        public void UnloadScene()
-        {
-            bgmSource.transform.SetParent(transform);
-            sfxSource.transform.SetParent(transform);
         }
 
         public void PlayBgm(SoundType sound, float volume = 0.7f)
@@ -87,6 +66,13 @@ namespace RunningGame.Managers
         {
             AudioClip clip = GetAudioClip(sound.GetSoundKey());
             sfxSource.PlayOneShot(clip, volume);
+        }
+
+        public IEnumerator PlaySfxWithDelay(SoundType sound, float volume = 0.8f)
+        {
+            AudioClip clip = GetAudioClip(sound.GetSoundKey());
+            sfxSource.PlayOneShot(clip, volume);
+            yield return new WaitForSeconds(clip.length);
         }
     }
     
