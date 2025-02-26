@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageinfo: {fileID: 11400000, guid: c3c6f73215c18d14da07df8926c976e3, type: 2}
-  firstCharacterInfo: {fileID: 0}
+  firstCharacterInfo: {fileID: 11400000, guid: 476d4e559a05b13459fd2c2fad1221b7, type: 2}
   secondCharacterInfo: {fileID: 0}
   treasureInfo: {fileID: 0}
 --- !u!4 &89109604
@@ -3897,18 +3897,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 411819182}
-        m_TargetAssemblyTypeName: LobbyBGLooper, Assembly-CSharp
-        m_MethodName: ChangeBackground
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1563879092}
         m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
         m_MethodName: CheckSelectedStage
@@ -3924,6 +3912,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1563879092}
         m_TargetAssemblyTypeName: LobbyUIManager, Assembly-CSharp
         m_MethodName: ChangeSelectedStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 411819182}
+        m_TargetAssemblyTypeName: LobbyBGLooper, Assembly-CSharp
+        m_MethodName: ChangeBackground
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class LobbyBGLooper : MonoBehaviour
@@ -42,7 +43,7 @@ public class LobbyBGLooper : MonoBehaviour
 
     public void ChangeBackground()
     {
-        StageInfo stage = stages.FirstOrDefault(stage => stage.StageNum == PlayerPrefs.GetInt("choosedStage"));
+        StageInfo stage = GameManager.Instance.stageinfo;
         foreach (GameObject go in bgs)
         {
             go.transform.GetComponent<SpriteRenderer>().sprite = stage.Background;

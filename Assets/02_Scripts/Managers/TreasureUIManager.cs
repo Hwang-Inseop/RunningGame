@@ -42,6 +42,7 @@ public class TreasureUIManager : MonoBehaviour
     [Header("체크 이미지")]
     public List<GameObject> checkImgs = new List<GameObject>();
 
+    //패널을 누를때 현재 보이는 보물의 숫자
     private int currentTreasureNum = 0;
 
     void Start()

@@ -58,6 +58,7 @@ public class LobbyUIManager : MonoBehaviour
     [Header("CharacterInfo")]
     public List<CharacterInfo> cInfos = new List<CharacterInfo>();
 
+    private int currentStagePage = 1;
 
     //초기 설정
     void Start()
@@ -115,7 +116,8 @@ public class LobbyUIManager : MonoBehaviour
     //스테이지 설명 보여주기
     public void ShowStageDescription(StageInfo stageInfo)
     {
-        PlayerPrefs.SetInt("choosedStage", stageInfo.StageNum);
+        currentStagePage = stageInfo.StageNum;
+
         stageDescriptionTxt.text = stageInfo.StageDescription;
         stageDescriptionImg.sprite = stageInfo.Background;
     }
@@ -123,9 +125,11 @@ public class LobbyUIManager : MonoBehaviour
     //적용된 스테이지 체크표시해주기
     public void CheckSelectedStage()
     {
-        for(int i = 1; i <= checkImg.Count; i++)
+        GameManager.Instance.stageinfo = stages[currentStagePage - 1];
+
+        for (int i = 1; i <= checkImg.Count; i++)
         {
-            if (PlayerPrefs.GetInt("choosedStage") == i)
+            if (i == currentStagePage)
             {
                 checkImg[i - 1].SetActive(true);
             }
@@ -139,8 +143,7 @@ public class LobbyUIManager : MonoBehaviour
     //선택된 스테이지로 변경
     public void ChangeSelectedStage()
     {
-        StageInfo stage = stages.FirstOrDefault(stage => stage.StageNum == PlayerPrefs.GetInt("choosedStage"));
-        GameManager.Instance.stageinfo = stage;
+        GameManager.Instance.stageinfo = stages[currentStagePage - 1];
     }
 
     //씬 로드
@@ -152,15 +155,16 @@ public class LobbyUIManager : MonoBehaviour
     //시작 시에 선택된 캐릭터의 이미지가 보이게 하도록 하기 
     public void InitCharacterImg()
     {
-        CharacterInfo cInfo_01 = cInfos.FirstOrDefault(info => info.CharacterNum == PlayerPrefs.GetInt("firstRunnerNum"));
-        firstRunnerImg.sprite = cInfo_01.CharSprite;
+        CharacterInfo cInfo01 = GameManager.Instance.firstCharacterInfo;
+        CharacterInfo cInfo02 = GameManager.Instance.secondCharacterInfo;
+        firstRunnerImg.sprite = cInfo01.CharSprite;
         
         //이어달리기 유무를 고려
-        if (PlayerPrefs.GetInt("secondRunnerNum") != 0)
+        if (GameManager.Instance.secondCharacterInfo != null)
         {
             SetSecondImageOpicity(1);
-            CharacterInfo cInfo_02 = cInfos.FirstOrDefault(info => info.CharacterNum == PlayerPrefs.GetInt("secondRunnerNum"));
-            secondRunnerImg.sprite = cInfo_02.CharSprite;
+           
+            secondRunnerImg.sprite = cInfo02.CharSprite;
         }
         else
         {
@@ -189,5 +193,4 @@ public class LobbyUIManager : MonoBehaviour
         color.a = Mathf.Clamp01(index);
         secondRunnerImg.color = color;
     }
-
 }
