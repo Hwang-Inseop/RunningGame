@@ -14,7 +14,7 @@ namespace RunningGame.Managers
         private Player player;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
-        public Item item;
+        private Item item;
         public GameObject gameOverPanel;
 
         [Header("점수 표시")]
@@ -25,16 +25,22 @@ namespace RunningGame.Managers
         public int totalGold = 0;
         public TextMeshProUGUI totalGoldTxt;
 
-        [Header("체력 표시")]
-        private float hp;
-        public Slider healthSlider;
-        
-
         public override void Init() //시작시 초기화 
         {
             int totalGold = 0;
             int totalScore = 0;
+            AddScore();
+            AddGold();
         }
+
+        //public void PauseGame() // 게임 일시 정지
+        //{
+        //    Debug.Log("게임 일시 정지");
+        //    isPause = !isPause;
+        //    pauseMenu.SetActive(true);
+        //    Time.timeScale = 0f;
+        //}
+
         public void ResumeGame()
         {
             Debug.Log("Click");

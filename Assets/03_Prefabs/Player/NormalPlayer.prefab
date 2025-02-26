@@ -140,7 +140,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!212 &4997763065254461336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   damage: 1
   hpDrainInterval: 1
   invincible: 3
+  isDropped: 0
   canRevive: 0
 --- !u!1 &7980905260183689520
 GameObject:
