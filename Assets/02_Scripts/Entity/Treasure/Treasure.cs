@@ -29,6 +29,12 @@ public class Treasure : MonoBehaviour
             IsEquipped = true;
             this.player = player;
 
+            Canvas canvas = FindObjectOfType<Canvas>();
+            if(canvas != null)
+            {
+                transform.SetParent(canvas.transform, true);
+            }
+            
             StartCoroutine(WaitForStart());
         }
     }
@@ -52,6 +58,7 @@ public class Treasure : MonoBehaviour
             ApplyEffect(player);
             hasEffect = true;
         }
+        yield return null;
     }
 }
 

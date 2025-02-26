@@ -29,4 +29,8 @@ public class TreasureInfo : ScriptableObject
     private Sprite treasureImg;
 
     public Sprite TreasureImg { get { return treasureImg; } }
+
+    [SerializeField]
+    private GameObject treasureObj;
+    public GameObject TreasureObj { get { return treasureObj; } }
 }

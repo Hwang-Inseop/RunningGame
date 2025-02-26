@@ -44,4 +44,29 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    public Treasure GetTreasureInstance()
+    {
+        if (Instance.treasureInfo == null)
+        {
+            Debug.LogError("GameManager: treasureInfo가 설정되지 않았습니다.");
+            return null;
+        }
+
+        if (Instance.treasureInfo.TreasureObj == null)
+        {
+            Debug.LogError("GameManager: treasureInfo.TreasureObj가 설정되지 않았습니다.");
+            return null;
+        }
+
+        GameObject treasureObj = Instantiate(Instance.treasureInfo.TreasureObj, transform);
+        Treasure treasure = treasureObj.GetComponent<Treasure>();
+
+        if (treasure == null)
+        {
+            Destroy(treasureObj);
+            return null;
+        }
+
+        return treasure;
+    }
 }
