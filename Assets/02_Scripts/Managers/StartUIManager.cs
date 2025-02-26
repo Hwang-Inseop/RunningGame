@@ -1,4 +1,5 @@
 using DG.Tweening;
+using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ public class StartUIManager : MonoBehaviour
     //게임 종료
     public void OnApplicationQuit()
     {
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.8f);
         Debug.Log("게임종료");
     }
 
@@ -42,6 +44,7 @@ public class StartUIManager : MonoBehaviour
     }
     public void PressStart()
     {
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.8f);
         startDisplay.OnStartButtonClicked();
         Invoke("LoadSceneDelayed", 1.5f);
     }
