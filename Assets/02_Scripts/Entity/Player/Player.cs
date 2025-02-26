@@ -34,10 +34,6 @@ public class Player : MonoBehaviour
     public bool isDropped = false;
     public int canRevive;
     
-    public AudioSource audioSource; // 오디오 소스 컴포넌트
-    public AudioClip jumpSound; // 점프 사운드
-    public AudioClip slideSound; // 슬라이딩 사운드
-    
     private Rigidbody2D rb;
     private Animator animator;
     
@@ -48,7 +44,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
         ChangeState(PlayerState.isRunning); //게임 시작 즉시 Awake에서 상태를 isRunning로
     }
 
@@ -111,14 +106,12 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", true);
-            audioSource.PlayOneShot(jumpSound);
             Debug.Log("Jump");
         }
         else if (Input.GetKeyDown(KeyCode.Z) && canDoubleJump) // 공중에서 한 번 더 점프 가능
         {
             canDoubleJump = false;
             rb.velocity = new Vector2(rb.velocity.x, doubleJumpForce);
-            audioSource.PlayOneShot(jumpSound);
             Debug.Log("DoubleJump");
         }
 
@@ -151,7 +144,6 @@ public class Player : MonoBehaviour
             normalCollider.enabled = false; // 기본 콜라이더 비활성화
             slideCollider.enabled = true; // 슬라이딩용 콜라이더 활성화
             animator.SetBool("isSliding", true);
-            audioSource.PlayOneShot(slideSound);
             Debug.Log("Start Slide");
         }
         else if (Input.GetKeyUp(KeyCode.X) && isSliding)
