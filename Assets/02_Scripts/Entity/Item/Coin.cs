@@ -10,7 +10,8 @@ public class Coin : Item
     public override void ApplyEffect(Player player)
     {
         base.ApplyEffect(player);
-        // 코인 증가 += cointAmount;
+         // 코인 증가 += cointAmount;
+        SoundManager.Instance.PlaySfx(SoundType.CoinSfx, 0.5f);
     }
 
 

@@ -24,7 +24,7 @@ namespace RunningGame.Utils
         {
             return soundType switch
             {
-                SoundType.TitleBgm    => "",
+                SoundType.TitleBgm    => "PeaceIntro",
                 SoundType.LobbyBgm    => "",
                 SoundType.Stage01Bgm  => "Stage01",
                 SoundType.Stage02Bgm  => "Stage02",
