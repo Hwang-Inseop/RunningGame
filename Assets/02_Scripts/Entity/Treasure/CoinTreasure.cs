@@ -22,7 +22,6 @@ public class CoinTreasure : Treasure
         hasSpawned = true;
         while (true)
         {
-            //if (!MainSceneBase.Instance.IsStart()) yield break; //게임 끝나면 중단
             yield return new WaitForSeconds(intervalTime);
             Instantiate(extraCoin, coinPosition.position, Quaternion.identity);
 

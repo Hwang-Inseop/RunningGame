@@ -38,7 +38,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     
     private PlayerState playerState;
-    
+
+    private Treasure treasure; // 착용 보물
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -245,6 +246,27 @@ public class Player : MonoBehaviour
         {
         die = true;
         Debug.Log("Die");
+        }
+    }
+
+    // 보물 관련
+    public void Equip(Treasure t)
+    {
+        if (treasure != null)
+        {
+            Unequip();
+        }
+        treasure = t;
+        treasure.Equip(this);
+
+    }
+
+    public void Unequip()
+    {
+        if (treasure != null)
+        {
+            treasure.Unequip();
+            treasure = null;
         }
     }
 }
