@@ -194,11 +194,13 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 장애물과 충돌하면 대미지, 잠시 무적
-        if(!damaged && collision.gameObject.CompareTag("Obstacle"))
+        if (!damaged && collision.gameObject.CompareTag("Obstacle"))
+        {
             TakeDamage(10);
-        Debug.Log("Collision, Damaged -10");
-        StartCoroutine(Invincible());
-
+            Debug.Log("Collision, Damaged -10");
+            StartCoroutine(Invincible());
+        }
+        
         // 낙사 구간에 빠지면 Die
         if (collision.gameObject.CompareTag("DropZone"))
         {
