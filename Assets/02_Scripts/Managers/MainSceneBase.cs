@@ -41,6 +41,7 @@ namespace RunningGame.Managers
             // Manager 초기화
             MainPoolManager.Instance.Init();
             MainUIManager.Instance.Init();
+            SoundManager.Instance.Init();
             
             // 메인 게임 초기화
             CreatPatternPool();
