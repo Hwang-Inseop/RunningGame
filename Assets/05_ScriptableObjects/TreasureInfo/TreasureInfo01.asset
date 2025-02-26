@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb862983040e154fa9e1926ae767a50, type: 3}
+  m_Name: TreasureInfo01
+  m_EditorClassIdentifier: 
+  treasureNum: 1
+  treasureName: "1\uBC88 \uBCF4\uBB3C \uC774\uB984"
+  ability: "\uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4 \uCD94\uAC00 \uCF54\uC778 \uC0DD\uC131"
+  treasureImg: {fileID: 21300000, guid: 0bbcc77e2a510934ebc86792b9b948ca, type: 3}

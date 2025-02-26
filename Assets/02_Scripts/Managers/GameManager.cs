@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour
 
     public CharacterInfo firstCharacterInfo;
 
-    public CharacterInfo CharacterInfo;
+    public CharacterInfo secondCharacterInfo;
+
+    public TreasureInfo treasureInfo;
 
     private void Awake()
     {

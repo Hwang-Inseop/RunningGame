@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,6 +40,18 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField]
     private Image secondRunnerImg;
 
+    [Header("보물 이미지")]
+    [SerializeField]
+    private Image treasureImg;
+
+    [Header("보물 이름 텍스트")]
+    [SerializeField]
+    private TextMeshProUGUI treasureNameTxt;
+
+    [Header("장착보물이 없다는 sprite")]
+    [SerializeField]
+    private Sprite noTreasureSprite;
+
     [Header("StageInfo")]
     public List<StageInfo> stages = new List<StageInfo>();
 
@@ -54,6 +66,7 @@ public class LobbyUIManager : MonoBehaviour
         stageDescriptionImg.sprite = GameManager.Instance.stageinfo.Background;
         CheckSelectedStage();
         InitCharacterImg();
+        InitTreasureInfo();
 
         fadePanelGo.SetActive(true);
         fadePanel.alpha = 0f;
@@ -153,8 +166,21 @@ public class LobbyUIManager : MonoBehaviour
         {
             SetSecondImageOpicity(0);
         }
-
     }
+
+    public void InitTreasureInfo()
+    {
+        if(GameManager.Instance.treasureInfo != null)
+        {
+            treasureImg.sprite = GameManager.Instance.treasureInfo.TreasureImg;
+            treasureNameTxt.text = GameManager.Instance.treasureInfo.TreasureName;
+        }
+        else
+        {
+            treasureImg.sprite = noTreasureSprite;
+        }
+    }
+
 
     //2번째 주자의 이미지 투명도 조절
     public void SetSecondImageOpicity(float index)

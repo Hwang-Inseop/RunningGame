@@ -227,7 +227,7 @@ public class CharacterUIManager : MonoBehaviour
         if(PlayerPrefs.GetInt("secondRunnerNum") != 0)
         {
             CharacterInfo cInfo = characterInfos.FirstOrDefault(cInfo => cInfo.CharacterNum == PlayerPrefs.GetInt("secondRunnerNum"));
-            GameManager.Instance.CharacterInfo = cInfo;
+            GameManager.Instance.secondCharacterInfo = cInfo;
 
             for (int i = 1; i <= secondSelectedImage.Count; i++)
             {
