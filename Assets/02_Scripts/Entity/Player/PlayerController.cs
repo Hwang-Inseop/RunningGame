@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,6 +58,11 @@ public class PlayerController : MonoBehaviour
     {
         HandleInput();
         UpdateState();
+        if (!MainSceneBase.Instance.IsStart())
+        {
+            ApplyEffect();
+        }
+        
     }
 
     /// <summary>
@@ -199,13 +205,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("DropZone"))
             Die();
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("LoopableItem"))
-        {
-            StartCoroutine(Magnetic(collision.transform));
-        }
-    }
+
 
     /// <summary>
     /// 장애물과 충돌 시 invincible 시간동안 무적 상태
@@ -268,20 +268,6 @@ public class PlayerController : MonoBehaviour
             treasure = null;
         }
     }
+    public virtual void ApplyEffect() { }
 
-    public IEnumerator Magnetic(Transform coin)
-    {
-        float duration = 1f; // 이동하는 데 걸리는 시간
-        float elapsedTime = 0f;
-
-        Vector3 startPos = coin.position;
-        Vector3 targetPos = transform.position;
-
-        while (elapsedTime < duration && coin != null)
-        {
-            coin.position = Vector3.Lerp(startPos, targetPos, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-    }
 }
