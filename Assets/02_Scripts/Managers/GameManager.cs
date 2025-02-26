@@ -26,14 +26,6 @@ public class GameManager : MonoBehaviour
 
     public CharacterInfo CharacterInfo;
 
-    private PlayerController player;
-    public enum characterState //enum을 통한 캐릭터 상태 
-    {
-        ready,
-        running,
-        finished
-    }
-
     private void Awake()
     {
         if (instance == null)

@@ -8,7 +8,7 @@ using UnityEngine.XR;
 //플레이어가 가질 수 있는 상태 정의: 땅에서 달리는 상태, 땅에 붙어있는 상태, 점프한 상태
 public enum PlayerState {isRunning, isJumping, isSliding}
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private bool isRunning = false; // idle 바닥에서 달리는 중인 상태
     
@@ -27,10 +27,12 @@ public class PlayerController : MonoBehaviour
     public int currentHP; // 현재 HP
     public int damage; // 대미지 수치
     public float hpDrainInterval = 1f; // 체력 지속 소모 시간 간격 (1초)
-    private bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
+    protected bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
     public float invincible; //무적 시간
     
-    private bool die = false; // 사망 상태
+    protected bool die = false; // 사망 상태
+    
+    public int canRevive;
     
     private Rigidbody2D rb;
     private Animator animator;
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
         ChangeState(PlayerState.isRunning); //게임 시작 즉시 Awake에서 상태를 isRunning로
     }
 
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -53,10 +55,15 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DrainHp()); // 체력 지속 소모 시작
     }
     
-    void Update()
+    protected virtual void Update()
     {
         HandleInput();
         UpdateState();
+    }
+
+    protected virtual void ActivateAbility()
+    {
+        
     }
 
     /// <summary>
@@ -173,16 +180,13 @@ public class PlayerController : MonoBehaviour
     /// 달리는동안 체력 지속 소모
     /// </summary>
     /// <returns></returns>
-    IEnumerator DrainHp()
+    protected IEnumerator DrainHp()
     {
         while (currentHP > 0)
         {
             yield return new WaitForSeconds(hpDrainInterval);
             TakeDamage(damage);
             Debug.Log("HP: " + currentHP);
-            
-            if (currentHP <= 0) // 체력이 <= 0이면 Die
-                Die();
         }
     }
     
@@ -238,7 +242,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Die()
     {
+        if (canRevive == 0)
+        {
         die = true;
         Debug.Log("Die");
+        }
     }
 }
