@@ -70,6 +70,7 @@ public class CharacterUIManager : MonoBehaviour
     //패널에 뜨는 주자의 번호
     private int runnerPanelNum = 0;
 
+    //잠금해제를 위한 잼의 필요 개수
     private int limitToUnlock = 50;
 
     //초기 설정
@@ -285,6 +286,12 @@ public class CharacterUIManager : MonoBehaviour
             characterInfos[runnerPanelNum - 1].IsOpened = true;
             unlockBtn.SetActive(false);
         }
+    }
+
+    //Dotween 오류 방지
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
     }
 
 }
