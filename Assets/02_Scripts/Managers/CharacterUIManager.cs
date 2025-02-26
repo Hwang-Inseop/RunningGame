@@ -94,13 +94,15 @@ public class CharacterUIManager : MonoBehaviour
     //크기 증가
     public void IncreaseScale()
     {
-        exitBtn.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
+        if (exitBtn != null)
+            exitBtn.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
     }
 
     //크기 감소 (원상복구)
     public void DecreaseScale()
     {
-        exitBtn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
+        if (exitBtn != null)
+            exitBtn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
     }
 
     //씬 로드
