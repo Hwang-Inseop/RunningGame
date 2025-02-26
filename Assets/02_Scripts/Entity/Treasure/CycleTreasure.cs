@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,6 @@ public class CycleTreasure : Treasure
     {
         while (true)
         {
-            //if (!MainSceneBase.Instance.IsStart()) yield break; //게임 끝나면 중단
             isActive = false;
             yield return new WaitForSeconds(intervalTime);
             Debug.Log("체력 감소 감소");

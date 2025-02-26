@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,13 @@ public class Treasure : MonoBehaviour
 
     private PlayerController player;
 
+    private void Update()
+    {
+        if (!MainSceneBase.Instance.IsStart())
+        {
+            StopAllCoroutines();
+        }
+    }
     public void Equip(PlayerController player)
     {
         if (!IsEquipped)
@@ -25,8 +33,7 @@ public class Treasure : MonoBehaviour
             {
                 // Player 부활 가능 횟수 += canRevive
             }
-            ApplyEffect(player);
-            //StartCoroutine(WaitForStart());
+            StartCoroutine(WaitForStart());
         }
     }
 
@@ -45,7 +52,7 @@ public class Treasure : MonoBehaviour
     public virtual void ApplyEffect(PlayerController player) { }
     private IEnumerator WaitForStart() // 게임 시작까지 대기
     {
-        while (true) // -> !MainSceneBase.Instance.IsStart())
+        while (!MainSceneBase.Instance.IsStart()) 
         {
             yield return null;
         }

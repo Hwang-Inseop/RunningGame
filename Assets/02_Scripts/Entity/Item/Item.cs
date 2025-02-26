@@ -24,11 +24,14 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) // 플레이어와 충돌 시
+        if (collision.GetComponentInParent<PlayerController>() != null) // 플레이어와 충돌 시
         {
-            PlayerController player = collision.GetComponent<PlayerController>();
-            ApplyEffect(player);
-            DestroyItem();
+            if (collision is BoxCollider2D)
+            {
+                PlayerController player = collision.GetComponentInParent<PlayerController>();
+                ApplyEffect(player);
+                DestroyItem();
+            }
         }
     }
 }
