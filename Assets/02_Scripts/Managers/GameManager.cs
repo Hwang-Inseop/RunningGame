@@ -54,18 +54,10 @@ public class GameManager : MonoBehaviour
     }
     public Treasure GetTreasureInstance()
     {
-        if (Instance.treasureInfo == null)
+        if (Instance.treasureInfo == null || Instance.treasureInfo.TreasureObj == null)
         {
-            Debug.LogError("GameManager: treasureInfo가 설정되지 않았습니다.");
             return null;
         }
-
-        if (Instance.treasureInfo.TreasureObj == null)
-        {
-            Debug.LogError("GameManager: treasureInfo.TreasureObj가 설정되지 않았습니다.");
-            return null;
-        }
-
         GameObject treasureObj = Instantiate(Instance.treasureInfo.TreasureObj, transform);
         Treasure treasure = treasureObj.GetComponent<Treasure>();
 
