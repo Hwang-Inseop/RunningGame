@@ -94,5 +94,7 @@ namespace RunningGame.Managers
         HitSfx,
         GameOverSfx,
         ButtonSfx,
+        PlayerJump,
+        PlayerSlide
     }
 }

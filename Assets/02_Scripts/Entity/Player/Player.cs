@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
     public float hpDrainInterval = 1f; // 체력 지속 소모 시간 간격 (1초)
     protected bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
     public float invincible; //무적 시간
+    private float blinkInterval = 0.1f; // 무적 시간동안 깜빡이는 시간
     
     protected bool die = false; // 사망 상태
     public bool isDropped = false;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     
     private Rigidbody2D rb;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     
     private PlayerState playerState;
 
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         ChangeState(PlayerState.isRunning); //게임 시작 즉시 Awake에서 상태를 isRunning로
     }
 
@@ -106,12 +110,14 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", true);
+            SoundManager.Instance.PlaySfx(SoundType.PlayerJump, 0.5f); // SoundManager로 점프 소리 재생
             Debug.Log("Jump");
         }
         else if (Input.GetKeyDown(KeyCode.Z) && canDoubleJump) // 공중에서 한 번 더 점프 가능
         {
             canDoubleJump = false;
             rb.velocity = new Vector2(rb.velocity.x, doubleJumpForce);
+            SoundManager.Instance.PlaySfx(SoundType.PlayerJump, 0.5f);
             Debug.Log("DoubleJump");
         }
 
@@ -144,6 +150,7 @@ public class Player : MonoBehaviour
             normalCollider.enabled = false; // 기본 콜라이더 비활성화
             slideCollider.enabled = true; // 슬라이딩용 콜라이더 활성화
             animator.SetBool("isSliding", true);
+            SoundManager.Instance.PlaySfx(SoundType.PlayerSlide, 1f);
             Debug.Log("Start Slide");
         }
         else if (Input.GetKeyUp(KeyCode.X) && isSliding)
@@ -217,12 +224,33 @@ public class Player : MonoBehaviour
     {
         damaged = true;
         float invincibleTime = invincible;
+        StartCoroutine(BlinkEffect());
         Debug.Log("Invincible Start");
         
         yield return new WaitForSeconds(invincibleTime);
         
         damaged = false;
         Debug.Log("Invincible End");
+    }
+
+    protected IEnumerator BlinkEffect()
+    {
+        float minAlpha = 0.4f; // 최소 투명도 (40%)
+        float maxAlpha = 1f; // 최대 투명도 (100%)
+        
+        Color spriteColor = spriteRenderer.color;
+
+        for (float i = 0; i < invincible; i += blinkInterval)
+        {
+            spriteColor.a = (spriteColor.a == maxAlpha) ? minAlpha : maxAlpha; // 깜빡이도록 알파값 변경
+            spriteRenderer.color = spriteColor; // 변경된 알파 색상 넣어줌
+            
+            yield return new WaitForSeconds(blinkInterval);
+        }
+        
+        // 원래 투명도로 복구
+        spriteColor.a = maxAlpha;
+        spriteRenderer.color = spriteColor;
     }
     
     /// <summary>
