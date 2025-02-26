@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 8598749919279931810}
   - component: {fileID: -5718948176528159697}
   - component: {fileID: 4997763065254461336}
+  - component: {fileID: 6629379523873693029}
   m_Layer: 0
   m_Name: SpeedUpPlayer
   m_TagString: Untagged
@@ -163,6 +164,7 @@ MonoBehaviour:
   damage: 0
   hpDrainInterval: 1
   invincible: 0
+  canRevive: 0
   coolTime: 0
   abilityDuration: 0
 --- !u!212 &4997763065254461336
@@ -206,7 +208,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 261e49c5e3cc73d47ab13ce0c4e5dbc1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4cf13d10cf44af3439e5e90cbdddd70f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -217,6 +219,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6629379523873693029
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971993537832504277}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bb521fb77734b045bff57ff8e0aa000, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7980905260183689520
 GameObject:
   m_ObjectHideFlags: 0
