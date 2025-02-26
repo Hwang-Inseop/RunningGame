@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7466042907592339946}
   m_Layer: 0
   m_Name: Slide
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6629379523873693029}
   m_Layer: 0
   m_Name: SpeedUpPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,8 +157,8 @@ MonoBehaviour:
   maxJumpHoldTime: 0.3
   doubleJumpForce: 5
   isSliding: 0
-  normalCollider: {fileID: 0}
-  slideCollider: {fileID: 0}
+  normalCollider: {fileID: 8895180005282644817}
+  slideCollider: {fileID: 7466042907592339946}
   maxHP: 0
   currentHP: 0
   damage: 0
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 8895180005282644817}
   m_Layer: 0
   m_Name: Run
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

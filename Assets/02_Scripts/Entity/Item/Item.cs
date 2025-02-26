@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
@@ -15,7 +16,7 @@ public class Item : MonoBehaviour
     }
     public virtual void ApplyEffect(Player player) // 아이템 효과
     {  
-        // 플레이어 점수 += Score;
+        MainUIManager.Instance.totalScore += Score;
     }
     public void DestroyItem() // 사라지는 애니메이션 후 Destroy
     {
@@ -24,11 +25,14 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) // 플레이어와 충돌 시
+        if (collision.GetComponentInParent<Player>() != null) // 플레이어와 충돌 시
         {
-            Player player = collision.GetComponent<Player>();
-            ApplyEffect(player);
-            DestroyItem();
+            if (collision is BoxCollider2D)
+            {
+                Player player = collision.GetComponentInParent<Player>();
+                ApplyEffect(player);
+                DestroyItem();
+            }
         }
     }
 }

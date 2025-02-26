@@ -51,6 +51,7 @@ namespace RunningGame.Managers
             // 게임 시작
             onGameStart?.Invoke();
             SpawnPlayer();
+            PlayBgm();
             isGameStart = true;
         }
 
@@ -97,8 +98,28 @@ namespace RunningGame.Managers
             player.transform.localScale = new Vector3(1.5f, 1.5f, 0);
         }
 
+        private void PlayBgm()
+        {
+            switch (selectedStage)
+            {
+                case 1:
+                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.3f);
+                    break;
+                case 2:
+                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.3f);
+                    break;
+                case 3:
+                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.3f);
+                    break;
+                default:
+                    Debug.LogError("MainSceneBase : Invalid stage key");
+                    break;
+            }
+        }
+
         public void GameOver()
         {
+            // TODO: 2p 죽으면 브금 멈춰
             // if (!isSecondPlayer)
             // 
             // else
@@ -113,11 +134,6 @@ namespace RunningGame.Managers
         public Transform GetLoopableRoot()
         {
             return loopableObjectRoot;
-        }
-        
-        public void AddGameStartListener(UnityAction action)
-        {
-            onGameStart.AddListener(action);
         }
     }
 }
