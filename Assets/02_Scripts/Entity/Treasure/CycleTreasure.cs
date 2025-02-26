@@ -8,7 +8,7 @@ public class CycleTreasure : Treasure
     [SerializeField] private float healthDrain; // 체력 감소량
     private bool isActive = false;
     int originalDamage;
-    public override void ApplyEffect(PlayerController player)
+    public override void ApplyEffect(Player player)
     {
         if (!isActive)
         {
@@ -16,9 +16,9 @@ public class CycleTreasure : Treasure
             originalDamage = player.damage;
             StartCoroutine(CoDrain(player));
         }
-    } 
-    
-    private IEnumerator CoDrain(PlayerController player)
+    }
+
+    private IEnumerator CoDrain(Player player)
     {
         while (true)
         {
@@ -27,7 +27,7 @@ public class CycleTreasure : Treasure
             Debug.Log("체력 감소 감소");
 
             player.damage = originalDamage - (int)healthDrain;
-            
+
             yield return new WaitForSeconds(duration);
 
             player.damage = originalDamage; // 상태 복구

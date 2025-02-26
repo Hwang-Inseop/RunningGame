@@ -15,9 +15,10 @@ namespace RunningGame.Managers
         [Header("MainScene Datas")]
         [SerializeField] private InteractionItemDatas interactionItemDatas;
         [SerializeField] private PatternDatas patternDatas;
+        [SerializeField] private PlayerPrefabs playerPrefabs;
         
         [Header("MainScene Transform")]
-        [SerializeField] private Transform LoopableObjectRoot;
+        [SerializeField] private Transform loopableObjectRoot;
         [SerializeField] private Transform playerSpawnPoint;
         
         [Header("Event")]
@@ -28,6 +29,11 @@ namespace RunningGame.Managers
         private void Start()
         {
             Init();
+        }
+        
+        private void OnDestroy()
+        {
+            onGameStart.RemoveAllListeners();
         }
 
         public override void Init()
@@ -40,10 +46,12 @@ namespace RunningGame.Managers
             CreatPatternPool();
             CreateItemPool();
             patternLooper.Init(selectedStage);
-            staticObjectPlacer.AddGameStartListener(onGameStart);
+            staticObjectPlacer.AddGameStartListener(onGameStart, selectedStage);
             
             // 게임 시작
             onGameStart?.Invoke();
+            SpawnPlayer();
+            PlayBgm();
             isGameStart = true;
         }
 
@@ -82,7 +90,40 @@ namespace RunningGame.Managers
 
         private void SpawnPlayer()
         {
-            // TODO: 플레이어 스폰 구현
+            // TODO: GameManager에서 선택한 캐릭터 정보 가져오기
+
+            var obj = playerPrefabs.GetPlayerPrefab(0);
+            var player = Instantiate(obj, playerSpawnPoint);
+            player.transform.localPosition = Vector3.zero;
+            player.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+        }
+
+        private void PlayBgm()
+        {
+            switch (selectedStage)
+            {
+                case 1:
+                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.3f);
+                    break;
+                case 2:
+                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.3f);
+                    break;
+                case 3:
+                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.3f);
+                    break;
+                default:
+                    Debug.LogError("MainSceneBase : Invalid stage key");
+                    break;
+            }
+        }
+
+        public void GameOver()
+        {
+            // TODO: 2p 죽으면 브금 멈춰
+            // if (!isSecondPlayer)
+            // 
+            // else
+            // GameOver
         }
 
         public bool IsStart()
@@ -92,12 +133,7 @@ namespace RunningGame.Managers
 
         public Transform GetLoopableRoot()
         {
-            return LoopableObjectRoot;
-        }
-        
-        public void AddGameStartListener(UnityAction action)
-        {
-            onGameStart.AddListener(action);
+            return loopableObjectRoot;
         }
     }
 }

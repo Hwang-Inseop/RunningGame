@@ -12,9 +12,8 @@ public class Treasure : MonoBehaviour
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] protected float duration; // 효과 지속 시간
     private bool hasEffect = false;
-    [SerializeField] private int canRevive; // 부활 가능 횟수
 
-    private PlayerController player;
+    private Player player;
 
     private void Update()
     {
@@ -23,16 +22,13 @@ public class Treasure : MonoBehaviour
             StopAllCoroutines();
         }
     }
-    public void Equip(PlayerController player)
+    public void Equip(Player player)
     {
         if (!IsEquipped)
         {
             IsEquipped = true;
             this.player = player;
-            if (canRevive > 0)
-            {
-                // Player 부활 가능 횟수 += canRevive
-            }
+
             StartCoroutine(WaitForStart());
         }
     }
@@ -42,17 +38,12 @@ public class Treasure : MonoBehaviour
         if (IsEquipped)
         {
             IsEquipped = false;
-
-            if(canRevive > 0)
-            {
-                // Player 부활 가능 횟수 -= canRevive
-            }
         }
     }
-    public virtual void ApplyEffect(PlayerController player) { }
+    public virtual void ApplyEffect(Player player) { }
     private IEnumerator WaitForStart() // 게임 시작까지 대기
     {
-        while (!MainSceneBase.Instance.IsStart()) 
+        while (!MainSceneBase.Instance.IsStart())
         {
             yield return null;
         }

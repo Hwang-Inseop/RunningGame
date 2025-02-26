@@ -1,11 +1,10 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -40,12 +39,25 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField]
     private Image secondRunnerImg;
 
+    [Header("보물 이미지")]
+    [SerializeField]
+    private Image treasureImg;
+
+    [Header("보물 이름 텍스트")]
+    [SerializeField]
+    private TextMeshProUGUI treasureNameTxt;
+
+    [Header("장착보물이 없다는 sprite")]
+    [SerializeField]
+    private Sprite noTreasureSprite;
+
     [Header("StageInfo")]
     public List<StageInfo> stages = new List<StageInfo>();
 
     [Header("CharacterInfo")]
     public List<CharacterInfo> cInfos = new List<CharacterInfo>();
 
+    private int currentStagePage = 1;
 
     //초기 설정
     void Start()
@@ -54,6 +66,7 @@ public class LobbyUIManager : MonoBehaviour
         stageDescriptionImg.sprite = GameManager.Instance.stageinfo.Background;
         CheckSelectedStage();
         InitCharacterImg();
+        InitTreasureInfo();
 
         fadePanelGo.SetActive(true);
         fadePanel.alpha = 0f;
@@ -102,7 +115,8 @@ public class LobbyUIManager : MonoBehaviour
     //스테이지 설명 보여주기
     public void ShowStageDescription(StageInfo stageInfo)
     {
-        PlayerPrefs.SetInt("choosedStage", stageInfo.StageNum);
+        currentStagePage = stageInfo.StageNum;
+
         stageDescriptionTxt.text = stageInfo.StageDescription;
         stageDescriptionImg.sprite = stageInfo.Background;
     }
@@ -110,9 +124,11 @@ public class LobbyUIManager : MonoBehaviour
     //적용된 스테이지 체크표시해주기
     public void CheckSelectedStage()
     {
-        for(int i = 1; i <= checkImg.Count; i++)
+        GameManager.Instance.stageinfo = stages[currentStagePage - 1];
+
+        for (int i = 1; i <= checkImg.Count; i++)
         {
-            if (PlayerPrefs.GetInt("choosedStage") == i)
+            if (i == currentStagePage)
             {
                 checkImg[i - 1].SetActive(true);
             }
@@ -126,35 +142,48 @@ public class LobbyUIManager : MonoBehaviour
     //선택된 스테이지로 변경
     public void ChangeSelectedStage()
     {
-        StageInfo stage = stages.FirstOrDefault(stage => stage.StageNum == PlayerPrefs.GetInt("choosedStage"));
-        GameManager.Instance.stageinfo = stage;
+        GameManager.Instance.stageinfo = stages[currentStagePage - 1];
     }
 
     //씬 로드
-    public void LoadScene(String sceneName)
+    public void LoadToMain()
     {
-        SceneManager.LoadScene(sceneName);  
+        SceneManager.LoadScene("MainScene");
     }
 
     //시작 시에 선택된 캐릭터의 이미지가 보이게 하도록 하기 
     public void InitCharacterImg()
     {
-        CharacterInfo cInfo_01 = cInfos.FirstOrDefault(info => info.CharacterNum == PlayerPrefs.GetInt("firstRunnerNum"));
-        firstRunnerImg.sprite = cInfo_01.CharSprite;
+        CharacterInfo cInfo01 = GameManager.Instance.firstCharacterInfo;
+        CharacterInfo cInfo02 = GameManager.Instance.secondCharacterInfo;
+        firstRunnerImg.sprite = cInfo01.CharSprite;
         
         //이어달리기 유무를 고려
-        if (PlayerPrefs.GetInt("secondRunnerNum") != 0)
+        if (GameManager.Instance.secondCharacterInfo != null)
         {
             SetSecondImageOpicity(1);
-            CharacterInfo cInfo_02 = cInfos.FirstOrDefault(info => info.CharacterNum == PlayerPrefs.GetInt("secondRunnerNum"));
-            secondRunnerImg.sprite = cInfo_02.CharSprite;
+           
+            secondRunnerImg.sprite = cInfo02.CharSprite;
         }
         else
         {
             SetSecondImageOpicity(0);
         }
-
     }
+
+    public void InitTreasureInfo()
+    {
+        if(GameManager.Instance.treasureInfo != null)
+        {
+            treasureImg.sprite = GameManager.Instance.treasureInfo.TreasureImg;
+            treasureNameTxt.text = GameManager.Instance.treasureInfo.TreasureName;
+        }
+        else
+        {
+            treasureImg.sprite = noTreasureSprite;
+        }
+    }
+
 
     //2번째 주자의 이미지 투명도 조절
     public void SetSecondImageOpicity(float index)
@@ -163,5 +192,5 @@ public class LobbyUIManager : MonoBehaviour
         color.a = Mathf.Clamp01(index);
         secondRunnerImg.color = color;
     }
-
+ 
 }

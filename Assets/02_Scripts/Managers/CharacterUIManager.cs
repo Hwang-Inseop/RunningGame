@@ -63,14 +63,14 @@ public class CharacterUIManager : MonoBehaviour
     [Header("2주자로 달린다는 표시")]
     public List<GameObject> secondSelectedImage = new List<GameObject>();
 
+    //패널에 뜨는 주자의 번호
+    private int runnerPanelNum = 0;
+
     //초기 설정
     void Start()
     {
         ChangeSelectedFirstRunner();
         ChangeSelectedSecondRunner();
-
-        //현재 클릭한 패널  -> 0으로 시작 (없다는 표시)
-        PlayerPrefs.SetInt("currentClickedButton", 0);
 
         characterInfoPanel.transform.localPosition = new Vector3(0f, -1000f, 0f);
 
@@ -94,13 +94,15 @@ public class CharacterUIManager : MonoBehaviour
     //크기 증가
     public void IncreaseScale()
     {
-        exitBtn.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
+        if (exitBtn != null)
+            exitBtn.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f);
     }
 
     //크기 감소 (원상복구)
     public void DecreaseScale()
     {
-        exitBtn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
+        if (exitBtn != null)
+            exitBtn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
     }
 
     //씬 로드
@@ -120,7 +122,7 @@ public class CharacterUIManager : MonoBehaviour
         jewelImg.GetComponent<Image>().sprite = charInfo.Jewel;
         abilityTxt.text = charInfo.Ability;
 
-        PlayerPrefs.SetInt("currentClickedButton", charInfo.CharacterNum);
+        runnerPanelNum = charInfo.CharacterNum;
         PanelFadeIn();
 
         OpenEmptyPanel();
@@ -144,23 +146,26 @@ public class CharacterUIManager : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
         characterInfoPanel.DOFade(0, fadeTime);
+
+        runnerPanelNum = 0;
     }
 
     //첫번째 주자 바꾸기
     public void ChangeFirstRunner()
     {
+        CharacterInfo cInfo01 = GameManager.Instance.firstCharacterInfo;
+        CharacterInfo cInfo02 = GameManager.Instance.secondCharacterInfo;
         //여기에 두번째 주자와 같은가?를 검사하는 조건도 추가해야함
-        if (PlayerPrefs.GetInt("currentClickedButton") == PlayerPrefs.GetInt("secondRunnerNum"))
+        if (cInfo01 == cInfo02)
         {
             DisplayWarning();
         }
         else
         {
-            PlayerPrefs.SetInt("firstRunnerNum", PlayerPrefs.GetInt("currentClickedButton"));
+            GameManager.Instance.firstCharacterInfo = characterInfos[runnerPanelNum - 1];
             for (int i = 1; i <= firstSelectedImage.Count; i++)
             {
-
-                if (i == PlayerPrefs.GetInt("currentClickedButton"))
+                if (i == runnerPanelNum)
                 {
                     firstSelectedImage[i- 1].SetActive(true);
                 }
@@ -176,18 +181,20 @@ public class CharacterUIManager : MonoBehaviour
     //두번째 주자 바꾸기
     public void ChangeSecondRunner()
     {
+        CharacterInfo cInfo01 = GameManager.Instance.firstCharacterInfo;
+        CharacterInfo cInfo02 = GameManager.Instance.secondCharacterInfo;
         //여기에 첫번째 주자와 같은가?를 검사하는 조건도 추가해야함
-        if (PlayerPrefs.GetInt("currentClickedButton") == PlayerPrefs.GetInt("firstRunnerNum"))
+        if (cInfo02 == cInfo01)
         {
             DisplayWarning();
         }
         else
         {
-            PlayerPrefs.SetInt("secondRunnerNum", PlayerPrefs.GetInt("currentClickedButton"));
+            GameManager.Instance.secondCharacterInfo = characterInfos[runnerPanelNum - 1];
             for (int i = 1; i <= secondSelectedImage.Count; i++)
             {
 
-                if (i == PlayerPrefs.GetInt("currentClickedButton"))
+                if (i == runnerPanelNum)
                 {
                     secondSelectedImage[i - 1].SetActive(true);
                 }
@@ -203,13 +210,9 @@ public class CharacterUIManager : MonoBehaviour
     //첫번째 주자 초기화
     public void ChangeSelectedFirstRunner()
     {
-        CharacterInfo cInfo = characterInfos.FirstOrDefault(cInfo => cInfo.CharacterNum == PlayerPrefs.GetInt("firstRunnerNum"));
-        GameManager.Instance.firstCharacterInfo = cInfo;
-
         for (int i = 1; i <= firstSelectedImage.Count; i++)
         {
-
-            if (i == PlayerPrefs.GetInt("firstRunnerNum"))
+            if (i == GameManager.Instance.firstCharacterInfo.CharacterNum)
             {
                 firstSelectedImage[i - 1].SetActive(true);
             }
@@ -224,15 +227,12 @@ public class CharacterUIManager : MonoBehaviour
     public void ChangeSelectedSecondRunner()
     {
         //이어달리기 설정을 안하는 경우도 고려
-        if(PlayerPrefs.GetInt("secondRunnerNum") != 0)
+        if (GameManager.Instance.secondCharacterInfo != null)
         {
-            CharacterInfo cInfo = characterInfos.FirstOrDefault(cInfo => cInfo.CharacterNum == PlayerPrefs.GetInt("secondRunnerNum"));
-            GameManager.Instance.CharacterInfo = cInfo;
-
             for (int i = 1; i <= secondSelectedImage.Count; i++)
             {
 
-                if (i == PlayerPrefs.GetInt("secondRunnerNum"))
+                if (i == GameManager.Instance.secondCharacterInfo.CharacterNum)
                 {
                     secondSelectedImage[i - 1].SetActive(true);
                 }
@@ -253,7 +253,7 @@ public class CharacterUIManager : MonoBehaviour
     //이어달리기 전부 해제
     public void CheckoutSecondRunner()
     {
-        PlayerPrefs.SetInt("secondRunnerNum", 0);
+        GameManager.Instance.secondCharacterInfo = null;
         foreach (GameObject secondImgs in secondSelectedImage)
         {
             secondImgs.SetActive(false);

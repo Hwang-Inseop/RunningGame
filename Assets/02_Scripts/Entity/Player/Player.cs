@@ -1,4 +1,3 @@
-using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using UnityEngine.XR;
 //플레이어가 가질 수 있는 상태 정의: 땅에서 달리는 상태, 땅에 붙어있는 상태, 점프한 상태
 public enum PlayerState {isRunning, isJumping, isSliding}
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private bool isRunning = false; // idle 바닥에서 달리는 중인 상태
     
@@ -28,40 +27,42 @@ public class PlayerController : MonoBehaviour
     public int currentHP; // 현재 HP
     public int damage; // 대미지 수치
     public float hpDrainInterval = 1f; // 체력 지속 소모 시간 간격 (1초)
-    private bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
+    protected bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
     public float invincible; //무적 시간
     
-    private bool die = false; // 사망 상태
-    public Treasure treasure;
+    protected bool die = false; // 사망 상태
+    public bool isDropped = false;
+    public int canRevive;
+    
     private Rigidbody2D rb;
     private Animator animator;
     
     private PlayerState playerState;
-    
-    private void Awake()
-    {
-        ChangeState(PlayerState.isRunning); //게임 시작 즉시 Awake에서 상태를 isRunning로
-    }
 
-    void Start()
+    private Treasure treasure; // 착용 보물
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
+        ChangeState(PlayerState.isRunning); //게임 시작 즉시 Awake에서 상태를 isRunning로
+    }
+
+    protected virtual void Start()
+    {
         slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
         
         currentHP = maxHP; // 게임 시작시 HP MAX
         StartCoroutine(DrainHp()); // 체력 지속 소모 시작
     }
     
-    void Update()
+    protected virtual void Update()
     {
         HandleInput();
         UpdateState();
-        if (!MainSceneBase.Instance.IsStart())
-        {
-            ApplyEffect();
-        }
+    }
+
+    protected virtual void ActivateAbility()
+    {
         
     }
 
@@ -179,16 +180,13 @@ public class PlayerController : MonoBehaviour
     /// 달리는동안 체력 지속 소모
     /// </summary>
     /// <returns></returns>
-    IEnumerator DrainHp()
+    protected IEnumerator DrainHp()
     {
         while (currentHP > 0)
         {
             yield return new WaitForSeconds(hpDrainInterval);
             TakeDamage(damage);
             Debug.Log("HP: " + currentHP);
-            
-            if (currentHP <= 0) // 체력이 <= 0이면 Die
-                Die();
         }
     }
     
@@ -196,16 +194,20 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 장애물과 충돌하면 대미지, 잠시 무적
-        if(!damaged && collision.gameObject.CompareTag("Obstacle"))
+        if (!damaged && collision.gameObject.CompareTag("Obstacle"))
+        {
             TakeDamage(10);
-        Debug.Log("Collision, Damaged -10");
-        StartCoroutine(Invincible());
+            Debug.Log("Collision, Damaged -10");
+            StartCoroutine(Invincible());
+        }
         
         // 낙사 구간에 빠지면 Die
-        if(collision.gameObject.CompareTag("DropZone"))
+        if (collision.gameObject.CompareTag("DropZone"))
+        {
+            isDropped = true;
             Die();
+        }
     }
-
 
     /// <summary>
     /// 장애물과 충돌 시 invincible 시간동안 무적 상태
@@ -245,10 +247,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Die()
     {
+        if (canRevive == 0)
+        {
         die = true;
         Debug.Log("Die");
+        }
     }
 
+    // 보물 관련
     public void Equip(Treasure t)
     {
         if (treasure != null)
@@ -257,7 +263,7 @@ public class PlayerController : MonoBehaviour
         }
         treasure = t;
         treasure.Equip(this);
-        if (treasure != null) Debug.Log(treasure);
+
     }
 
     public void Unequip()
@@ -268,6 +274,4 @@ public class PlayerController : MonoBehaviour
             treasure = null;
         }
     }
-    public virtual void ApplyEffect() { }
-
 }

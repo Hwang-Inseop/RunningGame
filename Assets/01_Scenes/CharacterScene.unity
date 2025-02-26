@@ -375,7 +375,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1358144728}
         m_TargetAssemblyTypeName: CharacterUIManager, Assembly-CSharp
-        m_MethodName: PanelFadeOut
+        m_MethodName: ChangeFirstRunner
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -387,7 +387,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1358144728}
         m_TargetAssemblyTypeName: CharacterUIManager, Assembly-CSharp
-        m_MethodName: ChangeFirstRunner
+        m_MethodName: PanelFadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4153,6 +4153,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284270955}
   m_CullTransparentMesh: 1
+--- !u!1 &1349565904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1349565906}
+  - component: {fileID: 1349565905}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1349565905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349565904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f27a5846b08a4b42b51dcd9965d461c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageinfo: {fileID: 11400000, guid: c3c6f73215c18d14da07df8926c976e3, type: 2}
+  firstCharacterInfo: {fileID: 11400000, guid: 476d4e559a05b13459fd2c2fad1221b7, type: 2}
+  secondCharacterInfo: {fileID: 0}
+  treasureInfo: {fileID: 0}
+--- !u!4 &1349565906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349565904}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 338.85934, y: 205.9981, z: -1.5076938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1358144726
 GameObject:
   m_ObjectHideFlags: 0
@@ -5626,7 +5674,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1358144728}
         m_TargetAssemblyTypeName: CharacterUIManager, Assembly-CSharp
-        m_MethodName: PanelFadeOut
+        m_MethodName: ChangeSecondRunner
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5638,7 +5686,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1358144728}
         m_TargetAssemblyTypeName: CharacterUIManager, Assembly-CSharp
-        m_MethodName: ChangeSecondRunner
+        m_MethodName: PanelFadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6784,3 +6832,4 @@ SceneRoots:
   - {fileID: 1358144727}
   - {fileID: 930822095}
   - {fileID: 1005982165}
+  - {fileID: 1349565906}

@@ -9,7 +9,7 @@ public class CoinTreasure : Treasure
     [SerializeField] private Transform coinPosition; // 추가 코인 생성 위치
     private bool hasSpawned = false;
 
-    public override void ApplyEffect(PlayerController player)
+    public override void ApplyEffect(Player player)
     {
         if (extraCoin != null && coinPosition != null && !hasSpawned)
         {

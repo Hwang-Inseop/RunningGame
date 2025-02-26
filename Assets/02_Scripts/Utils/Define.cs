@@ -6,9 +6,15 @@ namespace RunningGame.Utils
 {
     public static class Define
     {
+        // PoolKey
         public const string PatternKey = "Stage0";
+        
+        // Tag
         public const string LoopableTag = "Loopable";
         public const string LoopableItemTag = "LoopableItem";
+        
+        // Map Controll
         public const int PatternMaxCount = 5;
+        public const float BaseScrollSpeed = 5f;
     }
 }
