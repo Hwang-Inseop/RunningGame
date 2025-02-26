@@ -26,13 +26,15 @@ namespace RunningGame.Utils
             {
                 SoundType.TitleBgm    => "",
                 SoundType.LobbyBgm    => "",
-                SoundType.MainBgm     => "",
+                SoundType.Stage01Bgm  => "Stage01",
+                SoundType.Stage02Bgm  => "Stage02",
+                SoundType.Stage03Bgm  => "Stage03",
                 SoundType.CoinSfx     => "CoinCollect",
                 SoundType.JumpSfx     => "",
                 SoundType.SlideSfx    => "",
                 SoundType.HitSfx      => "",
                 SoundType.GameOverSfx => "",
-                SoundType.ButtonSfx   => "",
+                SoundType.ButtonSfx   => "ButtonClick",
                 _                     => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
             };
         }

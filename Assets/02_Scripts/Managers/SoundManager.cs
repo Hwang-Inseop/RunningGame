@@ -47,6 +47,7 @@ namespace RunningGame.Managers
             }
         }
 
+        // BGM 재생(Loop)
         public void PlayBgm(SoundType sound, float volume = 0.7f)
         {
             AudioClip clip = GetAudioClip(sound.GetSoundKey());
@@ -56,18 +57,21 @@ namespace RunningGame.Managers
             bgmSource.Play();
         }
 
+        // BGM 정지
         public void StopBgm()
         {
             bgmSource.Stop();
             bgmSource.clip = null;
         }
 
+        // 효과음 재생
         public void PlaySfx(SoundType sound, float volume = 0.8f)
         {
             AudioClip clip = GetAudioClip(sound.GetSoundKey());
             sfxSource.PlayOneShot(clip, volume);
         }
 
+        // 효과음 재생하고 재생 시간만큼 대기
         public IEnumerator PlaySfxWithDelay(SoundType sound, float volume = 0.8f)
         {
             AudioClip clip = GetAudioClip(sound.GetSoundKey());
@@ -81,7 +85,9 @@ namespace RunningGame.Managers
     {
         TitleBgm,
         LobbyBgm,
-        MainBgm,
+        Stage01Bgm,
+        Stage02Bgm,
+        Stage03Bgm,
         CoinSfx,
         JumpSfx,
         SlideSfx,
