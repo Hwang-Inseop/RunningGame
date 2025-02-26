@@ -181,6 +181,7 @@ public class LobbyUIManager : MonoBehaviour
         else
         {
             treasureImg.sprite = noTreasureSprite;
+            treasureNameTxt.text = "보물 미장착중";
         }
     }
 

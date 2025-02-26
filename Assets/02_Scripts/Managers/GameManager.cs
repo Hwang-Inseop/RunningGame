@@ -22,14 +22,22 @@ public class GameManager : MonoBehaviour
         }
     }
     //초기 설정
+    //스테이지 정보
     public StageInfo stageinfo;
 
+    //1번째 주자
     public CharacterInfo firstCharacterInfo;
 
+    //두번째 주자
     public CharacterInfo secondCharacterInfo;
 
-
+    //보물
     public TreasureInfo treasureInfo;
+
+    //현재 보유하고 있는 잼의 개수
+    private int jemCount = 100;
+
+    public int JemCount { get { return jemCount; } set { jemCount = value; } }
 
 
     private void Awake()
