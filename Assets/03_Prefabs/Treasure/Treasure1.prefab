@@ -135,6 +135,7 @@ MonoBehaviour:
   reqGem: 1
   intervalTime: 5
   duration: 0
+  image: {fileID: 21300000, guid: 1b0d25e580b23144bbc87cda132f9d5b, type: 3}
   extraCoin: {fileID: 2755780699745716068, guid: e01b46b2a4223814c93f1e08b943703d, type: 3}
 --- !u!1 &8906254562445270968
 GameObject:

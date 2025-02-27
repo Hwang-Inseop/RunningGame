@@ -51,6 +51,7 @@ MonoBehaviour:
   reqGem: 1
   intervalTime: 30
   duration: 5
+  image: {fileID: 21300000, guid: 521388bcb1969be468d1796517bdc344, type: 3}
   healthDrain: 1
 --- !u!1 &6900576000265110598
 GameObject:
