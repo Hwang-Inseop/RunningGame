@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c012e006fdeb51f40a544c541868c715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 3
-  description: "1\uD68C \uB099\uC0AC \uBC29\uC9C0"
+  name: "\uACE0\uC7A5\uB09C \uB098\uCE68\uBC18"
+  description: "\uB099\uC0AC \uC2DC 1\uD68C \uAD6C\uCD9C"
   reqGem: 1
   intervalTime: 0
   duration: 0
+  image: {fileID: 21300000, guid: c2bc9f345343d3f49b65af699d702558, type: 3}
 --- !u!1 &7512568855180811202
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a44e708eb20a5d4d89d95c417d11cf3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2bc9f345343d3f49b65af699d702558, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

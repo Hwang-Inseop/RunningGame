@@ -1,6 +1,8 @@
+using DG.Tweening;
+using RunningGame.Entity;
 using RunningGame.Scriptable;
 using RunningGame.Singleton;
-using RunningGame.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +10,7 @@ namespace RunningGame.Managers
 {
     public class MainSceneBase : SceneSingleton<MainSceneBase>
     {
-        [Header("Components")]
+        [Header("Map Controll")]
         [SerializeField] private PatternLooper patternLooper;
         [SerializeField] private StaticObjectPlacers staticObjectPlacer;
         
@@ -23,47 +25,47 @@ namespace RunningGame.Managers
         
         [Header("Event")]
         [SerializeField] private UnityEvent onGameStart = new();
+
+        public Player CurrentPlayer { get; private set; }
+        private List<int> patternList = new();
         private int selectedStage;
         private bool isGameStart;
+        private bool isSecondPlayer = false;
         
         private void Start()
         {
             Init();
         }
         
-        private void OnDestroy()
-        {
-            onGameStart.RemoveAllListeners();
-        }
-
         public override void Init()
         {
+            // 플레이어 스폰
+            SpawnPlayer();
+
             // Manager 초기화
             MainPoolManager.Instance.Init();
-            MainUIManager.Instance.Init();
+            MainUIManager.Instance.Init(); // UI매니저에서 플레이어 할당
             
             // 메인 게임 초기화
             CreatPatternPool();
             CreateItemPool();
             patternLooper.Init(selectedStage);
-            staticObjectPlacer.AddGameStartListener(onGameStart, selectedStage);
+            staticObjectPlacer.ExecuteStaticObjectPlace(selectedStage);
             
             // 게임 시작
             onGameStart?.Invoke();
-            SpawnPlayer();
             PlayBgm();
+            Time.timeScale = 1f;
             isGameStart = true;
         }
 
         private void CreatPatternPool()
         {
-            // TODO: GameManager에서 선택한 스테이지 정보 가져오기
-            
-            selectedStage = 1;
-            var patternList = patternDatas.GetPatternList(selectedStage);
-            for (int i = 0; i < patternList.Count; i++)
+            selectedStage = GameManager.Instance.stageinfo.StageNum;
+            var patterns = patternDatas.GetPatternList(selectedStage);
+            for (int i = 0; i < patterns.Count; i++)
             {
-                var prefab = patternList[i];
+                var prefab = patterns[i];
                 MainPoolManager.Instance.CreatePool(prefab);
             }
         }
@@ -90,12 +92,17 @@ namespace RunningGame.Managers
 
         private void SpawnPlayer()
         {
-            // TODO: GameManager에서 선택한 캐릭터 정보 가져오기
-
-            var obj = playerPrefabs.GetPlayerPrefab(0);
+            int selectedPlayer = 0;
+            if (!isSecondPlayer)
+                selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            else
+                selectedPlayer = GameManager.Instance.secondCharacterInfo.CharacterNum;
+            
+            var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer - 1);
             var player = Instantiate(obj, playerSpawnPoint);
-            player.transform.localPosition = Vector3.zero;
-            player.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+            CurrentPlayer = player.GetComponent<Player>();
+            CurrentPlayer.transform.localPosition = Vector3.zero;
+            CurrentPlayer.transform.localScale = new Vector3(1.5f, 1.5f, 0);
         }
 
         private void PlayBgm()
@@ -103,13 +110,13 @@ namespace RunningGame.Managers
             switch (selectedStage)
             {
                 case 1:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.3f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.1f);
                     break;
                 case 2:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.3f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.1f);
                     break;
                 case 3:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.3f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.1f);
                     break;
                 default:
                     Debug.LogError("MainSceneBase : Invalid stage key");
@@ -117,13 +124,25 @@ namespace RunningGame.Managers
             }
         }
 
-        public void GameOver()
+        public void PlayerDeath()
         {
-            // TODO: 2p 죽으면 브금 멈춰
-            // if (!isSecondPlayer)
-            // 
-            // else
-            // GameOver
+            if (!isSecondPlayer && GameManager.Instance.secondCharacterInfo != null)
+            {
+                isSecondPlayer = true;
+                Destroy(CurrentPlayer.gameObject);
+                SpawnPlayer();
+                CurrentPlayer.currentHP = CurrentPlayer.maxHP / 2;
+                return;
+            }
+
+            GameOver();
+        }
+
+        private void GameOver()
+        {
+            isGameStart = false;
+            SoundManager.Instance.StopBgm();
+            MainUIManager.Instance.gameOverPanel.GameOver();
         }
 
         public bool IsStart()
@@ -131,6 +150,11 @@ namespace RunningGame.Managers
             return isGameStart;
         }
 
+        public bool IsSecondPlayer()
+        {
+            return isSecondPlayer;
+        }
+        
         public Transform GetLoopableRoot()
         {
             return loopableObjectRoot;

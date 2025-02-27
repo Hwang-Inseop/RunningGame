@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e01480f08e59974b8cd6daadd5f40f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 2
+  name: "\uC4F8\uB9CC\uD55C \uAD6C\uAE09\uD0A4\uD2B8"
   description: "\uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4 \uCCB4\uB825 \uC18C\uBAA8\uB7C9
     \uAC10\uC18C"
   reqGem: 1
   intervalTime: 10
   duration: 5
-  canRevive: 0
+  image: {fileID: 21300000, guid: 521388bcb1969be468d1796517bdc344, type: 3}
   healthDrain: 1
 --- !u!1 &6900576000265110598
 GameObject:
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0021dbbf36693c840ae2aa16549e3c90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 521388bcb1969be468d1796517bdc344, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

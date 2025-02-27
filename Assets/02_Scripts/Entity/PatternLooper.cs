@@ -1,10 +1,11 @@
+using RunningGame.Entity;
 using RunningGame.Managers;
 using RunningGame.Utils;
 using UnityEngine;
 
 public class PatternLooper : MonoBehaviour
 {
-    [SerializeField] private Transform patternScroller;
+    [SerializeField] private Transform patternScrollerTr;
     [SerializeField] private GameObject stage1;
     [SerializeField] private GameObject stage2;
     [SerializeField] private GameObject stage3;
@@ -60,8 +61,11 @@ public class PatternLooper : MonoBehaviour
         else
             MainPoolManager.Instance.Despawn(other.gameObject);
         
-        var pattern = MainPoolManager.Instance.Spawn(GetPatternKey(), patternScroller);
+        var pattern = MainPoolManager.Instance.Spawn(GetPatternKey(), patternScrollerTr);
         pattern.transform.position = other.transform.position + bgOffset;
+        
+        var objectPlacer = pattern.GetComponent<TilemapObjectPlacer>();
+        objectPlacer.InvokePatternPlaced();
     }
     
     private string GetPatternKey()

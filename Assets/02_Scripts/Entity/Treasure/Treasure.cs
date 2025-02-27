@@ -12,11 +12,11 @@ public class Treasure : MonoBehaviour
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] protected float duration; // 효과 지속 시간
     private bool hasEffect = false;
-
-    private Player player;
-
+    public bool canRescue = false;
+    protected Player player;
     private void Update()
     {
+
         if (!MainSceneBase.Instance.IsStart())
         {
             StopAllCoroutines();
@@ -29,12 +29,14 @@ public class Treasure : MonoBehaviour
             IsEquipped = true;
             this.player = player;
 
-            Canvas canvas = FindObjectOfType<Canvas>();
-            if(canvas != null)
+            GameObject treasure = GameObject.Find("Canvas/Treasure");
+            if (treasure != null)
             {
-                transform.SetParent(canvas.transform, true);
+                transform.SetParent(treasure.transform, true);
             }
-            
+            else transform.SetParent(player.transform, false);
+            transform.localScale = new Vector3(3, 3, 0);
+            transform.localPosition = new Vector3(0, 0, 0);
             StartCoroutine(WaitForStart());
         }
     }
@@ -44,6 +46,7 @@ public class Treasure : MonoBehaviour
         if (IsEquipped)
         {
             IsEquipped = false;
+            Destroy(gameObject);
         }
     }
     public virtual void ApplyEffect(Player player) { }

@@ -56,12 +56,18 @@ namespace RunningGame.Managers
             bgmSource.loop = true;
             bgmSource.Play();
         }
-
+        
         // BGM 정지
         public void StopBgm()
         {
             bgmSource.Stop();
             bgmSource.clip = null;
+        }
+        
+        // 현재 BGM이 재생 중인지
+        public bool IsPlayingBgm()
+        {
+            return bgmSource.isPlaying;
         }
 
         // 효과음 재생
@@ -84,15 +90,18 @@ namespace RunningGame.Managers
     public enum SoundType
     {
         TitleBgm,
-        LobbyBgm,
         Stage01Bgm,
         Stage02Bgm,
         Stage03Bgm,
-        CoinSfx,
-        JumpSfx,
-        SlideSfx,
-        HitSfx,
-        GameOverSfx,
         ButtonSfx,
+        PlayerJump,
+        PlayerSlide,
+        CoinSfx,
+        GameOverBgm,
+        PotionSfx,
+        GemSfx,
+        PanelSfx,
+        UnlockSfx,
+        LobbyBGM,
     }
 }

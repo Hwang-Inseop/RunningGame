@@ -1,3 +1,4 @@
+using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
     public float hpDrainInterval = 1f; // 체력 지속 소모 시간 간격 (1초)
     protected bool damaged = false; // 대미지 입은 상태, true 되면 체력 감소, 잠시간 무적화
     public float invincible; //무적 시간
+    private float blinkInterval = 0.1f; // 무적 시간동안 깜빡이는 시간
     
     protected bool die = false; // 사망 상태
     public bool isDropped = false;
@@ -36,22 +38,24 @@ public class Player : MonoBehaviour
     
     private Rigidbody2D rb;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     
     private PlayerState playerState;
 
-    public Treasure treasure; // 착용 보물
+    private Treasure treasure; // 착용 보물
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         ChangeState(PlayerState.isRunning); //게임 시작 즉시 Awake에서 상태를 isRunning로
     }
 
     protected virtual void Start()
     {
-        
-        slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
         TreasureInst();
+        slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
+        
         currentHP = maxHP; // 게임 시작시 HP MAX
         StartCoroutine(DrainHp()); // 체력 지속 소모 시작
     }
@@ -72,8 +76,14 @@ public class Player : MonoBehaviour
     /// </summary>
     void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) ChangeState(PlayerState.isJumping);
-        if (Input.GetKeyDown(KeyCode.X)) ChangeState(PlayerState.isSliding);
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ChangeState(PlayerState.isJumping);
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            ChangeState(PlayerState.isSliding);
+        }
     }
     
     /// <summary>
@@ -98,25 +108,35 @@ public class Player : MonoBehaviour
     /// </summary>
     void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && isRunning) // Z키 눌렀을 때 && 땅에 붙어있을 때
+        if (Input.GetKeyDown(KeyCode.Z) && (isRunning || isSliding))
         {
+            if (isSliding)
+            {
+                isSliding = false;
+                normalCollider.enabled = true;
+                slideCollider.enabled = false;
+                animator.SetBool("isSliding", false);
+            }
+
             isRunning = false;
             isJumping = true;
             canDoubleJump = true;
             jumpHoldTimer = 0f;
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", true);
+            SoundManager.Instance.PlaySfx(SoundType.PlayerJump, 0.5f);
             Debug.Log("Jump");
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && canDoubleJump) // 공중에서 한 번 더 점프 가능
+        else if (Input.GetKeyDown(KeyCode.Z) && canDoubleJump)
         {
             canDoubleJump = false;
             rb.velocity = new Vector2(rb.velocity.x, doubleJumpForce);
+            SoundManager.Instance.PlaySfx(SoundType.PlayerJump, 0.5f);
             Debug.Log("DoubleJump");
         }
 
-        // 점프 버튼 입력 시간 비례 점프 높이 조절 (최대 `maxJumpHoldTime` 까지)
         if (Input.GetKey(KeyCode.Z) && isJumping)
         {
             if (jumpHoldTimer < maxJumpHoldTime)
@@ -125,8 +145,7 @@ public class Player : MonoBehaviour
                 jumpHoldTimer += Time.deltaTime;
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.Z)) // 점프 키에서 손을 떼면 멈춤
+        if (Input.GetKeyUp(KeyCode.Z))
         {
             isJumping = false;
         }
@@ -142,16 +161,19 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping)
         {
             isSliding = true;
-            normalCollider.enabled = false; // 기본 콜라이더 비활성화
-            slideCollider.enabled = true; // 슬라이딩용 콜라이더 활성화
+            normalCollider.enabled = false;
+            slideCollider.enabled = true;
             animator.SetBool("isSliding", true);
+
+            SoundManager.Instance.PlaySfx(SoundType.PlayerSlide, 1f);
             Debug.Log("Start Slide");
         }
+
         else if (Input.GetKeyUp(KeyCode.X) && isSliding)
         {
             isSliding = false;
-            normalCollider.enabled = true; // 기본 콜라이더 활성화
-            slideCollider.enabled = false; // 슬라이딩용 콜라이더 비활성화
+            normalCollider.enabled = true;
+            slideCollider.enabled = false;
             animator.SetBool("isSliding", false);
             Debug.Log("End Slide");
         }
@@ -160,11 +182,35 @@ public class Player : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 바닥에서 달리는 상태
-            isRunning = true;
-        Debug.Log("isRunning");
-        animator.SetBool("isRunning", true);
-        animator.SetBool("isJumping", false);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+        
+            isJumping = false;
+            animator.SetBool("isJumping", false);
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                isSliding = true;
+                isRunning = false;
+
+                normalCollider.enabled = false;
+                slideCollider.enabled = true;
+
+                animator.SetBool("isSliding", true);
+                animator.SetBool("isRunning", false);
+            }
+            else
+            {
+                isRunning = true;
+                isSliding = false;
+
+                normalCollider.enabled = true;
+                slideCollider.enabled = false;
+
+                animator.SetBool("isRunning", true);
+                animator.SetBool("isSliding", false);
+            }
+        }
     }
 
     /// <summary>
@@ -187,7 +233,7 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(hpDrainInterval);
             TakeDamage(damage);
-            Debug.Log("HP: " + currentHP);
+            // Debug.Log("HP: "  + currentHP);
         }
     }
     
@@ -197,15 +243,19 @@ public class Player : MonoBehaviour
         // 장애물과 충돌하면 대미지, 잠시 무적
         if (!damaged && collision.gameObject.CompareTag("Obstacle"))
         {
+
             TakeDamage(10);
             Debug.Log("Collision, Damaged -10");
             StartCoroutine(Invincible());
+
         }
         
         // 낙사 구간에 빠지면 Die
         if (collision.gameObject.CompareTag("DropZone"))
         {
             isDropped = true;
+            StartCoroutine(Invincible());
+            StartCoroutine(Invincible());
             Die();
         }
     }
@@ -218,12 +268,33 @@ public class Player : MonoBehaviour
     {
         damaged = true;
         float invincibleTime = invincible;
+        StartCoroutine(BlinkEffect());
         Debug.Log("Invincible Start");
-        
+
         yield return new WaitForSeconds(invincibleTime);
-        
+
         damaged = false;
         Debug.Log("Invincible End");
+    }
+
+    protected IEnumerator BlinkEffect()
+    {
+        float minAlpha = 0.4f; // 최소 투명도 (40%)
+        float maxAlpha = 1f; // 최대 투명도 (100%)
+        
+        Color spriteColor = spriteRenderer.color;
+
+        for (float i = 0; i < invincible; i += blinkInterval)
+        {
+            spriteColor.a = (spriteColor.a == maxAlpha) ? minAlpha : maxAlpha; // 깜빡이도록 알파값 변경
+            spriteRenderer.color = spriteColor; // 변경된 알파 색상 넣어줌
+            
+            yield return new WaitForSeconds(blinkInterval);
+        }
+        
+        // 원래 투명도로 복구
+        spriteColor.a = maxAlpha;
+        spriteRenderer.color = spriteColor;
     }
     
     /// <summary>
@@ -248,20 +319,38 @@ public class Player : MonoBehaviour
     /// </summary>
     void Die()
     {
-        if (canRevive == 0)
+        if (treasure is ReviveTreasure)
         {
-        die = true;
-        Debug.Log("Die");
+            if (treasure.canRescue)
+            {
+                return; 
+            }
+
+            die = true;
+            Unequip();
+            MainSceneBase.Instance.PlayerDeath();
+            Debug.Log("Die");
         }
+        else if (canRevive == 0)
+        {
+            die = true;
+            Unequip();
+            MainSceneBase.Instance.PlayerDeath();
+            Debug.Log("Die");
+        }
+
     }
 
     // 보물 관련
-
     public void TreasureInst()
     {
         Treasure treasure = GameManager.Instance.GetTreasureInstance();
+        if (treasure == null)
+        {
+            return;
+        }
         Debug.Log(treasure);
-        if(treasure != null)
+        if (treasure != null)
         {
             Equip(treasure);
         }
@@ -282,7 +371,6 @@ public class Player : MonoBehaviour
         if (treasure != null)
         {
             treasure.Unequip();
-            Destroy(treasure.gameObject);
             treasure = null;
         }
     }

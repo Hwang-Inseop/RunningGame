@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     public int JemCount { get { return jemCount; } set { jemCount = value; } }
 
-
     private void Awake()
     {
         if (instance == null)
@@ -52,6 +51,7 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
     public Treasure GetTreasureInstance()
     {
         if (Instance.treasureInfo == null || Instance.treasureInfo.TreasureObj == null)

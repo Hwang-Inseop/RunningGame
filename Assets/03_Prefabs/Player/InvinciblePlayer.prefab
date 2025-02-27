@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.23}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.46}
+  m_Size: {x: 0.7, y: 0.45}
   m_EdgeRadius: 0
 --- !u!1 &7971993537832504277
 GameObject:
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!114 &-5718948176528159697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,15 +155,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 3
   maxJumpHoldTime: 0.3
-  doubleJumpForce: 5
+  doubleJumpForce: 7
   isSliding: 0
   normalCollider: {fileID: 8895180005282644817}
   slideCollider: {fileID: 7466042907592339946}
-  maxHP: 100
-  currentHP: 100
+  maxHP: 60
+  currentHP: 60
   damage: 1
   hpDrainInterval: 1
   invincible: 3
+  isDropped: 0
   canRevive: 0
   coolTime: 20
   abilityDuration: 3
@@ -208,7 +209,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 45528312dc6e5ac429e4f2fec110b262, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a24be003ea9a4044d8c3e299bbf3a1ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -315,5 +316,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.92}
+  m_Size: {x: 0.7, y: 0.8}
   m_EdgeRadius: 0

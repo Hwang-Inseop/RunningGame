@@ -13,8 +13,8 @@ namespace RunningGame.Utils
         public const string LoopableTag = "Loopable";
         public const string LoopableItemTag = "LoopableItem";
         
-        // Map Controll
+        // Map Control
         public const int PatternMaxCount = 5;
-        public const float BaseScrollSpeed = 5f;
+        public const float BaseScrollSpeed = 3f;
     }
 }

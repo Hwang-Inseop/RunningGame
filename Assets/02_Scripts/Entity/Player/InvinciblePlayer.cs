@@ -27,6 +27,7 @@ public class InvinciblePlayer : Player
         {
         isCoolDown = true;
         damaged = true;
+        StartCoroutine(BlinkEffect());
         Debug.Log("Ability Invincible Start");
         yield return new WaitForSeconds(abilityDuration);
         

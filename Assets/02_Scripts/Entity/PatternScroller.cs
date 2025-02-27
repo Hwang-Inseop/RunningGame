@@ -1,5 +1,6 @@
 using System;
 using RunningGame.Managers;
+using RunningGame.Utils;
 using UnityEngine;
 
 namespace RunningGame.Entity
@@ -8,16 +9,15 @@ namespace RunningGame.Entity
     {
         [SerializeField] private Transform tr;
         
-        private const float acceleration = 0.2f;
-        private const float scrollSpeed = 5f;
+        private const float acceleration = 0.1f;
         
         private Vector3 offset = Vector3.zero;
+        private float scrollSpeed = Define.BaseScrollSpeed;
         private float timeElapsed;
-        private bool isStart;
 
         private void Update()
         {
-            if (!isStart) return;
+            if (!MainSceneBase.Instance.IsStart()) return;
             
             timeElapsed += Time.deltaTime;
             var speedMultiplier = 1f + acceleration * Mathf.Log(1f + timeElapsed);
@@ -29,7 +29,6 @@ namespace RunningGame.Entity
         {
             timeElapsed = 0f;
             tr.position = Vector3.zero;
-            isStart = true;
         }
     }
 }

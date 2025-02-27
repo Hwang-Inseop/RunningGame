@@ -1,4 +1,5 @@
 using DG.Tweening;
+using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,23 +12,30 @@ using UnityEngine.UI;
 
 public class GameOverPanel : MonoBehaviour
 {
-    private bool isGameOver = false;
-
     [SerializeField] private CanvasGroup gameOverSelectPanel;
+    [SerializeField] private Image characterImg;
+
     [Header("크기 변화 이펙트 적용되는 버튼 리스트")]
     public List<Button> makeScaleBtn = new List<Button>();
 
     [Header("Fade 효과 시간")]
     [SerializeField] private float fadeTime = 0.5f;
-    private void GameOver()
-    {    
-        if(!isGameOver)
+
+    public void GameOver()
+    {
+        gameObject.SetActive(true);
+        if (GameManager.Instance.firstCharacterInfo != null)
         {
-            isGameOver = true;
-            gameObject.SetActive(true);
+            Debug.Log("제대로 연결됨.");
+            characterImg.sprite = GameManager.Instance.firstCharacterInfo.Photo;
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
     }
-    void Start() 
+
+    void Start()
     {
         foreach (Button button in makeScaleBtn)
         {
@@ -39,15 +47,21 @@ public class GameOverPanel : MonoBehaviour
                 button.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
             });
         }
-        RectTransform rectTransform = gameOverSelectPanel.GetComponent<RectTransform>();
+
+        RectTransform rectTransform = gameOverSelectPanel.GetComponent<RectTransform>();  //게임패널 애니메이션
         rectTransform.transform.localPosition = new Vector3(0f, -500f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce);
         gameOverSelectPanel.DOFade(1, fadeTime);
+
+        RectTransform imgRect = characterImg.GetComponent<RectTransform>(); //이미지 애니메이션
+        imgRect.localPosition = new Vector3(0f, -500f, 0f); //게임패널과 동일하게 
+        imgRect.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce); 
     }
+
     public void LoadToLobby()
     {
         Time.timeScale = 0f;
         SceneManager.LoadScene(0);
+        SoundManager.Instance.StopBgm();
     }
 }
-

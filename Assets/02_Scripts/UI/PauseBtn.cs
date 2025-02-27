@@ -12,11 +12,11 @@ using UnityEngine.UI;
 
 public class PauseBtn : MonoBehaviour
 {
-    [Header("일시정지 버튼")]
-    public GameObject pauseMenu;
     private bool isPause = false;
+    public GameObject pauseMenu;
     public void PauseGame() // 게임 일시 정지
     {
+        Debug.Log("게임 일시 정지");
         isPause = !isPause;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;

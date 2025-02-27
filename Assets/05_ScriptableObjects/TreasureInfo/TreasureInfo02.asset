@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: TreasureInfo02
   m_EditorClassIdentifier: 
   treasureNum: 2
-  treasureName: "2\uBC88 \uBCF4\uBB3C \uC774\uB984"
+  treasureName: "\uC4F8\uB9CC\uD55C \uAD6C\uAE09\uD0A4\uD2B8"
   ability: "\uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4 \uC9C0\uC18D\uC801\uC73C\uB85C
     \uCCB4\uB825 \uC18C\uBAA8\uB7C9 \uAC10\uC18C"
-  treasureImg: {fileID: 21300000, guid: 0021dbbf36693c840ae2aa16549e3c90, type: 3}
+  treasureImg: {fileID: 21300000, guid: 521388bcb1969be468d1796517bdc344, type: 3}
+  isOpened: 0
   treasureObj: {fileID: 2526253789261743198, guid: 05d626e39e4455c4e88deb166775bc43, type: 3}

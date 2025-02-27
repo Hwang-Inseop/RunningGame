@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.23}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.46}
+  m_Size: {x: 0.7, y: 0.45}
   m_EdgeRadius: 0
 --- !u!1 &7971993537832504277
 GameObject:
@@ -87,8 +87,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7145089447525534909}
   - component: {fileID: 8598749919279931810}
-  - component: {fileID: -5718948176528159697}
   - component: {fileID: 4997763065254461336}
+  - component: {fileID: 1499494471382006596}
   - component: {fileID: 6629379523873693029}
   m_Layer: 0
   m_Name: SpeedUpPlayer
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -140,33 +140,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &-5718948176528159697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7971993537832504277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed49a7fe2a3e4042830486cb1456f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 3
-  maxJumpHoldTime: 0.3
-  doubleJumpForce: 5
-  isSliding: 0
-  normalCollider: {fileID: 8895180005282644817}
-  slideCollider: {fileID: 7466042907592339946}
-  maxHP: 0
-  currentHP: 0
-  damage: 0
-  hpDrainInterval: 1
-  invincible: 0
-  canRevive: 0
-  coolTime: 0
-  abilityDuration: 0
+  m_Constraints: 5
 --- !u!212 &4997763065254461336
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -219,6 +193,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1499494471382006596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971993537832504277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5d59e3806696d4099c0c4e4b8f1f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 3
+  maxJumpHoldTime: 0.3
+  doubleJumpForce: 7
+  isSliding: 0
+  normalCollider: {fileID: 8895180005282644817}
+  slideCollider: {fileID: 7466042907592339946}
+  maxHP: 60
+  currentHP: 60
+  damage: 1
+  hpDrainInterval: 1
+  invincible: 3
+  isDropped: 0
+  canRevive: 0
 --- !u!95 &6629379523873693029
 Animator:
   serializedVersion: 5
@@ -315,5 +314,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.92}
+  m_Size: {x: 0.7, y: 0.8}
   m_EdgeRadius: 0
