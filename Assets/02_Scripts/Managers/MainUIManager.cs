@@ -13,6 +13,8 @@ namespace RunningGame.Managers
         public HPSlider hPSlider;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
+        public GameOverPanel gameOverPanel;
+        public GameObject treasurePanel;
         private Player player = null;
         private bool isPause = false;
 
