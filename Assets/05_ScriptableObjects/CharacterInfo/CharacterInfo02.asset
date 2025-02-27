@@ -21,5 +21,5 @@ MonoBehaviour:
   talk: "\uD558\uB298\uC774 \uB108\uBB34 \uD30C\uB7AD"
   photo: {fileID: 21300000, guid: d5367c4cf08cc8946829f7970fd9b454, type: 3}
   bgSprite: {fileID: 21300000, guid: dbd37fcb722bf8641892fcc0850a4bb7, type: 3}
-  isOpened: 1
+  isOpened: 0
   charSprite: {fileID: 21300000, guid: d5367c4cf08cc8946829f7970fd9b454, type: 3}

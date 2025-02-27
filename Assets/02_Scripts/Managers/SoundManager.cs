@@ -94,5 +94,8 @@ namespace RunningGame.Managers
         GameOverBgm,
         PotionSfx,
         GemSfx,
+        PanelSfx,
+        UnlockSfx,
+        LobbyBGM,
     }
 }

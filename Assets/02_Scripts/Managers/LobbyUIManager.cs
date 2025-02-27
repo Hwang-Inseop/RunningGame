@@ -1,4 +1,6 @@
 using DG.Tweening;
+using RunningGame.Managers;
+using RunningGame.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -62,6 +64,8 @@ public class LobbyUIManager : MonoBehaviour
     //초기 설정
     void Start()
     {
+        SoundManager.Instance.PlayBgm(SoundType.LobbyBGM, 0.1f);
+
         stageDescriptionTxt.text = GameManager.Instance.stageinfo.StageDescription;
         stageDescriptionImg.sprite = GameManager.Instance.stageinfo.Background;
         CheckSelectedStage();
@@ -87,12 +91,14 @@ public class LobbyUIManager : MonoBehaviour
 
     //Fade In 효과
     public void PanelFadeIn()
-    {
+    { 
         ControlPanel(0f, true);
         RectTransform rectTransform = fadePanel.GetComponent<RectTransform>();
         rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
         fadePanel.DOFade(1, fadeTime);
+
+        SoundManager.Instance.PlaySfx(SoundType.PanelSfx, 0.5f);
     }
 
     //Fade Out 효과
@@ -103,6 +109,8 @@ public class LobbyUIManager : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
         fadePanel.DOFade(0, fadeTime);
+
+        SoundManager.Instance.PlaySfx(SoundType.PanelSfx, 0.5f);
     }
 
     //패널의 상호작용 및 투명도 조절
@@ -119,6 +127,8 @@ public class LobbyUIManager : MonoBehaviour
 
         stageDescriptionTxt.text = stageInfo.StageDescription;
         stageDescriptionImg.sprite = stageInfo.Background;
+
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.5f);
     }
 
     //적용된 스테이지 체크표시해주기
@@ -148,7 +158,12 @@ public class LobbyUIManager : MonoBehaviour
     //씬 로드
     public void LoadScene(String sceneName)
     {
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.5f);
         SceneManager.LoadScene(sceneName);
+        if(sceneName == "MainScene")
+        {
+            SoundManager.Instance.StopBgm();
+        }
     }
 
     //시작 시에 선택된 캐릭터의 이미지가 보이게 하도록 하기 
@@ -171,6 +186,7 @@ public class LobbyUIManager : MonoBehaviour
         }
     }
 
+    //시작 시에 선택된 보물의 정보가 보이도록 하기
     public void InitTreasureInfo()
     {
         if(GameManager.Instance.treasureInfo != null)
