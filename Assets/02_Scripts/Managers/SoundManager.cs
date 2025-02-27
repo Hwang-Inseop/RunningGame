@@ -90,6 +90,7 @@ namespace RunningGame.Managers
         ButtonSfx,
         PlayerJump,
         PlayerSlide,
-        CoinSfx
+        CoinSfx,
+        GameOverBgm
     }
 }
