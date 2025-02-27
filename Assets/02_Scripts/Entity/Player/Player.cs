@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     protected virtual void Start()
     {
         slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
-        
+        TreasureInst();
         currentHP = maxHP; // 게임 시작시 HP MAX
         StartCoroutine(DrainHp()); // 체력 지속 소모 시작
     }
@@ -283,6 +283,16 @@ public class Player : MonoBehaviour
     }
 
     // 보물 관련
+    public void TreasureInst()
+    {
+        Treasure treasure = GameManager.Instance.GetTreasureInstance();
+        if (treasure == null) Debug.Log("null");
+        Debug.Log(treasure);
+        if (treasure != null)
+        {
+            Equip(treasure);
+        }
+    }
     public void Equip(Treasure t)
     {
         if (treasure != null)

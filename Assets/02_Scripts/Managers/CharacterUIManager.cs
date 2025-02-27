@@ -53,7 +53,7 @@ public class CharacterUIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI abilityTxt;
 
-    [Header("보유한 잼의 개수가 적힐 칸")]
+    [Header("보유한 잼의 개수가 적힐 칸 - 패널 내")]
     [SerializeField]
     private TextMeshProUGUI jemCountTxt;
 
@@ -67,6 +67,22 @@ public class CharacterUIManager : MonoBehaviour
     [Header("2주자로 달린다는 표시")]
     public List<GameObject> secondSelectedImage = new List<GameObject>();
 
+    [Header("1주자 설정 버튼")]
+    [SerializeField]
+    private GameObject firstRunnerSettingBtn;
+
+    [Header("2주자 설정 버튼")]
+    [SerializeField]
+    private GameObject secondRunnerSettingBtn;
+
+    [Header("해금 완료 패널")]
+    [SerializeField]
+    private GameObject unlockCompletePanel;
+
+    [Header("보유한 잼의 개수가 적힐 칸 - 패널 외")]
+    [SerializeField]
+    private TextMeshProUGUI wholeJemCount;
+
     //패널에 뜨는 주자의 번호
     private int runnerPanelNum = 0;
 
@@ -78,6 +94,8 @@ public class CharacterUIManager : MonoBehaviour
     {
         ChangeSelectedFirstRunner();
         ChangeSelectedSecondRunner();
+
+        wholeJemCount.text = GameManager.Instance.JemCount.ToString();
 
         characterInfoPanel.transform.localPosition = new Vector3(0f, -1000f, 0f);
 
@@ -132,10 +150,16 @@ public class CharacterUIManager : MonoBehaviour
         if(charInfo.IsOpened)
         {
             unlockBtn.SetActive(false);
+            firstRunnerSettingBtn.SetActive(true);
+            secondRunnerSettingBtn.SetActive(true);
+            unlockCompletePanel.SetActive(true);
         }
         else
         {
             unlockBtn.SetActive(true);
+            firstRunnerSettingBtn.SetActive(false);
+            secondRunnerSettingBtn.SetActive(false);
+            unlockCompletePanel.SetActive(false);
         }
 
         runnerPanelNum = charInfo.CharacterNum;
@@ -285,6 +309,11 @@ public class CharacterUIManager : MonoBehaviour
             jemCountTxt.text = GameManager.Instance.JemCount.ToString();
             characterInfos[runnerPanelNum - 1].IsOpened = true;
             unlockBtn.SetActive(false);
+            firstRunnerSettingBtn.SetActive(true);
+            secondRunnerSettingBtn.SetActive(true);
+            unlockCompletePanel.SetActive(true);
+
+            wholeJemCount.text = GameManager.Instance.JemCount.ToString();
         }
     }
 

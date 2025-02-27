@@ -12,5 +12,6 @@ public class HealthPotion : Item
     {
         base.ApplyEffect(player);
         player.currentHP += healingAmount;
+        if(player.currentHP > player.maxHP) player.currentHP = player.maxHP;
     }
 }

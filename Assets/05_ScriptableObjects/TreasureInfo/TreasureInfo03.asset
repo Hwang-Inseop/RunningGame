@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TreasureInfo03
   m_EditorClassIdentifier: 
   treasureNum: 3
-  treasureName: "3\uBC88 \uBCF4\uBB3C \uC774\uB984"
+  treasureName: "\uACE0\uC7A5\uB09C \uB098\uCE68\uBC18"
   ability: "1\uD68C \uB099\uC0AC \uBC29\uC9C0"
-  treasureImg: {fileID: 21300000, guid: 5a44e708eb20a5d4d89d95c417d11cf3, type: 3}
+  treasureImg: {fileID: 21300000, guid: c2bc9f345343d3f49b65af699d702558, type: 3}
+  isOpened: 0
+  treasureObj: {fileID: 1130515371245547712, guid: e61453403f549cf49995028fdeeed5c7, type: 3}

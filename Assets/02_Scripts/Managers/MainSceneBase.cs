@@ -44,10 +44,12 @@ namespace RunningGame.Managers
 
         public override void Init()
         {
+            // 플레이어 스폰
             SpawnPlayer();
+
             // Manager 초기화
             MainPoolManager.Instance.Init();
-            MainUIManager.Instance.Init();
+            MainUIManager.Instance.Init(); // UI매니저에서 플레이어 할당
             
             // 메인 게임 초기화
             CreatPatternPool();

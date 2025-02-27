@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterNum: 1
   charName: "\uCD08\uB85D\uC774"
-  health: 100
+  health: 60
   jewel: {fileID: 21300000, guid: 93621231dc6b82e4aac9402e80b76be6, type: 3}
   ability: "\uBB34\uB824 \uB2EC\uB9B4\uC218 \uC788\uB2E4"
   talk: "\uAC19\uC774 \uB2EC\uB824\uBCF4\uC790!"

@@ -146,9 +146,9 @@ public class LobbyUIManager : MonoBehaviour
     }
 
     //씬 로드
-    public void LoadToMain()
+    public void LoadScene(String sceneName)
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(sceneName);
     }
 
     //시작 시에 선택된 캐릭터의 이미지가 보이게 하도록 하기 
@@ -193,5 +193,10 @@ public class LobbyUIManager : MonoBehaviour
         color.a = Mathf.Clamp01(index);
         secondRunnerImg.color = color;
     }
- 
+
+    //Dotween 오류 방지
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
+    }
 }
