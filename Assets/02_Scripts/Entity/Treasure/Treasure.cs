@@ -12,10 +12,11 @@ public class Treasure : MonoBehaviour
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] protected float duration; // 효과 지속 시간
     private bool hasEffect = false;
-
+    public bool canRescue = false;
     protected Player player;
     private void Update()
     {
+
         if (!MainSceneBase.Instance.IsStart())
         {
             StopAllCoroutines();

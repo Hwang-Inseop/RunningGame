@@ -253,6 +253,7 @@ public class Player : MonoBehaviour
         {
             isDropped = true;
             StartCoroutine(Invincible());
+            StartCoroutine(Invincible());
             Die();
         }
     }
@@ -316,12 +317,13 @@ public class Player : MonoBehaviour
     /// </summary>
     void Die()
     {
-        if (canRevive == 0)
+        if (canRevive == 0 && !treasure.canRescue)
         {
         die = true;
         MainSceneBase.Instance.PlayerDeath();
         Debug.Log("Die");
         }
+
     }
 
     // 보물 관련
