@@ -84,17 +84,12 @@ namespace RunningGame.Managers
     public enum SoundType
     {
         TitleBgm,
-        LobbyBgm,
         Stage01Bgm,
         Stage02Bgm,
         Stage03Bgm,
-        CoinSfx,
-        JumpSfx,
-        SlideSfx,
-        HitSfx,
-        GameOverSfx,
         ButtonSfx,
         PlayerJump,
-        PlayerSlide
+        PlayerSlide,
+        CoinSfx
     }
 }

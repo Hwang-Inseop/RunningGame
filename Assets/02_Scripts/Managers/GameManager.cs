@@ -52,4 +52,23 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public Treasure GetTreasureInstance()
+    {
+        if (Instance.treasureInfo == null || Instance.treasureInfo.TreasureObj == null)
+        {
+            Debug.Log("null");
+            return null;
+        }
+        GameObject treasureObj = Instantiate(Instance.treasureInfo.TreasureObj, transform);
+        Treasure treasure = treasureObj.GetComponent<Treasure>();
+
+        if (treasure == null)
+        {
+            Destroy(treasureObj);
+            return null;
+        }
+
+        return treasure;
+    }
 }
