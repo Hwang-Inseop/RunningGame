@@ -668,7 +668,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.19999999, z: 0}
   m_MaxChunkCount: 16
@@ -907,7 +907,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPlacerType: 1
-  patternType: 2
   coinTilemap: {fileID: 2941918175983204285}
 --- !u!1 &1536235471746893437
 GameObject:
@@ -1004,7 +1003,6 @@ GameObject:
   - component: {fileID: 5706878686221873975}
   - component: {fileID: 8228662986198193927}
   - component: {fileID: 2623939361287314499}
-  - component: {fileID: 6084100024231968291}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -1550,21 +1548,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &6084100024231968291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2941918175983204285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPlacerType: 1
-  patternType: 2
-  coinTilemap: {fileID: 0}
 --- !u!1 &8332084337093847104
 GameObject:
   m_ObjectHideFlags: 0

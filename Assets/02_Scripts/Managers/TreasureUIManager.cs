@@ -96,6 +96,19 @@ public class TreasureUIManager : MonoBehaviour
         alienImg.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-120f, -150f), fadeTime * 2, false).SetEase(Ease.OutQuad);
         alienImg.DOFade(1, fadeTime);
 
+        for (int i = 1; i <= checkImgs.Count; i++)
+        {
+            if (GameManager.Instance.treasureInfo == null) { }
+            else if (i == GameManager.Instance.treasureInfo.TreasureNum)
+            {
+                checkImgs[i - 1].SetActive(true);
+            }
+            else
+            {
+                checkImgs[i - 1].SetActive(false);
+            }
+        }
+
     }
 
     //씬 로드
