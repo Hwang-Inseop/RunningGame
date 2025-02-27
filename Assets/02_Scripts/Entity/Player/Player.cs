@@ -53,8 +53,9 @@ public class Player : MonoBehaviour
 
     protected virtual void Start()
     {
+        if (!MainSceneBase.Instance.IsSecondPlayer()) TreasureInst();
         slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
-        TreasureInst();
+        
         currentHP = maxHP; // 게임 시작시 HP MAX
         StartCoroutine(DrainHp()); // 체력 지속 소모 시작
     }
@@ -251,6 +252,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("DropZone"))
         {
             isDropped = true;
+            StartCoroutine(Invincible());
             Die();
         }
     }
