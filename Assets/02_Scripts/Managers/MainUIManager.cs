@@ -42,6 +42,7 @@ namespace RunningGame.Managers
 
         public void ResumeGame()
         {
+            SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.1f);
             Debug.Log("Click");
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
@@ -51,6 +52,7 @@ namespace RunningGame.Managers
 
         public void SelectStageBtn() // 스테이지 선택창 
         {
+            SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.1f);
             Time.timeScale = 1f;
             SceneManager.LoadScene("LobbyScene");
             SoundManager.Instance.StopBgm();
@@ -58,6 +60,7 @@ namespace RunningGame.Managers
 
         public void QuitGame()   // 게임 종료
         {
+            SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.1f);
 #if UNITY_EDITOR    //Unity 에디터에서 실행시
             EditorApplication.isPlaying = false;
 #else   //실제 빌드된 게임에서 실행시
@@ -73,6 +76,7 @@ namespace RunningGame.Managers
         public void AddGold() // 재화 추가
         {
             totalGoldTxt.text = totalGold.ToString();
+            totalGold = GameManager.Instance.JemCount;
         }
         public void UpdateTresurePanel() // 보물 패널
         {
