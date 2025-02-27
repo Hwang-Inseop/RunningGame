@@ -14,6 +14,8 @@ public class GameOverPanel : MonoBehaviour
 {
     [SerializeField] private CanvasGroup gameOverSelectPanel;
     [SerializeField] private Image characterImg;
+    [SerializeField] private TextMeshProUGUI totalScoreTxt;
+    [SerializeField] private TextMeshProUGUI totalGoldTxt; 
 
     [Header("크기 변화 이펙트 적용되는 버튼 리스트")]
     public List<Button> makeScaleBtn = new List<Button>();
@@ -23,11 +25,13 @@ public class GameOverPanel : MonoBehaviour
 
     public void GameOver()
     {
+        SoundManager.Instance.PlaySfx(SoundType.GameOverBgm, 0.1f);
         gameObject.SetActive(true);
         if (GameManager.Instance.firstCharacterInfo != null)
         {
             Debug.Log("제대로 연결됨.");
             characterImg.sprite = GameManager.Instance.firstCharacterInfo.Photo;
+            UpdateStatus();
         }
         else
         {
@@ -60,8 +64,13 @@ public class GameOverPanel : MonoBehaviour
 
     public void LoadToLobby()
     {
-        // Time.timeScale = 0f;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
         SoundManager.Instance.StopBgm();
+    }
+    public void UpdateStatus()
+    {
+        totalScoreTxt.text = MainUIManager.Instance.totalScore.ToString();
+        totalGoldTxt.text = MainUIManager.Instance.totalGold.ToString();
     }
 }

@@ -37,6 +37,7 @@ namespace RunningGame.Utils
                 SoundType.PanelSfx => "PanelSfx",
                 SoundType.UnlockSfx => "UnlockSfx",
                 SoundType.LobbyBGM => "Lobby",
+                SoundType.GameOverBgm => "GameOver",
                 _ => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
             };
         }
