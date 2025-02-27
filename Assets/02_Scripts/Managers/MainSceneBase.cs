@@ -29,7 +29,7 @@ namespace RunningGame.Managers
         private List<int> patternList = new();
         private int selectedStage;
         private bool isGameStart;
-        private bool isSecondPlayer;
+        private bool isSecondPlayer = false;
         
         private void Start()
         {
@@ -64,13 +64,11 @@ namespace RunningGame.Managers
 
         private void CreatPatternPool()
         {
-            // TODO: 씬 로드하고 수정
-            // selectedStage = GameManager.Instance.stageinfo.StageNum;
-            selectedStage = 1;
-            var patternList = patternDatas.GetPatternList(selectedStage);
-            for (int i = 0; i < patternList.Count; i++)
+            selectedStage = GameManager.Instance.stageinfo.StageNum;
+            var patterns = patternDatas.GetPatternList(selectedStage);
+            for (int i = 0; i < patterns.Count; i++)
             {
-                var prefab = patternList[i];
+                var prefab = patterns[i];
                 MainPoolManager.Instance.CreatePool(prefab);
             }
         }
@@ -97,14 +95,12 @@ namespace RunningGame.Managers
 
         private void SpawnPlayer()
         {
-            // TODO: 씬 로드하고 수정
             int selectedPlayer = 0;
-            // if (!isSecondPlayer)
-            //     selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
-            // else
-            //     selectedPlayer = GameManager.Instance.secondCharacterInfo.CharacterNum;
+            if (!isSecondPlayer)
+                selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            else
+                selectedPlayer = GameManager.Instance.secondCharacterInfo.CharacterNum;
             
-            selectedPlayer = 1;
             var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer - 1);
             var player = Instantiate(obj, playerSpawnPoint);
             CurrentPlayer = player.GetComponent<Player>();
@@ -135,9 +131,11 @@ namespace RunningGame.Managers
         {
             if (!isSecondPlayer)
             {
+                isSecondPlayer = true;
                 Destroy(CurrentPlayer.gameObject);
                 SpawnPlayer();
-                isSecondPlayer = true;
+                Debug.Log($":::::::::: 이어달리기 주자 : {CurrentPlayer.gameObject.name}");
+                CurrentPlayer.currentHP = CurrentPlayer.maxHP / 2;
             }
             else
             {
