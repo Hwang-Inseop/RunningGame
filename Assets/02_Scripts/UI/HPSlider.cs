@@ -12,9 +12,8 @@ public class HPSlider : MonoBehaviour
 
     public void Init()
     {
-        slider.maxValue =(float)MainSceneBase.Instance.CurrentPlayer.maxHP/100;
-    }
 
+    }
     void Update()
     {
         if (MainSceneBase.Instance.IsStart())
