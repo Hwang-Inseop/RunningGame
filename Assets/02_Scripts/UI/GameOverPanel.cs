@@ -13,6 +13,7 @@ using UnityEngine.UI;
 public class GameOverPanel : MonoBehaviour
 {
     [SerializeField] private CanvasGroup gameOverSelectPanel;
+    [SerializeField] private Image characterImg;
 
     [Header("크기 변화 이펙트 적용되는 버튼 리스트")]
     public List<Button> makeScaleBtn = new List<Button>();
@@ -23,6 +24,15 @@ public class GameOverPanel : MonoBehaviour
     public void GameOver()
     {
         gameObject.SetActive(true);
+        if (GameManager.Instance.firstCharacterInfo != null)
+        {
+            Debug.Log("제대로 연결됨.");
+            characterImg.sprite = GameManager.Instance.firstCharacterInfo.Photo;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Start()
@@ -38,10 +48,14 @@ public class GameOverPanel : MonoBehaviour
             });
         }
 
-        RectTransform rectTransform = gameOverSelectPanel.GetComponent<RectTransform>();
+        RectTransform rectTransform = gameOverSelectPanel.GetComponent<RectTransform>();  //게임패널 애니메이션
         rectTransform.transform.localPosition = new Vector3(0f, -500f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce);
         gameOverSelectPanel.DOFade(1, fadeTime);
+
+        RectTransform imgRect = characterImg.GetComponent<RectTransform>(); //이미지 애니메이션
+        imgRect.localPosition = new Vector3(0f, -500f, 0f); //게임패널과 동일하게 
+        imgRect.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce); 
     }
 
     public void LoadToLobby()

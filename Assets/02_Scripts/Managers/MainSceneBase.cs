@@ -129,20 +129,23 @@ namespace RunningGame.Managers
 
         public void PlayerDeath()
         {
-            if (!isSecondPlayer)
+            if (!isSecondPlayer && GameManager.Instance.secondCharacterInfo != null)
             {
                 isSecondPlayer = true;
                 Destroy(CurrentPlayer.gameObject);
                 SpawnPlayer();
-                Debug.Log($":::::::::: 이어달리기 주자 : {CurrentPlayer.gameObject.name}");
                 CurrentPlayer.currentHP = CurrentPlayer.maxHP / 2;
+                return;
             }
-            else
-            {
-                isGameStart = false;
-                SoundManager.Instance.StopBgm();
-                MainUIManager.Instance.gameOverPanel.GameOver();
-            }
+
+            GameOver();
+        }
+
+        private void GameOver()
+        {
+            isGameStart = false;
+            SoundManager.Instance.StopBgm();
+            MainUIManager.Instance.gameOverPanel.GameOver();
         }
 
         public bool IsStart()
