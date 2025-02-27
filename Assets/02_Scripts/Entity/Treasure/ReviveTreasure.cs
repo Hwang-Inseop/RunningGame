@@ -26,18 +26,18 @@ public class ReviveTreasure : Treasure
     }
     public IEnumerator Revive(Player player, int currentHp) // 부활
     {
-        Vector3 startPos = player.transform.position;
+        Vector3 startPos = player.transform.localPosition;
         Vector3 targetPos = Vector3.zero;
         float duration = 1.5f;
         float elapsedTime = 0f;
         //player.currentHP = 0;
         while (elapsedTime < duration)
         {
-            player.transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime/duration); 
+            player.transform.localPosition = Vector3.Lerp(startPos, targetPos, elapsedTime/duration); 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        player.transform.position = targetPos;
+        player.transform.localPosition = targetPos;
         player.currentHP = currentHp;
         player.isDropped = false;
         canRescue = false;
