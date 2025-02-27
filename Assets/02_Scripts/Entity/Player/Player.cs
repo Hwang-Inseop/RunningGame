@@ -331,7 +331,7 @@ public class Player : MonoBehaviour
             MainSceneBase.Instance.PlayerDeath();
             Debug.Log("Die");
         }
-        else if (canRevive == 0)
+        else if (canRevive == 0 || isDropped)
         {
             die = true;
             Unequip();
