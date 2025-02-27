@@ -1,3 +1,4 @@
+using DG.Tweening;
 using RunningGame.Entity;
 using RunningGame.Scriptable;
 using RunningGame.Singleton;
@@ -36,11 +37,6 @@ namespace RunningGame.Managers
             Init();
         }
         
-        private void OnDestroy()
-        {
-            onGameStart.RemoveAllListeners();
-        }
-
         public override void Init()
         {
             // 플레이어 스폰
@@ -59,6 +55,7 @@ namespace RunningGame.Managers
             // 게임 시작
             onGameStart?.Invoke();
             PlayBgm();
+            Time.timeScale = 1f;
             isGameStart = true;
         }
 
