@@ -5,77 +5,82 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilemapObjectPlacer : MonoBehaviour
+namespace RunningGame.Entity
 {
-    [SerializeField] private ObjectPlacerType objectPlacerType;
-    [SerializeField] private PatternType patternType;
-    
-    private readonly Dictionary<PatternType, bool> existPatternDict = new();
-    private Dictionary<Vector3, string> objectPosDict;
-    private Tilemap tilemap;
-    private TilemapRenderer tilemapRenderer;
 
-    private void Awake()
+
+    public class TilemapObjectPlacer : MonoBehaviour
     {
-        tilemap = GetComponent<Tilemap>();
-        tilemapRenderer = GetComponent<TilemapRenderer>();
-    }
+        [SerializeField] private ObjectPlacerType objectPlacerType;
+        [SerializeField] private PatternType patternType;
 
-    private void Start()
-    {
-        if (objectPlacerType == ObjectPlacerType.Static) return;
-        if (existPatternDict.ContainsKey(patternType)) return;
+        private Dictionary<Vector3, string> objectPosDict;
+        private Tilemap tilemap;
+        private TilemapRenderer tilemapRenderer;
 
-        MainSceneBase.Instance.AddPatternSpawnListener(PlaceObject);
-        existPatternDict.Add(patternType, true);
-    }
-
-    public void PlaceObject()
-    {
-        if (tilemap == null)
+        private void Awake()
         {
-            Debug.LogError("TilemapObjectPlacer : Tilemap is null");
-            return;
+            tilemap = GetComponent<Tilemap>();
+            tilemapRenderer = GetComponent<TilemapRenderer>();
         }
 
-        if (objectPosDict != null)
+        private void Start()
         {
-            foreach (var pair in objectPosDict)
+            if (objectPlacerType == ObjectPlacerType.Static) return;
+            if (!MainSceneBase.Instance.TryAddPatternEventDict(patternType)) return;
+            
+            MainSceneBase.Instance.AddPatternSpawnListener(PlaceObject);
+        }
+
+        public void PlaceObject()
+        {
+            if (tilemap == null)
             {
-                var pos = pair.Key;
-                var poolKey = pair.Value;
-                var coinObj = MainPoolManager.Instance.Spawn(poolKey, pos, Quaternion.identity);
-                coinObj.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
+                Debug.LogError("TilemapObjectPlacer : Tilemap is null");
+                return;
             }
-            return;
-        }
 
-        // 사용하는 영역만큼 줄이기
-        tilemap.CompressBounds();
-        BoundsInt bounds = tilemap.cellBounds;
-        objectPosDict = new Dictionary<Vector3, string>();
-
-        for (int x = bounds.xMin; x < bounds.xMax; x++)
-        {
-            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            if (objectPosDict != null)
             {
-                // 타일이 존재하지 않으면 패스
-                Vector3Int cellPosition = new(x, y, 0);
-                if (!tilemap.HasTile(cellPosition)) continue;
+                foreach (var pair in objectPosDict)
+                {
+                    var pos = pair.Key;
+                    var poolKey = pair.Value;
+                    var coinObj = MainPoolManager.Instance.Spawn(poolKey, pos, Quaternion.identity);
+                    coinObj.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
+                }
 
-                // 타일 이름으로 풀 키 가져오기
-                var tileName = tilemap.GetTile(cellPosition).name;
-                var poolKey = tileName.GetPoolKey();
-
-                // 타일 위치에 오브젝트 생성
-                Vector3 worldPos = tilemap.CellToWorld(cellPosition) + tilemap.tileAnchor;
-                var coinObj = MainPoolManager.Instance.Spawn(poolKey, worldPos, Quaternion.identity);
-                coinObj.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
-                objectPosDict.Add(worldPos, poolKey);
+                tilemapRenderer.enabled = false;
+                return;
             }
-        }
 
-        tilemapRenderer.enabled = false;
+            // 사용하는 영역만큼 줄이기
+            tilemap.CompressBounds();
+            BoundsInt bounds = tilemap.cellBounds;
+            objectPosDict = new Dictionary<Vector3, string>();
+
+            for (int x = bounds.xMin; x < bounds.xMax; x++)
+            {
+                for (int y = bounds.yMin; y < bounds.yMax; y++)
+                {
+                    // 타일이 존재하지 않으면 패스
+                    Vector3Int cellPosition = new(x, y, 0);
+                    if (!tilemap.HasTile(cellPosition)) continue;
+
+                    // 타일 이름으로 풀 키 가져오기
+                    var tileName = tilemap.GetTile(cellPosition).name;
+                    var poolKey = tileName.GetPoolKey();
+
+                    // 타일 위치에 오브젝트 생성
+                    Vector3 worldPos = tilemap.CellToWorld(cellPosition) + tilemap.tileAnchor;
+                    var coinObj = MainPoolManager.Instance.Spawn(poolKey, worldPos, Quaternion.identity);
+                    coinObj.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
+                    objectPosDict.Add(worldPos, poolKey);
+                }
+            }
+
+            tilemapRenderer.enabled = false;
+        }
     }
 
     public enum ObjectPlacerType
@@ -83,7 +88,7 @@ public class TilemapObjectPlacer : MonoBehaviour
         Static,
         Dynamic,
     }
-
+    
     public enum PatternType
     {
         Pattern1,

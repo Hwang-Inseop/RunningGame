@@ -717,6 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPlacerType: 1
+  patternType: 3
 --- !u!1 &2785917668395360021
 GameObject:
   m_ObjectHideFlags: 0

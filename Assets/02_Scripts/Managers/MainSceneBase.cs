@@ -1,7 +1,7 @@
 using RunningGame.Entity;
 using RunningGame.Scriptable;
 using RunningGame.Singleton;
-using RunningGame.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,6 +27,7 @@ namespace RunningGame.Managers
         [SerializeField] private UnityEvent onPatternSpawn = new();
 
         public Player CurrentPlayer { get; private set; }
+        private readonly Dictionary<PatternType, bool> existPatternEventDict = new();
         private int selectedStage;
         private bool isGameStart;
         private bool isSecondPlayer;
@@ -155,6 +156,11 @@ namespace RunningGame.Managers
         public Transform GetLoopableRoot()
         {
             return loopableObjectRoot;
+        }
+        
+        public bool TryAddPatternEventDict(PatternType type)
+        {
+            return existPatternEventDict.TryAdd(type, true);
         }
 
         #region Event

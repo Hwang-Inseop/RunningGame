@@ -1,7 +1,5 @@
-using System;
+using RunningGame.Entity;
 using System.Collections.Generic;
-using RunningGame.Managers;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 

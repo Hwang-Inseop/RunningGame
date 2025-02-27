@@ -1301,6 +1301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPlacerType: 1
+  patternType: 4
 --- !u!1 &6152126961533164058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,7 +1976,7 @@ GameObject:
   - component: {fileID: 2016111056070756917}
   m_Layer: 0
   m_Name: DropZone
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
