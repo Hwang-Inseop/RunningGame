@@ -69,9 +69,14 @@ namespace RunningGame.Managers
         {
             totalGoldTxt.text = totalGold.ToString();
         }
-        //public void UnEquip() //장착하지 않은 보물패널 비활성화
-        //{
-
-        //}
+        public void UndateTresurePanel() // 보물 패널
+        {
+            if(GameManager.Instance.treasureInfo != null)
+            {
+                treasurePanel.SetActive(true);
+                TreasureInfo treasureInfo = GameManager.Instance.treasureInfo;
+                
+            }
+        }
     }
 }
