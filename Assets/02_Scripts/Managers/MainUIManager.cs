@@ -11,10 +11,8 @@ namespace RunningGame.Managers
     public class MainUIManager : SceneSingleton<MainUIManager>
     {
         private bool isPause = false;
-        private Player player;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
-        private Item item;
         public GameObject gameOverPanel;
 
         [Header("점수 표시")]
@@ -32,14 +30,6 @@ namespace RunningGame.Managers
             AddScore();
             AddGold();
         }
-
-        //public void PauseGame() // 게임 일시 정지
-        //{
-        //    Debug.Log("게임 일시 정지");
-        //    isPause = !isPause;
-        //    pauseMenu.SetActive(true);
-        //    Time.timeScale = 0f;
-        //}
 
         public void ResumeGame()
         {
@@ -76,5 +66,3 @@ namespace RunningGame.Managers
         }
     }
 }
-
-        
