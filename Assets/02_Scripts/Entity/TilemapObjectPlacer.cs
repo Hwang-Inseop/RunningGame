@@ -1,35 +1,36 @@
-using System;
 using RunningGame.Managers;
 using RunningGame.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 namespace RunningGame.Entity
 {
-
-
     public class TilemapObjectPlacer : MonoBehaviour
     {
         [SerializeField] private ObjectPlacerType objectPlacerType;
-        [SerializeField] private PatternType patternType;
+        [SerializeField] private GameObject coinTilemap;
 
-        private Dictionary<Vector3, string> objectPosDict;
+
         private Tilemap tilemap;
         private TilemapRenderer tilemapRenderer;
+        private UnityEvent onPatternPlaced;
 
         private void Awake()
         {
-            tilemap = GetComponent<Tilemap>();
-            tilemapRenderer = GetComponent<TilemapRenderer>();
-        }
-
-        private void Start()
-        {
-            if (objectPlacerType == ObjectPlacerType.Static) return;
-            if (!MainSceneBase.Instance.TryAddPatternEventDict(patternType)) return;
+            tilemap = coinTilemap.GetComponent<Tilemap>();
+            tilemapRenderer = coinTilemap.GetComponent<TilemapRenderer>();
             
-            MainSceneBase.Instance.AddPatternSpawnListener(PlaceObject);
+            if (objectPlacerType == ObjectPlacerType.Static) return;    
+            onPatternPlaced = new UnityEvent();
+            onPatternPlaced.AddListener(PlaceObject);
+        }
+        
+        public void InvokePatternPlaced()
+        {
+            onPatternPlaced?.Invoke();
         }
 
         public void PlaceObject()
@@ -40,24 +41,9 @@ namespace RunningGame.Entity
                 return;
             }
 
-            if (objectPosDict != null)
-            {
-                foreach (var pair in objectPosDict)
-                {
-                    var pos = pair.Key;
-                    var poolKey = pair.Value;
-                    var coinObj = MainPoolManager.Instance.Spawn(poolKey, pos, Quaternion.identity);
-                    coinObj.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
-                }
-
-                tilemapRenderer.enabled = false;
-                return;
-            }
-
             // 사용하는 영역만큼 줄이기
             tilemap.CompressBounds();
             BoundsInt bounds = tilemap.cellBounds;
-            objectPosDict = new Dictionary<Vector3, string>();
 
             for (int x = bounds.xMin; x < bounds.xMax; x++)
             {
@@ -75,7 +61,6 @@ namespace RunningGame.Entity
                     Vector3 worldPos = tilemap.CellToWorld(cellPosition) + tilemap.tileAnchor;
                     var coinObj = MainPoolManager.Instance.Spawn(poolKey, worldPos, Quaternion.identity);
                     coinObj.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
-                    objectPosDict.Add(worldPos, poolKey);
                 }
             }
 
@@ -88,7 +73,7 @@ namespace RunningGame.Entity
         Static,
         Dynamic,
     }
-    
+
     public enum PatternType
     {
         Pattern1,

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8047922909475858004}
   - component: {fileID: 8192342673027935446}
+  - component: {fileID: 1405407948758292364}
   m_Layer: 0
   m_Name: 02
   m_TagString: Loopable
@@ -82,6 +83,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &1405407948758292364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282783682998076493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 0
+  patternType: 1
+  coinTilemap: {fileID: 1745975041020532573}
 --- !u!1 &584525557693893236
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +431,7 @@ GameObject:
   - component: {fileID: 8815997405921522869}
   - component: {fileID: 8667772966822910254}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DropZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -492,7 +508,6 @@ GameObject:
   - component: {fileID: 4264310697925772897}
   - component: {fileID: 5057162803272761761}
   - component: {fileID: 6477229520272676925}
-  - component: {fileID: 9164086358374506736}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -1118,20 +1133,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &9164086358374506736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745975041020532573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPlacerType: 0
-  patternType: 0
 --- !u!1 &1803174197825168784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7304124993919839685}
   - component: {fileID: 90516956525320556}
+  - component: {fileID: 4983314550509540900}
   m_Layer: 0
   m_Name: 05
   m_TagString: Loopable
@@ -1215,6 +1217,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &4983314550509540900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803174197825168784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 0
+  patternType: 4
+  coinTilemap: {fileID: 8562298640816787278}
 --- !u!1 &2507822379432731583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1503,6 @@ GameObject:
   - component: {fileID: 6647908313642735707}
   - component: {fileID: 5304892518700909730}
   - component: {fileID: 7543032798751013203}
-  - component: {fileID: 2094443749936897258}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -2014,20 +2030,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &2094443749936897258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818720869089199700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPlacerType: 0
-  patternType: 0
 --- !u!1 &3267308789279174446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,7 +2041,6 @@ GameObject:
   - component: {fileID: 3948268508508073114}
   - component: {fileID: 3762880552930844699}
   - component: {fileID: 5693715570400876963}
-  - component: {fileID: 9145289608827356236}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -2717,20 +2718,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &9145289608827356236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3267308789279174446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPlacerType: 0
-  patternType: 0
 --- !u!1 &3545206759703909349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4632,7 +4619,7 @@ GameObject:
   - component: {fileID: 1308410655009112922}
   - component: {fileID: 1552197983556115814}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DropZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5014,6 +5001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4819170821793160387}
   - component: {fileID: 8670706345565565266}
+  - component: {fileID: 2614092380780261336}
   m_Layer: 0
   m_Name: 04
   m_TagString: Loopable
@@ -5087,6 +5075,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &2614092380780261336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5138038927096323534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 0
+  patternType: 3
+  coinTilemap: {fileID: 3267308789279174446}
 --- !u!1 &5782207088031657380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5098,7 +5101,6 @@ GameObject:
   - component: {fileID: 4379916573860813802}
   - component: {fileID: 3386398166910508294}
   - component: {fileID: 2754997858396616274}
-  - component: {fileID: 8912485481753998349}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -5924,20 +5926,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &8912485481753998349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5782207088031657380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPlacerType: 0
-  patternType: 0
 --- !u!1 &5997052540652958472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5953,7 +5941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8532022839029714152
 Transform:
   m_ObjectHideFlags: 0
@@ -5962,7 +5950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5997052540652958472}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6203,6 +6191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4305353318908928440}
   - component: {fileID: 392112192257029532}
+  - component: {fileID: 4205563818321197693}
   m_Layer: 0
   m_Name: 03
   m_TagString: Loopable
@@ -6275,6 +6264,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &4205563818321197693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225853890314742085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 0
+  patternType: 2
+  coinTilemap: {fileID: 5782207088031657380}
 --- !u!1 &6470769974150936477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6694,6 +6698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5404822854742428100}
   - component: {fileID: 1320984640105598977}
+  - component: {fileID: 6865027808692562478}
   m_Layer: 0
   m_Name: 01
   m_TagString: Loopable
@@ -6766,6 +6771,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &6865027808692562478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6501603844999503740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 0
+  patternType: 0
+  coinTilemap: {fileID: 2818720869089199700}
 --- !u!1 &6672728024345601076
 GameObject:
   m_ObjectHideFlags: 0
@@ -7890,7 +7910,7 @@ GameObject:
   - component: {fileID: 2105715691635784972}
   - component: {fileID: 3029451326642719399}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DropZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7967,7 +7987,7 @@ GameObject:
   - component: {fileID: 8213354036844867862}
   - component: {fileID: 8610017508955625882}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DropZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9270,7 +9290,6 @@ GameObject:
   - component: {fileID: 7234494094292185904}
   - component: {fileID: 1613726742622662097}
   - component: {fileID: 9120010217568030696}
-  - component: {fileID: 2924961228823629979}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -9808,20 +9827,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &2924961228823629979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8562298640816787278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPlacerType: 0
-  patternType: 0
 --- !u!1 &8958513720534908987
 GameObject:
   m_ObjectHideFlags: 0
@@ -9833,7 +9838,7 @@ GameObject:
   - component: {fileID: 2401519482857312306}
   - component: {fileID: 1446442718863074012}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DropZone
   m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
