@@ -1561,6 +1561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternLooper: {fileID: 1939654913}
   staticObjectPlacer: {fileID: 1825072483}
+  footHold: {fileID: 8574360632595617181, guid: 3802fe26cd295f544bd155b92c212198, type: 3}
   interactionItemDatas: {fileID: 11400000, guid: 5986497ed07ef6344bd721b56208ada7, type: 2}
   patternDatas: {fileID: 11400000, guid: 6da12a26d309f494086b0c64e15cc3d4, type: 2}
   playerPrefabs: {fileID: 11400000, guid: f1cf8f9c83656004996ad54d0aa41069, type: 2}

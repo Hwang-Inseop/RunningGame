@@ -253,6 +253,7 @@ public class Player : MonoBehaviour
         // 낙사 구간에 빠지면 Die
         if (collision.gameObject.CompareTag("DropZone"))
         {
+            Debug.Log("DropZone");
             isDropped = true;
             StartCoroutine(Invincible());
             StartCoroutine(Invincible());
@@ -323,7 +324,7 @@ public class Player : MonoBehaviour
         {
             if (treasure.canRescue)
             {
-                return; 
+                return;
             }
 
             die = true;
