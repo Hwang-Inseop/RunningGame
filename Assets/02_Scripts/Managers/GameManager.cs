@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     public int JemCount { get { return jemCount; } set { jemCount = value; } }
 
-
     private void Awake()
     {
         if (instance == null)

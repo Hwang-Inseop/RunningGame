@@ -11,7 +11,6 @@ public class Treasure : MonoBehaviour
     [SerializeField] private int reqGem; // 필요한 젬 개수
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] protected float duration; // 효과 지속 시간
-    [SerializeField] public Sprite image; // 참조용
     private bool hasEffect = false;
 
     private Player player;
@@ -36,7 +35,7 @@ public class Treasure : MonoBehaviour
             }
             else transform.SetParent(player.transform, false);
             transform.localScale = new Vector3(3, 3, 0);
-            transform.localPosition = new Vector3(-982, -653, 0);
+            transform.localPosition = new Vector3(0, 0, 0);
             StartCoroutine(WaitForStart());
         }
     }

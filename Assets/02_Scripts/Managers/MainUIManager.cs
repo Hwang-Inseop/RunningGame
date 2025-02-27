@@ -14,7 +14,6 @@ namespace RunningGame.Managers
         public GameObject pauseBtn;
         public GameObject pauseMenu;
         public GameOverPanel gameOverPanel;
-        public GameObject treasurePanel;
         private Player player = null;
         private bool isPause = false;
 
@@ -27,7 +26,8 @@ namespace RunningGame.Managers
         public TextMeshProUGUI totalGoldTxt;
 
         [Header("보물 표시")]
-        public Image EquippedTreasureImage;
+        public GameObject treasurePanel;
+        public Image equippedTreasureImage;
 
         public override void Init() //시작시 초기화 
         {
@@ -75,10 +75,21 @@ namespace RunningGame.Managers
         }
         public void UpdateTresurePanel() // 보물 패널
         {
-            if(GameManager.Instance.treasureInfo != null)
+            if (GameManager.Instance.treasureInfo != null)
             {
-                EquippedTreasureImage.sprite = GameManager.Instance.treasureInfo.TreasureImg;
+                Debug.Log("제대로 연결됨.");
+
+                if (treasurePanel!= null||GameManager.Instance.treasureInfo != null)
+                {
+                    treasurePanel.SetActive(true);
+                    equippedTreasureImage.sprite = GameManager.Instance.treasureInfo.TreasureImg;
+                }
+                else
+                {
+                    treasurePanel.SetActive(false);
+                }
             }
+                
         }
     }
 }
