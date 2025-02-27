@@ -32,23 +32,22 @@ public class CoinTreasure : Treasure
             yield return new WaitForSeconds(intervalTime);
             GameObject newCoin = Instantiate(extraCoin, coinPosition.position, Quaternion.identity);
             newCoin.transform.SetParent(coinPosition);
-            Debug.Log("코인 생성");
             StartCoroutine(Magnetic(newCoin.transform, player.transform));
 
         }
     }
     public IEnumerator Magnetic(Transform coin, Transform player)
     {
-        Debug.Log("코루틴");
         while (coin != null)
         {
+
             float duration = 1f; // 이동하는 데 걸리는 시간
             float elapsedTime = 0f;
 
             Vector3 startPos = coin.position;
             Vector3 targetPos = player.position;
 
-            while (elapsedTime < duration && player != null)
+            while (elapsedTime < duration && player != null && coin != null)
             {
                 coin.position = Vector3.Lerp(startPos, targetPos, elapsedTime / duration);
                 elapsedTime += Time.deltaTime;
