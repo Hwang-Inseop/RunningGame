@@ -62,6 +62,7 @@ public class PatternLooper : MonoBehaviour
         
         var pattern = MainPoolManager.Instance.Spawn(GetPatternKey(), patternScroller);
         pattern.transform.position = other.transform.position + bgOffset;
+        MainSceneBase.Instance.InvokePatternSpawn();
     }
     
     private string GetPatternKey()

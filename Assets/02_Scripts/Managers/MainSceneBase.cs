@@ -1,3 +1,4 @@
+using RunningGame.Entity;
 using RunningGame.Scriptable;
 using RunningGame.Singleton;
 using RunningGame.Utils;
@@ -8,7 +9,7 @@ namespace RunningGame.Managers
 {
     public class MainSceneBase : SceneSingleton<MainSceneBase>
     {
-        [Header("Components")]
+        [Header("Map Controll")]
         [SerializeField] private PatternLooper patternLooper;
         [SerializeField] private StaticObjectPlacers staticObjectPlacer;
         
@@ -23,7 +24,11 @@ namespace RunningGame.Managers
         
         [Header("Event")]
         [SerializeField] private UnityEvent onGameStart = new();
+        [SerializeField] private UnityEvent onPatternSpawn = new();
+
+        public Player CurrentPlayer { get; private set; }
         private int selectedStage;
+        private int selectedPlayer;
         private bool isGameStart;
         
         private void Start()
@@ -34,6 +39,7 @@ namespace RunningGame.Managers
         private void OnDestroy()
         {
             onGameStart.RemoveAllListeners();
+            onPatternSpawn.RemoveAllListeners();
         }
 
         public override void Init()
@@ -57,8 +63,8 @@ namespace RunningGame.Managers
 
         private void CreatPatternPool()
         {
-            // TODO: GameManager에서 선택한 스테이지 정보 가져오기
-            
+            // TODO: 씬 로드하고 수정
+            // selectedStage = GameManager.Instance.stageinfo.StageNum;
             selectedStage = 1;
             var patternList = patternDatas.GetPatternList(selectedStage);
             for (int i = 0; i < patternList.Count; i++)
@@ -74,7 +80,7 @@ namespace RunningGame.Managers
             for (int i = 0; i < coinList.Count; i++)
             {
                 var prefab = coinList[i];
-                MainPoolManager.Instance.CreatePool(prefab, 50);
+                MainPoolManager.Instance.CreatePool(prefab, 100);
             }
 
             var heartList = interactionItemDatas.GetHeartPrefabs();
@@ -90,12 +96,14 @@ namespace RunningGame.Managers
 
         private void SpawnPlayer()
         {
-            // TODO: GameManager에서 선택한 캐릭터 정보 가져오기
-
-            var obj = playerPrefabs.GetPlayerPrefab(0);
+            // TODO: 씬 로드하고 수정
+            // selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            selectedPlayer = 1;
+            var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer + 1);
             var player = Instantiate(obj, playerSpawnPoint);
-            player.transform.localPosition = Vector3.zero;
-            player.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+            CurrentPlayer = player.GetComponent<Player>();
+            CurrentPlayer.transform.localPosition = Vector3.zero;
+            CurrentPlayer.transform.localScale = new Vector3(1.5f, 1.5f, 0);
         }
 
         private void PlayBgm()
@@ -103,13 +111,13 @@ namespace RunningGame.Managers
             switch (selectedStage)
             {
                 case 1:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.3f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.2f);
                     break;
                 case 2:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.3f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.2f);
                     break;
                 case 3:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.3f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.2f);
                     break;
                 default:
                     Debug.LogError("MainSceneBase : Invalid stage key");
@@ -126,14 +134,31 @@ namespace RunningGame.Managers
             // GameOver
         }
 
+        public bool IsSelectedSpeedUpPlayer()
+        {
+            return selectedPlayer == 5;
+        }
+        
         public bool IsStart()
         {
             return isGameStart;
         }
-
+        
         public Transform GetLoopableRoot()
         {
             return loopableObjectRoot;
         }
+
+        #region Event
+        public void AddPatternSpawnListener(UnityAction action)
+        {
+            onPatternSpawn.AddListener(action);
+        }
+        
+        public void InvokePatternSpawn()
+        {
+            onPatternSpawn?.Invoke();
+        }
+        #endregion
     }
 }
