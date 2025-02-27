@@ -75,7 +75,7 @@ namespace RunningGame.Managers
             {
                 treasurePanel.SetActive(true);
                 TreasureInfo treasureInfo = GameManager.Instance.treasureInfo;
-                
+                //TreasureUIManager
             }
         }
     }
