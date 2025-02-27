@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ReviveTreasure : Treasure
 {
-    public override void ApplyEffect(Player player)
+    private void Update()
     {
-        player.canRevive++;
-        if(player.canRevive > 0 && player.isDropped)
+        if (player.canRevive > 0 && player.isDropped)
         {
             int currentHealth = player.currentHP;
             player.canRevive--;
@@ -16,13 +15,20 @@ public class ReviveTreasure : Treasure
             StartCoroutine(Revive(player, currentHealth));
         }
     }
+    public override void ApplyEffect(Player player)
+    {
+        this.player = player;
+        player.canRevive++;
+        
+    }
     public IEnumerator Revive(Player player, int currentHp) // 부활
     {
+        Debug.Log("코루틴");
         Vector3 startPos = player.transform.position;
         Vector3 targetPos = Vector3.zero;
         float duration = 1.5f;
         float elapsedTime = 0f;
-
+        yield return new WaitForSeconds(2f);
         while(elapsedTime < duration)
         {
             player.transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime/duration); 
