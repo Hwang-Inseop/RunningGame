@@ -16,6 +16,7 @@ public class PauseBtn : MonoBehaviour
     public GameObject pauseMenu;
     public void PauseGame() // 게임 일시 정지
     {
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.1f);
         Debug.Log("게임 일시 정지");
         isPause = !isPause;
         pauseMenu.SetActive(true);

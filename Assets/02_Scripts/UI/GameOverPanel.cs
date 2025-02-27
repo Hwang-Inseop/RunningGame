@@ -64,6 +64,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void LoadToLobby()
     {
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.1f);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
         SoundManager.Instance.StopBgm();
