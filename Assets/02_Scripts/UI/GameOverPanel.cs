@@ -1,4 +1,5 @@
 using DG.Tweening;
+using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ public class GameOverPanel : MonoBehaviour
     {
         Time.timeScale = 0f;
         SceneManager.LoadScene(0);
+        SoundManager.Instance.StopBgm();
     }
 }
 
