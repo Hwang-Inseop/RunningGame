@@ -17,7 +17,7 @@ namespace RunningGame.Entity
 
         private void Update()
         {
-            if (MainSceneBase.Instance.IsStart()) return;
+            if (!MainSceneBase.Instance.IsStart()) return;
             
             timeElapsed += Time.deltaTime;
             var speedMultiplier = 1f + acceleration * Mathf.Log(1f + timeElapsed);
