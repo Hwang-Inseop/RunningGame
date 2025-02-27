@@ -12,7 +12,6 @@ namespace RunningGame.Managers
         [Header("Map Controll")]
         [SerializeField] private PatternLooper patternLooper;
         [SerializeField] private StaticObjectPlacers staticObjectPlacer;
-        [SerializeField] private PatternScroller patternScroller;
         
         [Header("MainScene Datas")]
         [SerializeField] private InteractionItemDatas interactionItemDatas;
@@ -26,7 +25,8 @@ namespace RunningGame.Managers
         [Header("Event")]
         [SerializeField] private UnityEvent onGameStart = new();
         [SerializeField] private UnityEvent onPatternSpawn = new();
-        
+
+        public Player CurrentPlayer { get; private set; }
         private int selectedStage;
         private int selectedPlayer;
         private bool isGameStart;
@@ -63,7 +63,9 @@ namespace RunningGame.Managers
 
         private void CreatPatternPool()
         {
-            selectedStage = GameManager.Instance.stageinfo.StageNum;
+            // TODO: 씬 로드하고 수정
+            // selectedStage = GameManager.Instance.stageinfo.StageNum;
+            selectedStage = 1;
             var patternList = patternDatas.GetPatternList(selectedStage);
             for (int i = 0; i < patternList.Count; i++)
             {
@@ -94,11 +96,14 @@ namespace RunningGame.Managers
 
         private void SpawnPlayer()
         {
-            selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            // TODO: 씬 로드하고 수정
+            // selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            selectedPlayer = 1;
             var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer + 1);
             var player = Instantiate(obj, playerSpawnPoint);
-            player.transform.localPosition = Vector3.zero;
-            player.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+            CurrentPlayer = player.GetComponent<Player>();
+            CurrentPlayer.transform.localPosition = Vector3.zero;
+            CurrentPlayer.transform.localScale = new Vector3(1.5f, 1.5f, 0);
         }
 
         private void PlayBgm()
