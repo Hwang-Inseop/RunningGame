@@ -1,9 +1,12 @@
+using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ReviveTreasure : Treasure
 {
+    [SerializeField] private GameObject footHold;
+    
     private void Start()
     {
         canRescue = true;
@@ -40,6 +43,9 @@ public class ReviveTreasure : Treasure
         player.transform.localPosition = targetPos;
         player.currentHP = currentHp;
         player.isDropped = false;
+        footHold.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
+        footHold.transform.localPosition = new Vector3(0, -3.33f, 0);
+        footHold.SetActive(true);
         canRescue = false;
     }
 }
