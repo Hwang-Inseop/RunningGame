@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 4712993057136072777}
   - component: {fileID: 3616410044324357208}
   - component: {fileID: 7490345069542870987}
+  - component: {fileID: -3672905289604040196}
   m_Layer: 0
   m_Name: Stage03_03
   m_TagString: Loopable
@@ -893,6 +894,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &-3672905289604040196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282486135193495843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 1
+  patternType: 2
+  coinTilemap: {fileID: 2941918175983204285}
 --- !u!1 &1536235471746893437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPlacerType: 1
   patternType: 2
+  coinTilemap: {fileID: 0}
 --- !u!1 &8332084337093847104
 GameObject:
   m_ObjectHideFlags: 0

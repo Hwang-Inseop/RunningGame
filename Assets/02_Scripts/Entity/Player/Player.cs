@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(hpDrainInterval);
             TakeDamage(damage);
-            Debug.Log("HP: "  + currentHP);
+            // Debug.Log("HP: "  + currentHP);
         }
     }
     

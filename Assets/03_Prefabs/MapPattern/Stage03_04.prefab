@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 2083886889391620976}
   - component: {fileID: 1304522751867492745}
   - component: {fileID: 4464915577401984578}
-  - component: {fileID: 7119601747149849164}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -704,20 +703,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &7119601747149849164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849906269825674198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPlacerType: 1
-  patternType: 3
 --- !u!1 &2785917668395360021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1260,7 @@ GameObject:
   - component: {fileID: 7253370674241595178}
   - component: {fileID: 6303350299259595721}
   - component: {fileID: 6922038628491242832}
+  - component: {fileID: -5811396653262835287}
   m_Layer: 0
   m_Name: Stage03_04
   m_TagString: Loopable
@@ -1479,6 +1465,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &-5811396653262835287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755101680389220804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deee41c99528494f9f2d516d8579647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPlacerType: 1
+  patternType: 3
+  coinTilemap: {fileID: 849906269825674198}
 --- !u!1 &8435061221414647912
 GameObject:
   m_ObjectHideFlags: 0
