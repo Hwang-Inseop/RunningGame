@@ -280,6 +280,7 @@ public class Player : MonoBehaviour
         if (canRevive == 0)
         {
         die = true;
+        MainSceneBase.Instance.PlayerDeath();
         Debug.Log("Die");
         }
     }
