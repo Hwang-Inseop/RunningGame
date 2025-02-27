@@ -13,7 +13,6 @@ namespace RunningGame.Entity
         [SerializeField] private ObjectPlacerType objectPlacerType;
         [SerializeField] private GameObject coinTilemap;
 
-
         private Tilemap tilemap;
         private TilemapRenderer tilemapRenderer;
         private UnityEvent onPatternPlaced;
@@ -22,12 +21,12 @@ namespace RunningGame.Entity
         {
             tilemap = coinTilemap.GetComponent<Tilemap>();
             tilemapRenderer = coinTilemap.GetComponent<TilemapRenderer>();
-            
-            if (objectPlacerType == ObjectPlacerType.Static) return;    
+
+            if (objectPlacerType == ObjectPlacerType.Static) return;
             onPatternPlaced = new UnityEvent();
             onPatternPlaced.AddListener(PlaceObject);
         }
-        
+
         public void InvokePatternPlaced()
         {
             onPatternPlaced?.Invoke();
