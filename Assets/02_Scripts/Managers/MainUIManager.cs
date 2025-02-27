@@ -10,11 +10,11 @@ namespace RunningGame.Managers
     // UI와 오브젝트의 중간 매개체 역할을 하는 MainUIManager 클래스
     public class MainUIManager : SceneSingleton<MainUIManager>
     {
+        public HPSlider hPSlider;
+        private Player player = null;
         private bool isPause = false;
-        private Player player;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
-        public Item item;
         public GameObject gameOverPanel;
 
         [Header("점수 표시")]
@@ -25,16 +25,16 @@ namespace RunningGame.Managers
         public int totalGold = 0;
         public TextMeshProUGUI totalGoldTxt;
 
-        [Header("체력 표시")]
-        private float hp;
-        public Slider healthSlider;
-        
-
         public override void Init() //시작시 초기화 
         {
+            player = MainSceneBase.Instance.CurrentPlayer;
             int totalGold = 0;
             int totalScore = 0;
+            AddScore();
+            AddGold();
+            hPSlider.Init();
         }
+
         public void ResumeGame()
         {
             Debug.Log("Click");
@@ -47,7 +47,7 @@ namespace RunningGame.Managers
         public void SelectStageBtn() // 스테이지 선택창 
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene("CharacterScene");
+            SceneManager.LoadScene("LobbyScene");
         }
 
         public void QuitGame()   // 게임 종료
@@ -70,5 +70,3 @@ namespace RunningGame.Managers
         }
     }
 }
-
-        

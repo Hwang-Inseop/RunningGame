@@ -35,4 +35,8 @@ public class TreasureInfo : ScriptableObject
     private bool isOpened;
 
     public bool IsOpened { get { return isOpened; } set { isOpened = value; } }
+
+    [SerializeField] // 보물 프리팹
+    private GameObject treasureObj;
+    public GameObject TreasureObj { get { return treasureObj; } }
 }

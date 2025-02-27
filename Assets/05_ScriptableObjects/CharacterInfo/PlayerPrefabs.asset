@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefabs:
   - {fileID: 7971993537832504277, guid: 7c7ff31649500154eab93280f6bf6afb, type: 3}
-  - {fileID: 7971993537832504277, guid: 6d434da9b7066924a8d0f880981fbc10, type: 3}
   - {fileID: 7971993537832504277, guid: a4a6b2b249ca69b43bba99a1a9bb3b9a, type: 3}
   - {fileID: 7971993537832504277, guid: 6a279f1449de54c45bf219870266ae66, type: 3}
   - {fileID: 7971993537832504277, guid: 4f049517bbde18b4ba6ef2a77c572524, type: 3}
+  - {fileID: 7971993537832504277, guid: 6d434da9b7066924a8d0f880981fbc10, type: 3}

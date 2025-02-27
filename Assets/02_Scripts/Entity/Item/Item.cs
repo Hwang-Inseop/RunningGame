@@ -17,6 +17,7 @@ public class Item : MonoBehaviour
     public virtual void ApplyEffect(Player player) // 아이템 효과
     {  
         MainUIManager.Instance.totalScore += Score;
+        MainUIManager.Instance.AddScore();
     }
     public void DestroyItem() // 사라지는 애니메이션 후 Destroy
     {

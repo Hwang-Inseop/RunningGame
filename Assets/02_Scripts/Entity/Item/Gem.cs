@@ -11,5 +11,6 @@ public class Gem : Item
     {
         base.ApplyEffect(player);
         MainUIManager.Instance.totalGold += gemAmount;
+        MainUIManager.Instance.AddGold();
     }
 }

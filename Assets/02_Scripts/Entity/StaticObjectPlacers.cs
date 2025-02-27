@@ -19,21 +19,18 @@ public class StaticObjectPlacers : MonoBehaviour
                 for (int i = 0; i < stage01_Placers.Count; i++)
                 {
                     unityEvent.AddListener(stage01_Placers[i].PlaceObject);
-                    stage01_Placers[i].Init();
                 }
                 break;
             case 2:
                 for (int i = 0; i < stage02_Placers.Count; i++)
                 {
                     unityEvent.AddListener(stage02_Placers[i].PlaceObject);
-                    stage02_Placers[i].Init();
                 }
                 break;
             case 3:
                 for (int i = 0; i < stage03_Placers.Count; i++)
                 {
                     unityEvent.AddListener(stage03_Placers[i].PlaceObject);
-                    stage03_Placers[i].Init();
                 }
                 break;
             default:
