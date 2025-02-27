@@ -13,6 +13,7 @@ namespace RunningGame.Managers
         [Header("Map Controll")]
         [SerializeField] private PatternLooper patternLooper;
         [SerializeField] private StaticObjectPlacers staticObjectPlacer;
+        [SerializeField] private GameObject footHold;
         
         [Header("MainScene Datas")]
         [SerializeField] private InteractionItemDatas interactionItemDatas;
@@ -103,6 +104,7 @@ namespace RunningGame.Managers
             CurrentPlayer = player.GetComponent<Player>();
             CurrentPlayer.transform.localPosition = Vector3.zero;
             CurrentPlayer.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+            SetPlayerCurrentHp();
         }
 
         private void PlayBgm()
@@ -131,11 +133,31 @@ namespace RunningGame.Managers
                 isSecondPlayer = true;
                 Destroy(CurrentPlayer.gameObject);
                 SpawnPlayer();
-                CurrentPlayer.currentHP = CurrentPlayer.maxHP / 2;
+                SpawnFootHold();
                 return;
             }
 
             GameOver();
+        }
+        
+        private void SpawnFootHold()
+        {
+            var footHoldObj = Instantiate(footHold, loopableObjectRoot);
+            footHoldObj.transform.parent = loopableObjectRoot;
+            footHoldObj.transform.position = CurrentPlayer.transform.position + Vector3.down;
+            footHoldObj.transform.localScale = Vector3.one;
+        }
+
+        private void SetPlayerCurrentHp()
+        {
+            if (!isSecondPlayer)
+            {
+                CurrentPlayer.currentHP = CurrentPlayer.maxHP;
+            }
+            else
+            {
+                CurrentPlayer.currentHP = CurrentPlayer.maxHP / 2;
+            }
         }
 
         private void GameOver()
