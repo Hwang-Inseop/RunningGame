@@ -1,5 +1,6 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterInfo", menuName = "Scriptable Object/CharacterInfo", order = int.MaxValue)]
@@ -59,7 +60,7 @@ public class CharacterInfo : ScriptableObject
     [SerializeField]
     private bool isOpened;
 
-    public bool IsOpened { get { return isOpened; } set { isOpened = value; } }
+    public bool IsOpened { get { return isOpened; } set { isOpened = value; EditorUtility.SetDirty(this); } }
 
     //캐릭터 사진
     [SerializeField]

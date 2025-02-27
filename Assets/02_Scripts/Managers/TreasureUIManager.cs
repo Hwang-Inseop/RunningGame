@@ -207,6 +207,7 @@ public class TreasureUIManager : MonoBehaviour
     {
         if (GameManager.Instance.JemCount >= limitToUnlock)
         {
+            PlayerPrefs.SetInt("JemCount", GameManager.Instance.JemCount - 50);
             GameManager.Instance.JemCount -= limitToUnlock;
             jemCountTxt.text = GameManager.Instance.JemCount.ToString();
             treasureInfos[currentTreasureNum - 1].IsOpened = true;

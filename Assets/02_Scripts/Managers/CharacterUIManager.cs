@@ -308,7 +308,7 @@ public class CharacterUIManager : MonoBehaviour
     {
         if(GameManager.Instance.JemCount >= limitToUnlock)
         {
-            GameManager.Instance.JemCount -= limitToUnlock;
+            PlayerPrefs.SetInt("JemCount", GameManager.Instance.JemCount - 50);
             jemCountTxt.text = GameManager.Instance.JemCount.ToString();
             characterInfos[runnerPanelNum - 1].IsOpened = true;
             unlockBtn.SetActive(false);

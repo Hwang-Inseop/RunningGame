@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public TreasureInfo treasureInfo;
 
     //현재 보유하고 있는 잼의 개수
-    private int jemCount = 100;
+    private int jemCount = 0;
 
     public int JemCount { get { return jemCount; } set { jemCount = value; } }
 
@@ -68,5 +68,9 @@ public class GameManager : MonoBehaviour
         }
 
         return treasure;
+    }
+    private void Start()
+    {
+        jemCount = PlayerPrefs.GetInt("JemCount", 0);
     }
 }

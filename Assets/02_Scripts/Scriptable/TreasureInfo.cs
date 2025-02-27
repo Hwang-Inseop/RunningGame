@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TreasureInfo", menuName = "Scriptable Object/TreasureInfo", order = int.MaxValue)]
@@ -32,9 +33,9 @@ public class TreasureInfo : ScriptableObject
 
     //보물 해금 여부
     [SerializeField]
-    private bool isOpened;
+    public bool isOpened;
 
-    public bool IsOpened { get { return isOpened; } set { isOpened = value; } }
+    public bool IsOpened { get { return isOpened; } set { isOpened = value; EditorUtility.SetDirty(this); } }
 
     [SerializeField] // 보물 프리팹
     private GameObject treasureObj;
