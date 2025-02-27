@@ -80,10 +80,10 @@ public class StartDisplay : MonoBehaviour
     }
     public void OnStartButtonClicked()
     {
-        float secondDuration = 2f;
+        float secondDuration = 1f;
         foreach(GameObject player in spawnedPlayers)
         {
-            player.transform.DOMoveY(-10f, secondDuration).SetEase(Ease.InQuad);
+            player.transform.DOMoveY(-13f, secondDuration).SetEase(Ease.InQuad);
         }
     }
 }
