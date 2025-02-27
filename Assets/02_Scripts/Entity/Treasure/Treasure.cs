@@ -35,7 +35,7 @@ public class Treasure : MonoBehaviour
             }
             else transform.SetParent(player.transform, false);
             transform.localScale = new Vector3(3, 3, 0);
-            transform.localPosition = new Vector3(-982, -653, 0);
+            transform.localPosition = new Vector3(0, 0, 0);
             StartCoroutine(WaitForStart());
         }
     }
