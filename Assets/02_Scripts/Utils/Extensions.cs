@@ -25,15 +25,9 @@ namespace RunningGame.Utils
             return soundType switch
             {
                 SoundType.TitleBgm    => "PeaceIntro",
-                SoundType.LobbyBgm    => "",
                 SoundType.Stage01Bgm  => "Stage01",
                 SoundType.Stage02Bgm  => "Stage02",
                 SoundType.Stage03Bgm  => "Stage03",
-                SoundType.CoinSfx     => "CoinCollect",
-                SoundType.JumpSfx     => "",
-                SoundType.SlideSfx    => "",
-                SoundType.HitSfx      => "",
-                SoundType.GameOverSfx => "",
                 SoundType.ButtonSfx   => "ButtonClick",
                 SoundType.PlayerJump  => "PlayerJumpSound",
                 SoundType.PlayerSlide => "PlayerSlideSound",
