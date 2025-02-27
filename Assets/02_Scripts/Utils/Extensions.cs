@@ -24,14 +24,15 @@ namespace RunningGame.Utils
         {
             return soundType switch
             {
-                SoundType.TitleBgm    => "PeaceIntro",
-                SoundType.Stage01Bgm  => "Stage01",
-                SoundType.Stage02Bgm  => "Stage02",
-                SoundType.Stage03Bgm  => "Stage03",
-                SoundType.ButtonSfx   => "ButtonClick",
-                SoundType.PlayerJump  => "PlayerJumpSound",
+                SoundType.TitleBgm => "PeaceIntro",
+                SoundType.Stage01Bgm => "Stage01",
+                SoundType.Stage02Bgm => "Stage02",
+                SoundType.Stage03Bgm => "Stage03",
+                SoundType.ButtonSfx => "ButtonClick",
+                SoundType.PlayerJump => "PlayerJumpSound",
                 SoundType.PlayerSlide => "PlayerSlideSound",
-                _                     => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
+                SoundType.CoinSfx => "CoinCollect",
+                _ => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
             };
         }
     }

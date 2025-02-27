@@ -211,7 +211,7 @@ MonoBehaviour:
   isSliding: 0
   normalCollider: {fileID: 8895180005282644817}
   slideCollider: {fileID: 7466042907592339946}
-  maxHP: 5
+  maxHP: 100
   currentHP: 0
   damage: 1
   hpDrainInterval: 1
