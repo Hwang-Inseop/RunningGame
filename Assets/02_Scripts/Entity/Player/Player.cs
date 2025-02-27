@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (!MainSceneBase.Instance.IsSecondPlayer()) TreasureInst();
+        TreasureInst();
         slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
         
         currentHP = maxHP; // 게임 시작시 HP MAX
@@ -319,9 +319,10 @@ public class Player : MonoBehaviour
     {
         if (canRevive == 0 && !treasure.canRescue)
         {
-        die = true;
-        MainSceneBase.Instance.PlayerDeath();
-        Debug.Log("Die");
+            die = true;
+            Unequip();
+            MainSceneBase.Instance.PlayerDeath();
+            Debug.Log("Die");
         }
 
     }

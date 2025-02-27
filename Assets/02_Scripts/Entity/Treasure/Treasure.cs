@@ -46,6 +46,7 @@ public class Treasure : MonoBehaviour
         if (IsEquipped)
         {
             IsEquipped = false;
+            Destroy(gameObject);
         }
     }
     public virtual void ApplyEffect(Player player) { }
