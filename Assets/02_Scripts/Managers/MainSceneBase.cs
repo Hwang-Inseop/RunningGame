@@ -101,7 +101,7 @@ namespace RunningGame.Managers
             // TODO: 씬 로드하고 수정
             // selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
             selectedPlayer = 1;
-            var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer + 1);
+            var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer - 1);
             var player = Instantiate(obj, playerSpawnPoint);
             CurrentPlayer = player.GetComponent<Player>();
             CurrentPlayer.transform.localPosition = Vector3.zero;
