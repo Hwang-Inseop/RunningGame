@@ -93,5 +93,6 @@ namespace RunningGame.Managers
         CoinSfx,
         GameOverBgm,
         PotionSfx,
+        GemSfx,
     }
 }
