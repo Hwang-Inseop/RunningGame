@@ -28,8 +28,8 @@ namespace RunningGame.Managers
 
         public Player CurrentPlayer { get; private set; }
         private int selectedStage;
-        private int selectedPlayer;
         private bool isGameStart;
+        private bool isSecondPlayer;
         
         private void Start()
         {
@@ -99,9 +99,14 @@ namespace RunningGame.Managers
         private void SpawnPlayer()
         {
             // TODO: 씬 로드하고 수정
-            // selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            int selectedPlayer = 0;
+            // if (!isSecondPlayer)
+            //     selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            // else
+            //     selectedPlayer = GameManager.Instance.secondCharacterInfo.CharacterNum;
+            
             selectedPlayer = 1;
-            var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer + 1);
+            var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer - 1);
             var player = Instantiate(obj, playerSpawnPoint);
             CurrentPlayer = player.GetComponent<Player>();
             CurrentPlayer.transform.localPosition = Vector3.zero;
@@ -113,13 +118,13 @@ namespace RunningGame.Managers
             switch (selectedStage)
             {
                 case 1:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.2f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.1f);
                     break;
                 case 2:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.2f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.1f);
                     break;
                 case 3:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.2f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.1f);
                     break;
                 default:
                     Debug.LogError("MainSceneBase : Invalid stage key");
@@ -127,20 +132,21 @@ namespace RunningGame.Managers
             }
         }
 
-        public void GameOver()
+        public void PlayerDeath()
         {
             // TODO: 2p 죽으면 브금 멈춰
-            // if (!isSecondPlayer)
-            // 
-            // else
-            // GameOver
+            if (!isSecondPlayer)
+            {
+                Destroy(CurrentPlayer.gameObject);
+                SpawnPlayer();
+                isSecondPlayer = true;
+            }
+            else
+            {
+                // 게임 오버
+            }
         }
 
-        public bool IsSelectedSpeedUpPlayer()
-        {
-            return selectedPlayer == 5;
-        }
-        
         public bool IsStart()
         {
             return isGameStart;
