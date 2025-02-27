@@ -29,4 +29,10 @@ public class TreasureInfo : ScriptableObject
     private Sprite treasureImg;
 
     public Sprite TreasureImg { get { return treasureImg; } }
+
+    //보물 해금 여부
+    [SerializeField]
+    private bool isOpened;
+
+    public bool IsOpened { get { return isOpened; } set { isOpened = value; } }
 }

@@ -146,9 +146,9 @@ public class LobbyUIManager : MonoBehaviour
     }
 
     //씬 로드
-    public void LoadScene(String sceneName)
+    public void LoadToMain()
     {
-        SceneManager.LoadScene(sceneName);  
+        SceneManager.LoadScene("MainScene");
     }
 
     //시작 시에 선택된 캐릭터의 이미지가 보이게 하도록 하기 
@@ -181,6 +181,7 @@ public class LobbyUIManager : MonoBehaviour
         else
         {
             treasureImg.sprite = noTreasureSprite;
+            treasureNameTxt.text = "보물 미장착중";
         }
     }
 
@@ -192,4 +193,5 @@ public class LobbyUIManager : MonoBehaviour
         color.a = Mathf.Clamp01(index);
         secondRunnerImg.color = color;
     }
+ 
 }

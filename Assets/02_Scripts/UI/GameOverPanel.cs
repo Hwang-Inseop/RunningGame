@@ -27,8 +27,7 @@ public class GameOverPanel : MonoBehaviour
             gameObject.SetActive(true);
         }
     }
-    void Start() //도트윈 사용방법
-                 // 주석 테스트
+    void Start() 
     {
         foreach (Button button in makeScaleBtn)
         {
@@ -40,7 +39,6 @@ public class GameOverPanel : MonoBehaviour
                 button.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
             });
         }
-
         RectTransform rectTransform = gameOverSelectPanel.GetComponent<RectTransform>();
         rectTransform.transform.localPosition = new Vector3(0f, -500f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 10f), fadeTime, false).SetEase(Ease.OutBounce);
