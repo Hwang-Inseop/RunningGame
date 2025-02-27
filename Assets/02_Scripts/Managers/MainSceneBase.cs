@@ -24,10 +24,9 @@ namespace RunningGame.Managers
         
         [Header("Event")]
         [SerializeField] private UnityEvent onGameStart = new();
-        [SerializeField] private UnityEvent onPatternSpawn = new();
 
         public Player CurrentPlayer { get; private set; }
-        private readonly Dictionary<PatternType, bool> existPatternEventDict = new();
+        private List<int> patternList = new();
         private int selectedStage;
         private bool isGameStart;
         private bool isSecondPlayer;
@@ -40,7 +39,6 @@ namespace RunningGame.Managers
         private void OnDestroy()
         {
             onGameStart.RemoveAllListeners();
-            onPatternSpawn.RemoveAllListeners();
         }
 
         public override void Init()
@@ -56,7 +54,7 @@ namespace RunningGame.Managers
             CreatPatternPool();
             CreateItemPool();
             patternLooper.Init(selectedStage);
-            staticObjectPlacer.AddGameStartListener(onGameStart, selectedStage);
+            staticObjectPlacer.ExecuteStaticObjectPlace(selectedStage);
             
             // 게임 시작
             onGameStart?.Invoke();
@@ -83,7 +81,7 @@ namespace RunningGame.Managers
             for (int i = 0; i < coinList.Count; i++)
             {
                 var prefab = coinList[i];
-                MainPoolManager.Instance.CreatePool(prefab, 100);
+                MainPoolManager.Instance.CreatePool(prefab, 50);
             }
 
             var heartList = interactionItemDatas.GetHeartPrefabs();
@@ -148,6 +146,12 @@ namespace RunningGame.Managers
             }
         }
 
+        public int GetPatternNumber()
+        {
+            patternList.Add(patternList.Count);
+            return patternList.Count - 1;
+        }
+
         public bool IsStart()
         {
             return isGameStart;
@@ -157,22 +161,5 @@ namespace RunningGame.Managers
         {
             return loopableObjectRoot;
         }
-        
-        public bool TryAddPatternEventDict(PatternType type)
-        {
-            return existPatternEventDict.TryAdd(type, true);
-        }
-
-        #region Event
-        public void AddPatternSpawnListener(UnityAction action)
-        {
-            onPatternSpawn.AddListener(action);
-        }
-        
-        public void InvokePatternSpawn()
-        {
-            onPatternSpawn?.Invoke();
-        }
-        #endregion
     }
 }
