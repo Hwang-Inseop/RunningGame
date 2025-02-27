@@ -2,18 +2,26 @@ using RunningGame.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MagnetPlayer : Player
 {
+    public GameObject magnetZone;
     [SerializeField] float coolTime = 30f;
     [SerializeField] float duration = 5f;
     bool abilityActive = false;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("LoopableItem") && abilityActive)
         {
-            StartCoroutine(Magnetic(collision.transform));
+            ActivateAbility();
         }
+    }
+    private void Start()
+    {
+        magnetZone.SetActive(false);
+        ActivateAbility() ;
     }
     protected override void ActivateAbility()
     {
@@ -25,8 +33,17 @@ public class MagnetPlayer : Player
         {
             yield return new WaitForSeconds(coolTime);
             abilityActive = true;
+            magnetZone.SetActive(true);
             yield return new WaitForSeconds(duration);
             abilityActive = false;
+            magnetZone.SetActive(false);
+        }
+    }
+    public void AttractItem(Transform item)
+    {
+        if (abilityActive)
+        {
+            StartCoroutine(Magnetic(item));
         }
     }
     public IEnumerator Magnetic(Transform coin)

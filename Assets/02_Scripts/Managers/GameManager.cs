@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
     {
         if (Instance.treasureInfo == null || Instance.treasureInfo.TreasureObj == null)
         {
-            Debug.Log("null");
             return null;
         }
         GameObject treasureObj = Instantiate(Instance.treasureInfo.TreasureObj, transform);
