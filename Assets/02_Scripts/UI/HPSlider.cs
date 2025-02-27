@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class HPSlider : MonoBehaviour
 {
-    private HealthPotion healthPotion;
     [SerializeField] private Slider slider;
 
     public void Init()
@@ -16,7 +15,6 @@ public class HPSlider : MonoBehaviour
         slider.maxValue =(float)MainSceneBase.Instance.CurrentPlayer.maxHP/100;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (MainSceneBase.Instance.IsStart())

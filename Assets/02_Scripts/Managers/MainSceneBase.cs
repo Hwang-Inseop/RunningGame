@@ -44,6 +44,7 @@ namespace RunningGame.Managers
 
         public override void Init()
         {
+            SpawnPlayer();
             // Manager 초기화
             MainPoolManager.Instance.Init();
             MainUIManager.Instance.Init();
@@ -56,7 +57,6 @@ namespace RunningGame.Managers
             
             // 게임 시작
             onGameStart?.Invoke();
-            SpawnPlayer();
             PlayBgm();
             isGameStart = true;
         }

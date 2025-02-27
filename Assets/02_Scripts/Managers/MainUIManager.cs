@@ -11,11 +11,12 @@ namespace RunningGame.Managers
     public class MainUIManager : SceneSingleton<MainUIManager>
     {
         public HPSlider hPSlider;
-        private Player player = null;
-        private bool isPause = false;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
         public GameObject gameOverPanel;
+        public GameObject treasurePanel;
+        private Player player = null;
+        private bool isPause = false;
 
         [Header("점수 표시")]
         public int totalScore = 0;
@@ -68,5 +69,9 @@ namespace RunningGame.Managers
         {
             totalGoldTxt.text = totalGold.ToString();
         }
+        //public void UnEquip() //장착하지 않은 보물패널 비활성화
+        //{
+
+        //}
     }
 }
