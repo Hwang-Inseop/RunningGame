@@ -74,6 +74,12 @@ namespace RunningGame.Managers
         {
             totalGoldTxt.text = totalGold.ToString();
         }
+
+        public void SetCollectedGold()
+        {
+            GameManager.Instance.JemCount += totalGold;
+        }
+        
         public void UpdateTresurePanel() // 보물 패널
         {
             if (GameManager.Instance.treasureInfo != null)

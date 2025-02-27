@@ -104,6 +104,7 @@ namespace RunningGame.Managers
             CurrentPlayer = player.GetComponent<Player>();
             CurrentPlayer.transform.localPosition = Vector3.zero;
             CurrentPlayer.transform.localScale = new Vector3(1.5f, 1.5f, 0);
+            SetPlayerCurrentHp();
         }
 
         private void PlayBgm()
@@ -133,19 +134,30 @@ namespace RunningGame.Managers
                 Destroy(CurrentPlayer.gameObject);
                 SpawnPlayer();
                 SpawnFootHold();
-                CurrentPlayer.currentHP = CurrentPlayer.maxHP / 2;
                 return;
             }
 
             GameOver();
         }
-
+        
         private void SpawnFootHold()
         {
             var footHoldObj = Instantiate(footHold, loopableObjectRoot);
             footHoldObj.transform.parent = loopableObjectRoot;
             footHoldObj.transform.position = CurrentPlayer.transform.position + Vector3.down;
             footHoldObj.transform.localScale = Vector3.one;
+        }
+
+        private void SetPlayerCurrentHp()
+        {
+            if (!isSecondPlayer)
+            {
+                CurrentPlayer.currentHP = CurrentPlayer.maxHP;
+            }
+            else
+            {
+                CurrentPlayer.currentHP = CurrentPlayer.maxHP / 2;
+            }
         }
 
         private void GameOver()

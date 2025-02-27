@@ -25,6 +25,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void GameOver()
     {
+        MainUIManager.Instance.SetCollectedGold();
         SoundManager.Instance.PlaySfx(SoundType.GameOverBgm, 0.1f);
         gameObject.SetActive(true);
         if (GameManager.Instance.firstCharacterInfo != null)

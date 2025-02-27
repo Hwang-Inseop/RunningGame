@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         TreasureInst();
         slideCollider.enabled = false; // 기본적으로 슬라이딩 콜라이더 비활성화
         
-        currentHP = maxHP; // 게임 시작시 HP MAX
+        // currentHP = maxHP; // 게임 시작시 HP MAX
         StartCoroutine(DrainHp()); // 체력 지속 소모 시작
     }
     
