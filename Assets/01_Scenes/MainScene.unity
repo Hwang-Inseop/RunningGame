@@ -4511,33 +4511,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170823634}
     m_Modifications:
-    - target: {fileID: 3383094399474113901, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4655071050606150310, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5218066499281398254, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809138963407688442, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5997052540652958472, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
       propertyPath: m_Name
       value: Stage03
-      objectReference: {fileID: 0}
-    - target: {fileID: 5997052540652958472, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6158209755478996004, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8532022839029714152, guid: 1d50134800e15cb4fa5ae80acce86a86, type: 3}
       propertyPath: m_LocalPosition.x
