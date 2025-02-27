@@ -16,3 +16,4 @@ MonoBehaviour:
   treasureName: "3\uBC88 \uBCF4\uBB3C \uC774\uB984"
   ability: "1\uD68C \uB099\uC0AC \uBC29\uC9C0"
   treasureImg: {fileID: 21300000, guid: 5a44e708eb20a5d4d89d95c417d11cf3, type: 3}
+  isOpened: 0

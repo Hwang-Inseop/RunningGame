@@ -56,6 +56,23 @@ public class TreasureUIManager : MonoBehaviour
     [SerializeField]
     private GameObject unlockBtn;
 
+    [Header("장착 버튼")]
+    [SerializeField]
+    private GameObject equipTreasureBtn; 
+
+    [Header("해제 버튼")]
+    [SerializeField]
+    private GameObject unEquipTreasureBtn;
+
+    [Header("해금 완료 패널")]
+    [SerializeField]
+    private GameObject unlockCompletePanel;
+
+    [Header("보유한 잼의 개수가 적힐 칸 - 패널 외")]
+    [SerializeField]
+    private TextMeshProUGUI wholeJemCount;
+
+
     //패널을 누를때 현재 보이는 보물의 숫자
     private int currentTreasureNum = 0;
 
@@ -64,6 +81,8 @@ public class TreasureUIManager : MonoBehaviour
 
     void Start()
     {
+        wholeJemCount.text = GameManager.Instance.JemCount.ToString();
+
         fadePanelGo.SetActive(true);
         fadePanel.alpha = 0f;
         fadePanel.GetComponent<RectTransform>().transform.localPosition = new Vector3(0f, -1000f, 0f);
@@ -122,8 +141,22 @@ public class TreasureUIManager : MonoBehaviour
         treasureAbilityTxt.text = treasureInfo.Ability;
 
         currentTreasureNum = treasureInfo.TreasureNum;
-
         jemCountTxt.text = GameManager.Instance.JemCount.ToString();
+
+        if (treasureInfo.IsOpened)
+        {
+            unlockBtn.SetActive(false);
+            equipTreasureBtn.SetActive(true);
+            unEquipTreasureBtn.SetActive(true);
+            unlockCompletePanel.SetActive(true);
+        }
+        else
+        {
+            unlockBtn.SetActive(true);
+            equipTreasureBtn.SetActive(false);
+            unEquipTreasureBtn.SetActive(false);
+            unlockCompletePanel.SetActive(false);
+        }
     }
 
     //보물 선택
@@ -162,6 +195,12 @@ public class TreasureUIManager : MonoBehaviour
             jemCountTxt.text = GameManager.Instance.JemCount.ToString();
             treasureInfos[currentTreasureNum - 1].IsOpened = true;
             unlockBtn.SetActive(false);
+            wholeJemCount.text = GameManager.Instance.JemCount.ToString();
+
+            unlockBtn.SetActive(false);
+            equipTreasureBtn.SetActive(true);
+            unEquipTreasureBtn.SetActive(true);
+            unlockCompletePanel.SetActive(true);
         }
     }
 
@@ -169,5 +208,11 @@ public class TreasureUIManager : MonoBehaviour
     {
         Random random = new Random();
         alienTalk.text = alienTalkInfos[random.Next(alienTalkInfos.Count)].Talk;
+    }
+
+    //Dotween 오류 방지
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
     }
 }
