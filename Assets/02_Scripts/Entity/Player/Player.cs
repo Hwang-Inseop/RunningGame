@@ -75,8 +75,14 @@ public class Player : MonoBehaviour
     /// </summary>
     void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) ChangeState(PlayerState.isJumping);
-        if (Input.GetKeyDown(KeyCode.X)) ChangeState(PlayerState.isSliding);
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ChangeState(PlayerState.isJumping);
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            ChangeState(PlayerState.isSliding);
+        }
     }
     
     /// <summary>
@@ -101,20 +107,28 @@ public class Player : MonoBehaviour
     /// </summary>
     void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && isRunning) // Z키 눌렀을 때 && 땅에 붙어있을 때
+        if (Input.GetKeyDown(KeyCode.Z) && (isRunning || isSliding))
         {
+            if (isSliding)
+            {
+                isSliding = false;
+                normalCollider.enabled = true;
+                slideCollider.enabled = false;
+                animator.SetBool("isSliding", false);
+            }
+
             isRunning = false;
             isJumping = true;
-            isSliding = false;
             canDoubleJump = true;
             jumpHoldTimer = 0f;
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", true);
-            SoundManager.Instance.PlaySfx(SoundType.PlayerJump, 0.5f); // SoundManager로 점프 소리 재생
+            SoundManager.Instance.PlaySfx(SoundType.PlayerJump, 0.5f);
             Debug.Log("Jump");
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && canDoubleJump) // 공중에서 한 번 더 점프 가능
+        else if (Input.GetKeyDown(KeyCode.Z) && canDoubleJump)
         {
             canDoubleJump = false;
             rb.velocity = new Vector2(rb.velocity.x, doubleJumpForce);
@@ -122,7 +136,6 @@ public class Player : MonoBehaviour
             Debug.Log("DoubleJump");
         }
 
-        // 점프 버튼 입력 시간 비례 점프 높이 조절 (최대 `maxJumpHoldTime` 까지)
         if (Input.GetKey(KeyCode.Z) && isJumping)
         {
             if (jumpHoldTimer < maxJumpHoldTime)
@@ -131,8 +144,7 @@ public class Player : MonoBehaviour
                 jumpHoldTimer += Time.deltaTime;
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.Z)) // 점프 키에서 손을 떼면 멈춤
+        if (Input.GetKeyUp(KeyCode.Z))
         {
             isJumping = false;
         }
@@ -145,20 +157,22 @@ public class Player : MonoBehaviour
     /// </summary>
     void PlayerSlide()
     {
-        if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping && isRunning)
+        if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping)
         {
             isSliding = true;
-            normalCollider.enabled = false; // 기본 콜라이더 비활성화
-            slideCollider.enabled = true; // 슬라이딩용 콜라이더 활성화
+            normalCollider.enabled = false;
+            slideCollider.enabled = true;
             animator.SetBool("isSliding", true);
+
             SoundManager.Instance.PlaySfx(SoundType.PlayerSlide, 1f);
             Debug.Log("Start Slide");
         }
+
         else if (Input.GetKeyUp(KeyCode.X) && isSliding)
         {
             isSliding = false;
-            normalCollider.enabled = true; // 기본 콜라이더 활성화
-            slideCollider.enabled = false; // 슬라이딩용 콜라이더 비활성화
+            normalCollider.enabled = true;
+            slideCollider.enabled = false;
             animator.SetBool("isSliding", false);
             Debug.Log("End Slide");
         }
@@ -167,12 +181,35 @@ public class Player : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 바닥에서 달리는 상태
-            isRunning = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+        
             isJumping = false;
-        Debug.Log("isRunning");
-        animator.SetBool("isRunning", true);
-        animator.SetBool("isJumping", false);
+            animator.SetBool("isJumping", false);
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                isSliding = true;
+                isRunning = false;
+
+                normalCollider.enabled = false;
+                slideCollider.enabled = true;
+
+                animator.SetBool("isSliding", true);
+                animator.SetBool("isRunning", false);
+            }
+            else
+            {
+                isRunning = true;
+                isSliding = false;
+
+                normalCollider.enabled = true;
+                slideCollider.enabled = false;
+
+                animator.SetBool("isRunning", true);
+                animator.SetBool("isSliding", false);
+            }
+        }
     }
 
     /// <summary>
