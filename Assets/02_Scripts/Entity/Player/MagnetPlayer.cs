@@ -20,8 +20,9 @@ public class MagnetPlayer : Player
     }
     private void Start()
     {
+        base.Start();
         magnetZone.SetActive(false);
-        ActivateAbility() ;
+        ActivateAbility();
     }
     protected override void ActivateAbility()
     {

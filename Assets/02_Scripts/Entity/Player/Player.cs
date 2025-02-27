@@ -270,9 +270,9 @@ public class Player : MonoBehaviour
         float invincibleTime = invincible;
         StartCoroutine(BlinkEffect());
         Debug.Log("Invincible Start");
-        
+
         yield return new WaitForSeconds(invincibleTime);
-        
+
         damaged = false;
         Debug.Log("Invincible End");
     }
@@ -319,8 +319,13 @@ public class Player : MonoBehaviour
     /// </summary>
     void Die()
     {
-        if(treasure is ReviveTreasure && !treasure.canRescue)
+        if (treasure is ReviveTreasure)
         {
+            if (treasure.canRescue)
+            {
+                return; 
+            }
+
             die = true;
             Unequip();
             MainSceneBase.Instance.PlayerDeath();
@@ -332,7 +337,6 @@ public class Player : MonoBehaviour
             Unequip();
             MainSceneBase.Instance.PlayerDeath();
             Debug.Log("Die");
-
         }
 
     }
