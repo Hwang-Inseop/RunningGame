@@ -102,6 +102,7 @@ public class TreasureUIManager : MonoBehaviour
     public void LoadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.5f);
     }
 
     //Fade In 효과
@@ -112,6 +113,7 @@ public class TreasureUIManager : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
         fadePanel.DOFade(1, fadeTime);
+        SoundManager.Instance.PlaySfx(SoundType.PanelSfx, 0.5f);
     }
 
     //Fade Out 효과
@@ -123,7 +125,7 @@ public class TreasureUIManager : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
         fadePanel.DOFade(0, fadeTime);
-
+        SoundManager.Instance.PlaySfx(SoundType.PanelSfx, 0.5f);
         currentTreasureNum = 0;
     }
 
@@ -202,6 +204,7 @@ public class TreasureUIManager : MonoBehaviour
             equipTreasureBtn.SetActive(true);
             unEquipTreasureBtn.SetActive(true);
             unlockCompletePanel.SetActive(true);
+            SoundManager.Instance.PlaySfx(SoundType.UnlockSfx, 0.5f);
         }
     }
 
@@ -209,6 +212,7 @@ public class TreasureUIManager : MonoBehaviour
     {
         Random random = new Random();
         alienTalk.text = alienTalkInfos[random.Next(alienTalkInfos.Count)].Talk;
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.5f);
     }
 
     //Dotween 오류 방지

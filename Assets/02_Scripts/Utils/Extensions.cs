@@ -34,6 +34,9 @@ namespace RunningGame.Utils
                 SoundType.CoinSfx => "CoinCollect",
                 SoundType.PotionSfx => "PotionSfx",
                 SoundType.GemSfx => "GemSfx",
+                SoundType.PanelSfx => "PanelSfx",
+                SoundType.UnlockSfx => "UnlockSfx",
+                SoundType.LobbyBGM => "Lobby",
                 _ => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
             };
         }

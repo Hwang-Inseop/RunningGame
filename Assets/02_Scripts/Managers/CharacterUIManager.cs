@@ -1,4 +1,5 @@
 using DG.Tweening;
+using RunningGame.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -134,6 +135,7 @@ public class CharacterUIManager : MonoBehaviour
     public void LoadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.5f);
     }
 
     //캐릭터에 맞는 정보 띄우기
@@ -176,6 +178,7 @@ public class CharacterUIManager : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
         characterInfoPanel.DOFade(1, fadeTime);
+        SoundManager.Instance.PlaySfx(SoundType.PanelSfx, 0.5f);
     }
 
     //Fade Out 효과
@@ -186,7 +189,7 @@ public class CharacterUIManager : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
         rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
         characterInfoPanel.DOFade(0, fadeTime);
-
+        SoundManager.Instance.PlaySfx(SoundType.PanelSfx, 0.5f);
         runnerPanelNum = 0;
     }
 
@@ -314,6 +317,8 @@ public class CharacterUIManager : MonoBehaviour
             unlockCompletePanel.SetActive(true);
 
             wholeJemCount.text = GameManager.Instance.JemCount.ToString();
+            
+            SoundManager.Instance.PlaySfx(SoundType.UnlockSfx, 0.5f);
         }
     }
 

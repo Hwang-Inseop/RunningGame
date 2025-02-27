@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         {
             isRunning = false;
             isJumping = true;
+            isSliding = false;
             canDoubleJump = true;
             jumpHoldTimer = 0f;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -144,7 +145,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void PlayerSlide()
     {
-        if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping)
+        if (Input.GetKeyDown(KeyCode.X) && !isSliding && !isJumping && isRunning)
         {
             isSliding = true;
             normalCollider.enabled = false; // 기본 콜라이더 비활성화
@@ -168,6 +169,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground")) // Ground 태그 오브젝트와 닿아있으면 바닥에서 달리는 상태
             isRunning = true;
+            isJumping = false;
         Debug.Log("isRunning");
         animator.SetBool("isRunning", true);
         animator.SetBool("isJumping", false);
@@ -278,6 +280,7 @@ public class Player : MonoBehaviour
         if (canRevive == 0)
         {
         die = true;
+        MainSceneBase.Instance.PlayerDeath();
         Debug.Log("Die");
         }
     }
