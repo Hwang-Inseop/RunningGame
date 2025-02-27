@@ -64,8 +64,11 @@ public class LobbyUIManager : MonoBehaviour
     //초기 설정
     void Start()
     {
-        SoundManager.Instance.PlayBgm(SoundType.LobbyBGM, 0.1f);
-
+        if(!SoundManager.Instance.IsPlayingBgm())
+        {
+            SoundManager.Instance.PlayBgm(SoundType.LobbyBGM, 0.1f);
+        }
+        
         stageDescriptionTxt.text = GameManager.Instance.stageinfo.StageDescription;
         stageDescriptionImg.sprite = GameManager.Instance.stageinfo.Background;
         CheckSelectedStage();
