@@ -133,7 +133,6 @@ namespace RunningGame.Managers
 
         public void PlayerDeath()
         {
-            // TODO: 2p 죽으면 브금 멈춰
             if (!isSecondPlayer)
             {
                 Destroy(CurrentPlayer.gameObject);
@@ -142,14 +141,10 @@ namespace RunningGame.Managers
             }
             else
             {
-                // 게임 오버
+                isGameStart = false;
+                SoundManager.Instance.StopBgm();
+                MainUIManager.Instance.gameOverPanel.GameOver();
             }
-        }
-
-        public int GetPatternNumber()
-        {
-            patternList.Add(patternList.Count);
-            return patternList.Count - 1;
         }
 
         public bool IsStart()
