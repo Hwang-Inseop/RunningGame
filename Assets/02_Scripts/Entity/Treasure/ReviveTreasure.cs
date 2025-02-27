@@ -27,7 +27,7 @@ public class ReviveTreasure : Treasure
     public IEnumerator Revive(Player player, int currentHp) // 부활
     {
         Vector3 startPos = player.transform.localPosition;
-        Vector3 targetPos = Vector3.zero;
+        Vector3 targetPos = new Vector3(0, 1, 0);
         float duration = 1.5f;
         float elapsedTime = 0f;
         //player.currentHP = 0;
