@@ -1,7 +1,7 @@
 using RunningGame.Entity;
 using RunningGame.Scriptable;
 using RunningGame.Singleton;
-using RunningGame.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,12 +24,12 @@ namespace RunningGame.Managers
         
         [Header("Event")]
         [SerializeField] private UnityEvent onGameStart = new();
-        [SerializeField] private UnityEvent onPatternSpawn = new();
 
         public Player CurrentPlayer { get; private set; }
+        private List<int> patternList = new();
         private int selectedStage;
-        private int selectedPlayer;
         private bool isGameStart;
+        private bool isSecondPlayer;
         
         private void Start()
         {
@@ -39,7 +39,6 @@ namespace RunningGame.Managers
         private void OnDestroy()
         {
             onGameStart.RemoveAllListeners();
-            onPatternSpawn.RemoveAllListeners();
         }
 
         public override void Init()
@@ -55,7 +54,7 @@ namespace RunningGame.Managers
             CreatPatternPool();
             CreateItemPool();
             patternLooper.Init(selectedStage);
-            staticObjectPlacer.AddGameStartListener(onGameStart, selectedStage);
+            staticObjectPlacer.ExecuteStaticObjectPlace(selectedStage);
             
             // 게임 시작
             onGameStart?.Invoke();
@@ -82,7 +81,7 @@ namespace RunningGame.Managers
             for (int i = 0; i < coinList.Count; i++)
             {
                 var prefab = coinList[i];
-                MainPoolManager.Instance.CreatePool(prefab, 100);
+                MainPoolManager.Instance.CreatePool(prefab, 50);
             }
 
             var heartList = interactionItemDatas.GetHeartPrefabs();
@@ -99,7 +98,12 @@ namespace RunningGame.Managers
         private void SpawnPlayer()
         {
             // TODO: 씬 로드하고 수정
-            // selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            int selectedPlayer = 0;
+            // if (!isSecondPlayer)
+            //     selectedPlayer = GameManager.Instance.firstCharacterInfo.CharacterNum;
+            // else
+            //     selectedPlayer = GameManager.Instance.secondCharacterInfo.CharacterNum;
+            
             selectedPlayer = 1;
             var obj = playerPrefabs.GetPlayerPrefab(selectedPlayer - 1);
             var player = Instantiate(obj, playerSpawnPoint);
@@ -113,13 +117,13 @@ namespace RunningGame.Managers
             switch (selectedStage)
             {
                 case 1:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.2f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage01Bgm, 0.1f);
                     break;
                 case 2:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.2f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage02Bgm, 0.1f);
                     break;
                 case 3:
-                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.2f);
+                    SoundManager.Instance.PlayBgm(SoundType.Stage03Bgm, 0.1f);
                     break;
                 default:
                     Debug.LogError("MainSceneBase : Invalid stage key");
@@ -127,20 +131,27 @@ namespace RunningGame.Managers
             }
         }
 
-        public void GameOver()
+        public void PlayerDeath()
         {
             // TODO: 2p 죽으면 브금 멈춰
-            // if (!isSecondPlayer)
-            // 
-            // else
-            // GameOver
+            if (!isSecondPlayer)
+            {
+                Destroy(CurrentPlayer.gameObject);
+                SpawnPlayer();
+                isSecondPlayer = true;
+            }
+            else
+            {
+                // 게임 오버
+            }
         }
 
-        public bool IsSelectedSpeedUpPlayer()
+        public int GetPatternNumber()
         {
-            return selectedPlayer == 5;
+            patternList.Add(patternList.Count);
+            return patternList.Count - 1;
         }
-        
+
         public bool IsStart()
         {
             return isGameStart;
@@ -150,17 +161,5 @@ namespace RunningGame.Managers
         {
             return loopableObjectRoot;
         }
-
-        #region Event
-        public void AddPatternSpawnListener(UnityAction action)
-        {
-            onPatternSpawn.AddListener(action);
-        }
-        
-        public void InvokePatternSpawn()
-        {
-            onPatternSpawn?.Invoke();
-        }
-        #endregion
     }
 }

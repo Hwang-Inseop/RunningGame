@@ -9,7 +9,7 @@ namespace RunningGame.Entity
     {
         [SerializeField] private Transform tr;
         
-        private const float acceleration = 0.2f;
+        private const float acceleration = 0.1f;
         
         private Vector3 offset = Vector3.zero;
         private float scrollSpeed = Define.BaseScrollSpeed;
@@ -28,11 +28,6 @@ namespace RunningGame.Entity
 
         public void Init()
         {
-            if (MainSceneBase.Instance.IsSelectedSpeedUpPlayer())
-            {
-                scrollSpeed = Define.BaseScrollSpeed + 1f;
-            }
-            
             timeElapsed = 0f;
             tr.position = Vector3.zero;
             isStart = true;

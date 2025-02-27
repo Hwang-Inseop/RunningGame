@@ -13,8 +13,6 @@ namespace RunningGame.Managers
         public HPSlider hPSlider;
         public GameObject pauseBtn;
         public GameObject pauseMenu;
-        public GameObject gameOverPanel;
-        public GameObject treasurePanel;
         private Player player = null;
         private bool isPause = false;
 
@@ -26,6 +24,9 @@ namespace RunningGame.Managers
         public int totalGold = 0;
         public TextMeshProUGUI totalGoldTxt;
 
+        [Header("보물 표시")]
+        public Image EquippedTreasureImage;
+
         public override void Init() //시작시 초기화 
         {
             player = MainSceneBase.Instance.CurrentPlayer;
@@ -34,6 +35,7 @@ namespace RunningGame.Managers
             AddScore();
             AddGold();
             hPSlider.Init();
+            UpdateTresurePanel();
         }
 
         public void ResumeGame()
@@ -69,9 +71,12 @@ namespace RunningGame.Managers
         {
             totalGoldTxt.text = totalGold.ToString();
         }
-        //public void UnEquip() //장착하지 않은 보물패널 비활성화
-        //{
-
-        //}
+        public void UpdateTresurePanel() // 보물 패널
+        {
+            if(GameManager.Instance.treasureInfo != null)
+            {
+                EquippedTreasureImage.sprite = GameManager.Instance.treasureInfo.TreasureImg;
+            }
+        }
     }
 }

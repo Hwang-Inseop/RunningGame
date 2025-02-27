@@ -32,6 +32,8 @@ namespace RunningGame.Utils
                 SoundType.PlayerJump => "PlayerJumpSound",
                 SoundType.PlayerSlide => "PlayerSlideSound",
                 SoundType.CoinSfx => "CoinCollect",
+                SoundType.PotionSfx => "PotionSfx",
+                SoundType.GemSfx => "GemSfx",
                 _ => throw new ArgumentOutOfRangeException(nameof(soundType), soundType, null)
             };
         }
