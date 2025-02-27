@@ -53,6 +53,7 @@ namespace RunningGame.Managers
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene("LobbyScene");
+            SoundManager.Instance.StopBgm();
         }
 
         public void QuitGame()   // 게임 종료

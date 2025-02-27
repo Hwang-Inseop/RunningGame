@@ -29,8 +29,10 @@ public class ReviveTreasure : Treasure
     }
     public IEnumerator Revive(Player player, int currentHp) // 부활
     {
+        Debug.Log("ReviveTreasure : Revive");
+        
         Vector3 startPos = player.transform.localPosition;
-        Vector3 targetPos = new Vector3(0, 1, 0);
+        Vector3 targetPos = Vector3.zero;
         float duration = 1.5f;
         float elapsedTime = 0f;
         //player.currentHP = 0;
@@ -44,7 +46,9 @@ public class ReviveTreasure : Treasure
         player.currentHP = currentHp;
         player.isDropped = false;
         footHold.transform.parent = MainSceneBase.Instance.GetLoopableRoot();
-        footHold.transform.localPosition = new Vector3(0, -3.33f, 0);
+        var playerPos = player.transform.position;
+        footHold.transform.position = playerPos + Vector3.down;
+        footHold.transform.localScale = Vector3.one;
         footHold.SetActive(true);
         canRescue = false;
     }

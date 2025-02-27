@@ -415,7 +415,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.19999999, z: 0}
   m_MaxChunkCount: 16
@@ -1933,7 +1933,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -4.5}
@@ -2201,5 +2201,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPlacerType: 1
-  patternType: 1
   coinTilemap: {fileID: 4569755252649647614}
