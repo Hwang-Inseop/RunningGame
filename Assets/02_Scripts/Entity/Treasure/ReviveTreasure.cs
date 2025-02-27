@@ -23,13 +23,12 @@ public class ReviveTreasure : Treasure
     }
     public IEnumerator Revive(Player player, int currentHp) // 부활
     {
-        Debug.Log("코루틴");
         Vector3 startPos = player.transform.position;
         Vector3 targetPos = Vector3.zero;
         float duration = 1.5f;
         float elapsedTime = 0f;
-        yield return new WaitForSeconds(2f);
-        while(elapsedTime < duration)
+
+        while (elapsedTime < duration)
         {
             player.transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime/duration); 
             elapsedTime += Time.deltaTime;
