@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterNum: 2
   charName: "\uD30C\uB7AD\uC774"
-  health: 110
+  health: 60
   jewel: {fileID: 21300000, guid: d5dfdf771ea3e1e4b9f682ec2a4da4ff, type: 3}
-  ability: "\uD30C\uB7AD\uC774 - \uB2A5\uB825"
+  ability: "\uC678\uACC4\uC758 \uD798\uC744 \uBE4C\uB824 \uC808\uBC18\uC758 \uCCB4\uB825\uC73C\uB85C
+    \uBD80\uD65C\uD55C\uB2E4"
   talk: "\uD558\uB298\uC774 \uB108\uBB34 \uD30C\uB7AD"
   photo: {fileID: 21300000, guid: d5367c4cf08cc8946829f7970fd9b454, type: 3}
   bgSprite: {fileID: 21300000, guid: dbd37fcb722bf8641892fcc0850a4bb7, type: 3}
-  isOpened: 0
+  isOpened: 1
   charSprite: {fileID: 21300000, guid: d5367c4cf08cc8946829f7970fd9b454, type: 3}
