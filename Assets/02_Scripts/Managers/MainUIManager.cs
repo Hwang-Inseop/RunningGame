@@ -78,18 +78,15 @@ namespace RunningGame.Managers
             if (GameManager.Instance.treasureInfo != null)
             {
                 Debug.Log("제대로 연결됨.");
-
-                if (treasurePanel!= null||GameManager.Instance.treasureInfo != null)
-                {
-                    treasurePanel.SetActive(true);
-                    equippedTreasureImage.sprite = GameManager.Instance.treasureInfo.TreasureImg;
-                }
-                else
-                {
-                    treasurePanel.SetActive(false);
-                }
+                treasurePanel.SetActive(true);
+                equippedTreasureImage.sprite = GameManager.Instance.treasureInfo.TreasureImg;
             }
-                
+            else
+            {
+                treasurePanel.SetActive(false);
+            }
         }
+
     }
+    
 }
