@@ -12,6 +12,7 @@ public class HealthPotion : Item
     {
         base.ApplyEffect(player);
         player.currentHP += healingAmount;
-        if(player.currentHP > player.maxHP) player.currentHP = player.maxHP;
+        SoundManager.Instance.PlaySfx(SoundType.PotionSfx, 0.5f);
+        if (player.currentHP > player.maxHP) player.currentHP = player.maxHP;
     }
 }

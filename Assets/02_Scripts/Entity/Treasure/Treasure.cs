@@ -14,7 +14,6 @@ public class Treasure : MonoBehaviour
     private bool hasEffect = false;
 
     private Player player;
-
     private void Update()
     {
         if (!MainSceneBase.Instance.IsStart())
@@ -29,13 +28,14 @@ public class Treasure : MonoBehaviour
             IsEquipped = true;
             this.player = player;
 
-            Canvas canvas = FindObjectOfType<Canvas>();
-            if (canvas != null)
+            GameObject treasure = GameObject.Find("Canvas/Treasure");
+            if (treasure != null)
             {
-                transform.SetParent(canvas.transform, true);
+                transform.SetParent(treasure.transform, true);
             }
             else transform.SetParent(player.transform, false);
-
+            transform.localScale = new Vector3(3, 3, 0);
+            transform.localPosition = new Vector3(-982, -653, 0);
             StartCoroutine(WaitForStart());
         }
     }
