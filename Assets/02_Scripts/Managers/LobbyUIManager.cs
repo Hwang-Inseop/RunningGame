@@ -68,7 +68,9 @@ public class LobbyUIManager : MonoBehaviour
         {
             SoundManager.Instance.PlayBgm(SoundType.LobbyBGM, 0.1f);
         }
-        
+
+        currentStagePage = GameManager.Instance.stageinfo.StageNum;
+
         stageDescriptionTxt.text = GameManager.Instance.stageinfo.StageDescription;
         stageDescriptionImg.sprite = GameManager.Instance.stageinfo.Background;
         CheckSelectedStage();
