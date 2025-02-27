@@ -13,7 +13,7 @@ public class Treasure : MonoBehaviour
     [SerializeField] protected float duration; // 효과 지속 시간
     private bool hasEffect = false;
 
-    private Player player;
+    protected Player player;
     private void Update()
     {
         if (!MainSceneBase.Instance.IsStart())
