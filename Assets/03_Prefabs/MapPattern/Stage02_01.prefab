@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6196634116005308385}
   m_Layer: 0
   m_Name: DropZone
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1499,6 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPlacerType: 1
+  patternType: 0
 --- !u!1 &8835879390752284800
 GameObject:
   m_ObjectHideFlags: 0
