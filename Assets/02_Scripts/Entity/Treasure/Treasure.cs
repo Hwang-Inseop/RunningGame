@@ -11,6 +11,7 @@ public class Treasure : MonoBehaviour
     [SerializeField] private int reqGem; // 필요한 젬 개수
     [SerializeField] protected float intervalTime; // 쿨타임
     [SerializeField] protected float duration; // 효과 지속 시간
+    [SerializeField] public Sprite image; // 참조용
     private bool hasEffect = false;
 
     private Player player;
