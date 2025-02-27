@@ -243,9 +243,11 @@ public class Player : MonoBehaviour
         // 장애물과 충돌하면 대미지, 잠시 무적
         if (!damaged && collision.gameObject.CompareTag("Obstacle"))
         {
+
             TakeDamage(10);
             Debug.Log("Collision, Damaged -10");
             StartCoroutine(Invincible());
+
         }
         
         // 낙사 구간에 빠지면 Die
@@ -268,9 +270,9 @@ public class Player : MonoBehaviour
         float invincibleTime = invincible;
         StartCoroutine(BlinkEffect());
         Debug.Log("Invincible Start");
-        
+
         yield return new WaitForSeconds(invincibleTime);
-        
+
         damaged = false;
         Debug.Log("Invincible End");
     }
@@ -317,7 +319,19 @@ public class Player : MonoBehaviour
     /// </summary>
     void Die()
     {
-        if (canRevive == 0 && !treasure.canRescue)
+        if (treasure is ReviveTreasure)
+        {
+            if (treasure.canRescue)
+            {
+                return; 
+            }
+
+            die = true;
+            Unequip();
+            MainSceneBase.Instance.PlayerDeath();
+            Debug.Log("Die");
+        }
+        else if (canRevive == 0)
         {
             die = true;
             Unequip();
@@ -331,7 +345,10 @@ public class Player : MonoBehaviour
     public void TreasureInst()
     {
         Treasure treasure = GameManager.Instance.GetTreasureInstance();
-        if (treasure == null) Debug.Log("null");
+        if (treasure == null)
+        {
+            return;
+        }
         Debug.Log(treasure);
         if (treasure != null)
         {
