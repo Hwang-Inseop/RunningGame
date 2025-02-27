@@ -23,14 +23,14 @@ public class StaticObjectPlacers : MonoBehaviour
             case 2:
                 for (int i = 0; i < stage02_Placers.Count; i++)
                 {
-                    var placer = stage01_Placers[i];
+                    var placer = stage02_Placers[i];
                     placer.PlaceObject();
                 }
                 break;
             case 3:
                 for (int i = 0; i < stage03_Placers.Count; i++)
                 {
-                    var placer = stage01_Placers[i];
+                    var placer = stage03_Placers[i];
                     placer.PlaceObject();
                 }
                 break;

@@ -60,7 +60,7 @@ public class GameOverPanel : MonoBehaviour
 
     public void LoadToLobby()
     {
-        Time.timeScale = 0f;
+        // Time.timeScale = 0f;
         SceneManager.LoadScene(0);
         SoundManager.Instance.StopBgm();
     }

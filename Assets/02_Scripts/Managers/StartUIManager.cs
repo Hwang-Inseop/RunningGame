@@ -24,6 +24,7 @@ public class StartUIManager : MonoBehaviour
     public void LoadSceneDelayed()
     {
         SceneManager.LoadScene("LobbyScene", 0);
+        SoundManager.Instance.StopBgm();
     }
 
     //게임 종료
@@ -49,10 +50,17 @@ public class StartUIManager : MonoBehaviour
     {
         btn.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.1f);
     }
+
     public void PressStart()
     {
         SoundManager.Instance.PlaySfx(SoundType.ButtonSfx, 0.8f);
         startDisplay.OnStartButtonClicked();
         Invoke("LoadSceneDelayed", 1.5f);
+    }
+
+    //Dotween 오류 방지
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
     }
 }
