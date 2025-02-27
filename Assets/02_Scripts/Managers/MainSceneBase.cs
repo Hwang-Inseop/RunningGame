@@ -151,6 +151,11 @@ namespace RunningGame.Managers
         {
             return isGameStart;
         }
+
+        public bool IsSecondPlayer()
+        {
+            return isSecondPlayer;
+        }
         
         public Transform GetLoopableRoot()
         {
