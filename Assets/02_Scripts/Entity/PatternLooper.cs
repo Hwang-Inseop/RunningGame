@@ -65,7 +65,7 @@ public class PatternLooper : MonoBehaviour
         pattern.transform.position = other.transform.position + bgOffset;
         
         var objectPlacer = pattern.GetComponent<TilemapObjectPlacer>();
-        objectPlacer.InvokePatternPlaced();
+        objectPlacer.PlaceObject();
     }
     
     private string GetPatternKey()
