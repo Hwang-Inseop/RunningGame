@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     }
     public void DestroyItem() // 사라지는 애니메이션 후 Destroy
     {
+        GetComponent<Collider2D>().enabled = false;
         animator.SetTrigger("Contact");
         Destroy(gameObject, .05f);
     }
