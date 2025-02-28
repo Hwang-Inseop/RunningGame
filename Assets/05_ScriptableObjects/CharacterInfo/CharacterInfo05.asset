@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterNum: 5
   charName: "\uADF8\uB808\uC774"
-  health: 60
+  health: 80
   jewel: {fileID: 21300000, guid: 0021dbbf36693c840ae2aa16549e3c90, type: 3}
-  ability: "\uC2DC\uAC04\uC744 \uAC00\uC18D\uC2DC\uCF1C \uAC8C\uC784 \uC18D\uB3C4\uAC00
-    \uC99D\uAC00\uD55C\uB2E4."
+  ability: "\uCCB4\uB825\uC774 \uB9CE\uC544 \uC624\uB798 \uB2EC\uB9B4 \uC218 \uC788\uB2E4."
   talk: "\uC778\uAC04 \uC2DC\uB300\uC758 \uB05D\uC774 \uB3C4\uB798\uD588\uB2E4"
   photo: {fileID: 21300000, guid: 6ba18dd1514c146458309423fa8b54c3, type: 3}
   bgSprite: {fileID: 21300000, guid: be0f5fa116e1f8f4c873e1ce209f8d20, type: 3}

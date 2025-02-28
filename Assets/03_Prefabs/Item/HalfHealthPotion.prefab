@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 5
-  healingAmount: 50
+  healingAmount: 10
 --- !u!60 &6488247410660850937
 PolygonCollider2D:
   m_ObjectHideFlags: 0
