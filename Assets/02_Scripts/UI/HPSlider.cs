@@ -9,11 +9,6 @@ using UnityEngine.UI;
 public class HPSlider : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-
-    public void Init()
-    {
-
-    }
     void Update()
     {
         if (MainSceneBase.Instance.IsStart())
