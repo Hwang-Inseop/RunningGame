@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class HealthPotion : Item
 {
-    private HPSlider hpSlider;
     public int healingAmount = 0;
     public override void ApplyEffect(Player player)
     {

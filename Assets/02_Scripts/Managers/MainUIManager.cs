@@ -18,11 +18,11 @@ namespace RunningGame.Managers
         private bool isPause = false;
 
         [Header("점수 표시")]
-        public int totalScore = 0;
+        public int totalScore;
         public TextMeshProUGUI totalScoreTxt;
 
         [Header("골드 표시")]
-        public int totalGold = 0;
+        public int totalGold;
         public TextMeshProUGUI totalGoldTxt;
 
         [Header("보물 표시")]
@@ -32,11 +32,10 @@ namespace RunningGame.Managers
         public override void Init() //시작시 초기화 
         {
             player = MainSceneBase.Instance.CurrentPlayer;
-            int totalGold = 0;
-            int totalScore = 0;
+            totalGold = 0;
+            totalScore = 0;
             AddScore();
             AddGold();
-            hPSlider.Init();
             UpdateTresurePanel();
         }
 
