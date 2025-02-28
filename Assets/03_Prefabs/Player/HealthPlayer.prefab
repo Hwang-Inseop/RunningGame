@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 1499494471382006596}
   - component: {fileID: 6629379523873693029}
   m_Layer: 0
-  m_Name: SpeedUpPlayer
+  m_Name: HealthPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   isSliding: 0
   normalCollider: {fileID: 8895180005282644817}
   slideCollider: {fileID: 7466042907592339946}
-  maxHP: 60
-  currentHP: 60
+  maxHP: 80
+  currentHP: 80
   damage: 1
   hpDrainInterval: 1
   invincible: 3
