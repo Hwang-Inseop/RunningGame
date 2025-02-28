@@ -1,9 +1,12 @@
 # Unity 2D Running Action
 
 ## ALIENS
->> Unity 2D로 개발한 러닝 액션 게임 개발 실습 팀 프로젝트.  
->> 캐릭터 5종, 장착 아이템 3종의 시스템과 스테이지 3종의 컨텐츠가 구현되어있습니다.  
->> 내일배움캠프 유니티 입문 주차 팀 프로젝트 2025.02.21 ~ 2025.02.28
+> Unity 2D로 개발한 러닝 액션 게임 개발 실습 팀 프로젝트.  
+> 캐릭터 5종, 장착 아이템 3종의 시스템과 스테이지 3종의 컨텐츠가 구현되어있습니다.  
+> 내일배움캠프 유니티 입문 주차 팀 프로젝트 2025.02.21 ~ 2025.02.28
+
+## 게임 영상
+[![동영상 설명](https://img.youtube.com/vi/YconiN80K4s/0.jpg)](https://www.youtube.com/watch?v=YconiN80K4s)
 
 ## 조작
 | 키 입력      | 동작    |
@@ -52,6 +55,18 @@
 | 김준혁     | 타이틀 씬, 로비 씬      |
 | 윤동영     | 메인 씬 UI, 타이틀 씬 UI |
 | 김자은     | 메인 씬 게임로직        |
+
+## 협업 과정
+### 데일리 스크럼 공유
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmldL2%2FbtsMAlh1pRu%2FDoUpuD17OFadwEIKeKHSaK%2Fimg.png" width="700">
+
+데일리 스크럼 공유를 통해 현재 업무 계획, 공정률, 이슈 등을 공유하며 프로젝트를 진행했습니다.
+
+### 화상 회의
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Frl8II%2FbtsMxj0Uvd1%2F7K4Uas8pKKXYgK2G37pgA1%2Fimg.png" width="700">
+
+개발 기간 중 상시 화상 공유를 통해 팀원 간 코드 리뷰와 테스트를 진행하는 것으로  
+개발 중 발생하는 문제를 함께 해결했습니다.
 
 
 ## 기술 스택
