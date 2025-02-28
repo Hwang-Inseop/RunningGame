@@ -76,7 +76,6 @@ namespace RunningGame.Managers
         public void AddGold() // 재화 추가
         {
             totalGoldTxt.text = totalGold.ToString();
-            totalGold = GameManager.Instance.JemCount;
         }
         public void UpdateTresurePanel() // 보물 패널
         {
